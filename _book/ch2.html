@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>110 Monty Hall Problems for Stat 110 - 2&nbsp; Conditional Probability</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./summary.html" rel="next">
+<link href="./ch1.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch2.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Conditional Probability</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">110 Monty Hall Problems for Stat 110</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Probability and Counting</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Conditional Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendixa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Distributions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendixb.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Useful Results</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Conditional Probability</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<ol start="2" type="1">
+<li><p>(Original Monty Hall). On the Monty Hall game, a contestant chooses one of three closed doors, two of which have a goat behind them and one of which has a car. Each door has equal probabilities of having the car behind it. The contestant wants to win the car. After the selection is made, Monty Hall, who knows where the car is, opens one of the two remaining doors. Monty Hall will always open a door with a goat behind it, and if he has a choice, then he picks one of the two doors at random with equal probabilities. Monty then offers the contestant the option of switching to the other unopened door. What is the probability that the contestant will win the car if they switch doors?</p>
+<div id="answer1" class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Without loss of generality, suppose the contestant originally chooses door 1 and Monty opens door 2. Let <span class="math inline">\(C_i\)</span> be the event that the car is behind Door <span class="math inline">\(i\)</span> and <span class="math inline">\(M_i\)</span> be the event that Monty opens Door <span class="math inline">\(i\)</span> and reveals a goat. We are looking for <span class="math inline">\(P(C_3 | M_2).\)</span> By Bayes’ Rule and LOTP, this is <span class="math display">\[ P(C_3|M_2) = \frac{P(M_2|C_3)P(C_3)}{P(M_2|C_1)P(C_1) + P(M_2|C_2)P(C_2) + P(M_2|C_3)P(C_3)}. \]</span> Clearly, <span class="math inline">\(P(M_2 |C_2) = 0.\)</span> <span class="math inline">\(P(M_2|C_3) = 1\)</span> as if the contestant chooses door 1 and the car is behind door 3, Monty will always open door 2. Moreover, <span class="math inline">\(P(M_2|C_1) = 1/2\)</span> as if the car is behind door 1 and the contestant initially chooses door 1, Monty will open door 2 or door 3 with equal probabilities. Finally, <span class="math inline">\(P(C_i) = 1/3\)</span> for <span class="math inline">\(i = 1, 2, 3.\)</span> This gives us <span class="math display">\[ P(C_3|M_2) = \frac{1/3}{(1/2)(1/3) + (1/3)} = \frac{2}{3}. \]</span> Therefore, the contestant should switch to have a better chance to win the car.</p>
+</div>
+</div>
+</div></li>
+<li><p>(Reverse Monty Hall) Monty is trying a new version of his Monty Hall game. Instead of two doors containing goats and one door containing a car, there will now be two doors containing a car and one door containing a goat. The contestant initially chooses one of the three doors. Then, Monty, who knows where the car is, will open one of the two remaining doors. Monty Hall will always open a door with a <span class="math inline">\(car\)</span> behind it, and if he has a choice, he will pick one of the two doors at random with equal probabilities. Monty then offers the contestant the option of switching to the other unopened door. What is the probability that the contestant will win the car if they switch doors?</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This is the exact same scenario as the regular Monty Hall problem except that cars act as goats and the goat acts as the car. Hence, the probability of winning the car by switching should be equivalent to the probability of winning a goat by switching in the original problem. Thus, it is <span class="math inline">\(\frac{1}{3}.\)</span> The contestant should not switch to have a higher probability of winning the car.</p>
+</div>
+</div>
+</div></li>
+<li><p>(Monty Troll). Monty Hall has realized that every one of his contestants chooses a door and then switches to have a <span class="math inline">\(2/3\)</span> chance of winning. Monty is tired of this and decides to enact a little trolling mechanism. After the contestant chooses a door and Monty opens a door, a loud speaker and a microphone will be delivered to the unopened door that the contestant did not choose. Given that the car is behind this door, a fake bleating sound will be made with probability <span class="math inline">\(f.\)</span> If a goat is behind this door, then the goat will make an actual bleating sound with probability <span class="math inline">\(b.\)</span> Whether a bleating sound is made is conditionally independent with what door Monty opened given which door has the car behind it. The contestant cannot tell the difference between a fake and a real bleat. All other rules of Monty Hall stay the same. The contestant chooses door 1 and Monty reveals a goat behind door 2. A few seconds later, a loud bleating sound is heard behind door 3. What is the probability that the contestant will win if they switch doors?</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(B\)</span> be the event that a bleating sound is heard, <span class="math inline">\(C_i\)</span> be the event that the car is behind door <span class="math inline">\(i,\)</span> and <span class="math inline">\(M_i\)</span> be the event that Monty opens door <span class="math inline">\(i\)</span> to reveal a goat for <span class="math inline">\(i = 1, 2, 3.\)</span> By Bayes’ Rule and LOTP,$$P(C_3 |M_2, B) = \frac{P(M_2, B|C_3)P(C_3)}{P(M_2, B|C_1)P(C_1) + P(M_2, B|C_3)P(C_3)}.$$($P(M_2, B|C_2)P(C_2)$ was not included as <span class="math inline">\(P(M_2|C_2) = 0.\)</span>) As <span class="math inline">\(M_i\)</span> and <span class="math inline">\(B\)</span> are conditionally independent given <span class="math inline">\(C_j,\)</span> we have <span class="math inline">\(P(M_2, B|C_3) = P(M_2|C_3)P(B|C_3) = 1 \cdot f = f\)</span> and <span class="math inline">\(P(M_2, B|C_1) = P(M_2|C_1)P(B|C_1) = (1/2)b.\)</span> Hence, the probability is$$P(C_3|M_2, B) = \frac{f(1/3)}{b(1/6)+f(1/3)} = \frac{2f}{2f+b}.$$</p>
+</div>
+</div>
+</div></li>
+<li><p>(Repetitive Monty) Monty decides to change his game so that some doors may be empty. Specifically, one door is chosen with equal probabilities to hold the first goat. Afterwards, another door is chosen with equal probabilities to hold the second goat (the same door chosen before can be chosen again). Then, one of the three doors is randomly chosen with equal probabilities to hold the car. Thus, the doors that each goat and the car are hidden behind are independent of one another and a situation where a single door has both goats and the car can occur. After the contestant chooses their initial door, Monty will open a door with nothing behind it if he can. If he cannot, he will open a door with only one goat behind it if he can. If he cannot do that either, he will open a door with two goats behind it. Monty will never open a door with the car behind it. If Monty has a choice, then he chooses one of the two remaining doors with equal probabilities. All other rules of the original Monty Hall game stay the same.</p>
+<ol type="a">
+<li><p>The contestant chooses door 1, and Monty reveals nothing behind door 2. What is the probability that the contestant will win by switching to the other door?</p></li>
+<li><p>What is the probability of the contestant winning by switching if Monty reveals a goat behind door 2 instead?</p></li>
+</ol>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>a. Let <span class="math inline">\(M_i\)</span> denote the event that Monty opens door <span class="math inline">\(i\)</span> and reveals nothing and <span class="math inline">\(C_i\)</span> denote the event that the car is behind door <span class="math inline">\(i.\)</span> Then, by Bayes’ Rule and LOTP, <span class="math display">\[
+P(C_3|M_2) = \frac{P(M_2|C_3)P(C_3)}{P(M_2|C_1)P(C_1) + P(M_2|C_2)P(C_2) + P(M_2|C_3)P(C_3)}.
+\]</span> Again, <span class="math inline">\(P(M_2|C_2) = 0.\)</span> Moreover, <span class="math inline">\(P(M_2|C_3)\)</span> is simply the probability that no goat is behind door 2 as if the car is behind door 3, Monty must opens door 1. This probability is <span class="math inline">\((2/3)(2/3) = 4/9.\)</span></p>
+<p>Now we calculate <span class="math inline">\(P(M_2|C_1).\)</span> Let <span class="math inline">\(E_i\)</span> be the event that neither goats are behind door <span class="math inline">\(i.\)</span> We have that <span class="math inline">\(P(M_2|C_1) = P(M_2,E_2|C_1)\)</span> since <span class="math inline">\(M_2\)</span> implies <span class="math inline">\(E_2.\)</span> Therefore, we have that</p>
+<p><span class="math display">\[
+P(M_2|C_1) = P(M_2|E_2,C_1)P(E_2|C_1).
+\]</span></p>
+<p>Note that <span class="math inline">\(P(E_2|C_1) = \frac{4}{9}\)</span> using logic from before. Now, the probability that Monty decides to open door 2 when there is nothing behind it depends on if there’s anything behind door 3. We have using LOTP with extra conditioning that</p>
+<p><span class="math display">\[
+P(M_2|E_2,C_1) = P(M_2|E_2,C_1,E_3)P(E_3|E_2,C_1) + P(M_2|E_2^c,C_1,E_3)P(E_2^c|C_1,E_3).
+\]</span></p>
+<p>First consider <span class="math inline">\(P(E_3|E_2,C_1).\)</span> If neither goat is behind door 2, each goat is independently behind door 1 or door 3 with equal probabilities. Therefore, the probability that neither of them ends up behind door 3 is <span class="math inline">\(1/4.\)</span> Now, note that <span class="math inline">\(P(M_2|E_2^c,C_1,E_3)=1\)</span> since if door 2 has no goats and door 3 has some goats, Monty will reveal nothing behind door 2. Finally, <span class="math inline">\(P(M_2|E_2,C_1,E_3) = 1/2\)</span> since Monty has equal probabilities of revealing nothing behind door 2 or door 3 when neither door has anything behind them. Therefore,</p>
+<p><span class="math display">\[
+P(M_2|E_2,C_1) = \frac{1}{2}\cdot \frac{1}{4} + 1 \cdot \frac{3}{4} = \frac{7}{8} \implies P(M_2|C_1) = \frac{7}{8} \cdot \frac{4}{9} = \frac{7}{18}.
+\]</span></p>
+<p>Plugging all of this back in, we find that</p>
+<p><span class="math display">\[
+P(C_3|M_2) = \frac{(4/9)(1/3)}{(4/9)(1/3)+(7/18)(1/3)} = \frac{8}{15}.
+\]</span></p>
+<p>This probability is slightly larger than <span class="math inline">\(0.5,\)</span> so the contestant should still switch.</p>
+<p>b. Let <span class="math inline">\(M_i\)</span> be the event that Monty opens door <span class="math inline">\(i\)</span> and reveals exactly one goat and <span class="math inline">\(C_i\)</span> be the event that the car is behind door <span class="math inline">\(i\)</span> for <span class="math inline">\(i = 1, 2, 3.\)</span> Then, By Bayes’ Rule and LOTP, <span class="math display">\[
+P(C_3|M_2) = \frac{P(M_2|C_3)P(C_3)}{P(M_2|C_1)P(C_1) + P(M_2|C_2)P(C_2) + P(M_2|C_3)P(C_3)}.
+\]</span> Once again, <span class="math inline">\(P(M_2|C_2) = 0.\)</span> Consider <span class="math inline">\(P(M_2|C_1).\)</span> If the car is in door 1, then the only way Monty will reveal a goat behind door 2 is if both doors 2 and 3 contained a goat and Monty randomly chose door 2 (as if one of the doors did not contain a goat, Monty would have revealed nothing behind that door). The probability of this happening is the probability that goat 1 is behind door 2 or door 3 times the probability that goat 2 is behind one of the remaining doors between door 2 and door 3, which is <span class="math inline">\((2/3)(1/3) = 2/9.\)</span> Hence, <span class="math inline">\(P(M_2|C_1) = 2/9.\)</span></p>
+<p>Finally, consider <span class="math inline">\(P(M_2|C_3).\)</span> If the car is behind door 3, Monty is guaranteed to open door 2, so we just need there to be a single goat behind door 2. The probability that goat 1 is behind door 2 and goat 2 is not is <span class="math inline">\((1/3)(2/3) = 2/9\)</span> and the probability that goat 2 is behind door 2 and goat 1 is not is <span class="math inline">\((1/3)(2/3) = 2/9,\)</span> so the probability of this is <span class="math inline">\(4/9.\)</span> Plugging these in, we find <span class="math display">\[
+P(C_3|M_2) = \frac{(4/9)(1/3)}{(2/9)(1/3)+(4/9)(1/3)} = \frac{2}{3}.
+\]</span>So the contestant should switch and they have a better chance to win the car using this method than if Monty revealed nothing.</p>
+</div>
+</div>
+</div></li>
+</ol>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./ch1.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Probability and Counting</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./summary.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

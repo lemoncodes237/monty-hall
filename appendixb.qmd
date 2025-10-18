@@ -1,0 +1,79 @@
+# Useful Results
+
+{{< include _macros.tex >}}
+
+## Probability and Counting
+
+### Multiplication Rule
+
+Consider a series of two trials, where the first trial has $a$ possible outcomes and for each of these outcomes, the second trial has $b$ possible outcomes. Then the total number of possible pairs of outcomes from the two trials is $ab.$
+
+### Naive Definition of Probability
+
+Let $S$ be the sample space where every outcome is equally likely. If $A \subseteq S$ is an event, then
+
+$$
+P(A) = \frac{|A|}{|S|},
+$$
+
+the number of outcomes in $A$ divided by the number of outcomes in $S.$
+
+### Principle of Inclusion Exclusion (PIE)
+
+If $A$ and $B$ are events, then
+
+$$
+P(A \cup B) = P(A) + P(B) - P(A, B).
+$$
+
+If $C$ is also an event, then
+
+$$
+P(A \cup B \cup C) = P(A) + P(B) + P(C) - P(A,B)-P(A,C)-P(B,C)+P(A,B,C).
+$$
+
+**Could be good to put Venn diagrams here.**
+
+In general, if $A_1, \dots, A_n$ are events, then
+
+$$
+P\left(\bigcup_{i=1}^n A_i\right) = \sum_{i} P(A_i) - \sum_{i < j}P(A_i,A_j) + \sum_{i < j < k} P(A_i,A_j,A_k) - \dots + (-1)^{n+1}P(A_1, \dots, A_n).
+$$
+
+In words, we add all of the single probabilities up, then subtract all the pairwise probabilities, then add back all the triplet probabilities, subtract all the quadruple probabilities, etc.
+
+### Binomial Coefficients
+
+If there are $n$ distinct objects and we pick $k$ of them without replacement, then the total number of possible sets of $k$ objects (in other words, order does not matter) we can end up with is given by
+
+$$
+{n \choose k} = \frac{n!}{(n-k)!k!}.
+$$
+
+### Bose-Einstein
+
+If there are $n$ distinct objects and we choose $k$ times **with** replacement and order does not matter, then the total number of ways this can happen is
+
+$$
+{n + k-1 \choose k}.
+$$
+
+If each choice is equally likely to be any of the $n$ objects and the choices are independent of one another, then these outcomes are **not** equally likely. Hence, using the naive definition of probability on Bose-Einstein will fail.
+
+## Conditional Probability
+
+### Conditional Probability
+
+If $A$ and $B$ are events, then the probability of $A$ given $B,$ notated as $P(A|B),$ is given by
+
+$$
+P(A|B) = \frac{P(A,B)}{P(B)}.
+$$
+
+The equation above also gives us this equality:
+
+$$
+P(A,B) = P(A|B)P(B) = P(B|A)P(A).
+$$
+
+Note that $P(A|B)$ and $P(B|A)$ are different things. Falsely equating these two is known as the **Prosecutor's Fallacy**.

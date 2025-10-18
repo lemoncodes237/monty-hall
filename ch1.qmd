@@ -1,0 +1,23 @@
+# Probability and Counting
+
+{{< include _macros.tex >}}
+
+1.  (Buggy Code) Monty is preparing to host the Monty Hall show with $d$ doors. In today's show, he will be using four types of prizes: cars, goats, apples, and scooters. Monty originally was going to have $c$ cars, $g$ goats, $a$ apples, and $s$ scooters, but his intern accidentally wrote code that puts a car, goat, apple, or scooter behind each door with equal probabilities. That is, all sequences of length $d$ consisting of cars, goats, apples, and scooters are equally likely. It is possible that there is no car and it is also possible that all doors hold a car.
+
+    (a) Suppose the producer is only interested in how many cars, goats, apples, and scooters the show would need to host this show. Therefore, they are interested in the total number of possible 4-tuples $(x, y, z, w)$, where $x, y, z, w$ are the number of cars, goats, apples, and scooters, respectively, that will be in the show. How many possibilities are there for these 4-tuples?
+
+    (b) What is the probability that the show will actually end up correctly using $c$ cars, $g$ goats, $a$ apples, and $s$ scooters?
+
+    (c) Explain why the answer to (b) is not 1 over your answer in (a).
+
+    ::: {#answer1 .callout-caution collapse="true"}
+    ## Solution
+
+    (a) This is Bose-Einstein with 4 buckets and $d$ balls to insert in those buckets. Hence, our answer is $$
+        {d + 3 \choose 3}.
+        $$
+    (b) There are $4^d$ possible arrangements of the prizes into the doors where order does matter. Of these, we want to count how many arrangements uses exactly $c$ cars, $g$ goats, $a$ apples, and $s$ scooters. To do this, we first choose $c$ of the $d$ doors to hold cars. Then, we choose $g$ of the remaining $d-c$ doors to hold goats. Afterwards, we choose $a$ of the remaining $d-c-g$ door to hold apples, and all remaining doors will hold scooters. Therefore, by the naive definition of probability, we get the probability of $$
+        \frac{{d \choose c}{d-c \choose g}{d-c-g \choose a}}{4^d}.
+        $$
+    (c) This is because not all possibilities in (a) are equally likely. For example, the probability that all doors hold cars is $1/4^d$ since each door holds a car with $1/4$ probability, but this is clearly not $1/{d+3 \choose 3}.$ The same applies to all other possibilities.
+    :::

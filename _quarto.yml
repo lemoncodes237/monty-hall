@@ -1,0 +1,27 @@
+project:
+  type: book
+
+book:
+  title: "110 Monty Hall Problems for Stat 110"
+  author: "Joe Blitzstein and Samuel Hwang"
+  date: "10/5/2025"
+  chapters:
+    - index.qmd
+    - ch1.qmd
+    - ch2.qmd
+    - summary.qmd
+    - references.qmd
+  appendices:
+    - appendixa.qmd
+    - appendixb.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      light: cosmo
+    css: style.css
+
+editor: visual
+

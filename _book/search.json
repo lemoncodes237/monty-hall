@@ -1,0 +1,254 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "110 Monty Hall Problems for Stat 110",
+    "section": "",
+    "text": "Preface\nImagine you wake up in a bright studio, and you see three doors.\nTo assist with whatever you might need in this situation, this guide is here for you."
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "3  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "ch1.html",
+    "href": "ch1.html",
+    "title": "1  Probability and Counting",
+    "section": "",
+    "text": "(Buggy Code) Monty is preparing to host the Monty Hall show with \\(d\\) doors. In today’s show, he will be using four types of prizes: cars, goats, apples, and scooters. Monty originally was going to have \\(c\\) cars, \\(g\\) goats, \\(a\\) apples, and \\(s\\) scooters, but his intern accidentally wrote code that puts a car, goat, apple, or scooter behind each door with equal probabilities. That is, all sequences of length \\(d\\) consisting of cars, goats, apples, and scooters are equally likely. It is possible that there is no car and it is also possible that all doors hold a car.\n\nSuppose the producer is only interested in how many cars, goats, apples, and scooters the show would need to host this show. Therefore, they are interested in the total number of possible 4-tuples \\((x, y, z, w)\\), where \\(x, y, z, w\\) are the number of cars, goats, apples, and scooters, respectively, that will be in the show. How many possibilities are there for these 4-tuples?\nWhat is the probability that the show will actually end up correctly using \\(c\\) cars, \\(g\\) goats, \\(a\\) apples, and \\(s\\) scooters?\nExplain why the answer to (b) is not 1 over your answer in (a).\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nThis is Bose-Einstein with 4 buckets and \\(d\\) balls to insert in those buckets. Hence, our answer is \\[\n{d + 3 \\choose 3}.\n\\]\nThere are \\(4^d\\) possible arrangements of the prizes into the doors where order does matter. Of these, we want to count how many arrangements uses exactly \\(c\\) cars, \\(g\\) goats, \\(a\\) apples, and \\(s\\) scooters. To do this, we first choose \\(c\\) of the \\(d\\) doors to hold cars. Then, we choose \\(g\\) of the remaining \\(d-c\\) doors to hold goats. Afterwards, we choose \\(a\\) of the remaining \\(d-c-g\\) door to hold apples, and all remaining doors will hold scooters. Therefore, by the naive definition of probability, we get the probability of \\[\n\\frac{{d \\choose c}{d-c \\choose g}{d-c-g \\choose a}}{4^d}.\n\\]\nThis is because not all possibilities in (a) are equally likely. For example, the probability that all doors hold cars is \\(1/4^d\\) since each door holds a car with \\(1/4\\) probability, but this is clearly not \\(1/{d+3 \\choose 3}.\\) The same applies to all other possibilities."
+  },
+  {
+    "objectID": "appendixa.html#bernoulli",
+    "href": "appendixa.html#bernoulli",
+    "title": "Appendix A — Distributions",
+    "section": "A.1 Bernoulli",
+    "text": "A.1 Bernoulli\nSuppose \\(X \\sim \\textnormal{Bern}(p).\\) Then, \\(X\\) has PMF \\[\nP(X = 1) = p, \\; P(X = 0) = 1-p.\n\\] In other words, \\(X\\) is 1 with \\(p\\) probability and 0 otherwise.\n##Binomial}\nSuppose \\(X \\sim \\text{Bin}(n, p).\\) Then, \\(X\\) has PMF \\[\nP(X = k) = {n \\choose k} p^k(1-p)^{n-k},\n\\] with support \\(k \\in \\{0, \\dots, n\\}.\\)\nIf \\(I_1, \\dots, I_n \\overset{\\mathrm{iid}}{\\sim}\\textnormal{Bern}(p),\\) then \\(I_1 + \\dots + I_n \\sim \\text{Bin}(n, p).\\)"
+  },
+  {
+    "objectID": "appendixa.html#geometric",
+    "href": "appendixa.html#geometric",
+    "title": "Appendix A — Distributions",
+    "section": "A.2 Geometric",
+    "text": "A.2 Geometric\nSuppose \\(X \\sim \\textnormal{Geom}(p).\\) Then, \\(X\\) has PMF \\[\nP(X = k) = (1-p)p^{k}\n\\] with support \\(k \\in \\{0, 1, 2, \\dots \\}.\\)\nIf we have trials with independent success probability \\(p\\) and we kept doing trials until we get a success, the number of failures is distributed as \\(\\textnormal{Geom}(p).\\)"
+  },
+  {
+    "objectID": "appendixa.html#negative-binomial",
+    "href": "appendixa.html#negative-binomial",
+    "title": "Appendix A — Distributions",
+    "section": "A.3 Negative Binomial",
+    "text": "A.3 Negative Binomial\nSuppose \\(X \\sim \\textnormal{NBin}(r, p).\\) Then, \\(X\\) has PMF \\[\nP(X = k) = {r + k - 1 \\choose k}p^r(1-p)^k\n\\] with support \\(k \\in \\{0, 1, 2, \\dots\\}.\\)\nIf \\(X_1, \\dots, X_n \\overset{\\mathrm{iid}}{\\sim}\\textnormal{Geom}(p),\\) then \\(X_1 + \\dots + X_n \\sim \\textnormal{NBin}(n, p).\\)"
+  },
+  {
+    "objectID": "appendixa.html#poisson",
+    "href": "appendixa.html#poisson",
+    "title": "Appendix A — Distributions",
+    "section": "A.4 Poisson",
+    "text": "A.4 Poisson\nSuppose \\(X \\sim \\textnormal{Pois}(\\lambda).\\) Then, \\(X\\) has PMF \\[\nP(X = k) = \\frac{e^{-\\lambda}\\lambda^k}{k!}\n\\] with support \\(k \\in \\{0, 1, 2, \\dots\\}.\\)"
+  },
+  {
+    "objectID": "appendixa.html#hypergeometric",
+    "href": "appendixa.html#hypergeometric",
+    "title": "Appendix A — Distributions",
+    "section": "A.5 Hypergeometric",
+    "text": "A.5 Hypergeometric\nSuppose \\(X \\sim \\textnormal{HGeom}(w, b, n).\\) Then, \\(X\\) has PMF \\[\nP(X = k) = \\frac{{w \\choose k}{b \\choose n-k}}{{w+b \\choose n}},\n\\] with \\(k \\in \\{0, \\dots, n\\}.\\)\nIf we have \\(w\\) white cubes and \\(b\\) black cubes and we pick \\(n\\) of them without replacement, then the number of white cubes we draw is distributed as \\(\\textnormal{HGeom}(w, b, n).\\)"
+  },
+  {
+    "objectID": "appendixa.html#multinomial",
+    "href": "appendixa.html#multinomial",
+    "title": "Appendix A — Distributions",
+    "section": "A.6 Multinomial",
+    "text": "A.6 Multinomial\nSuppose \\(X = (X_1, \\dots, X_k) \\sim \\textnormal{Mult}_k(n, p),\\) where \\(p = (p_1, \\dots, p_k).\\) Then, \\(X\\) has joint PMF \\[\nP(X_1 = x_1, \\dots, X_k = x_k) = \\frac{n!}{x_1! \\dots x_k!} p_1^{x_1} \\dots p_k^{x_k}\n\\] with \\(x_i \\geq 0\\) for all \\(i \\in \\{1, \\dots, k\\}\\) and \\(x_1 + \\dots + x_k = n.\\)\nSuppose we have \\(n\\) independent trials, each of which ends with one of \\(k\\) different outcomes. If \\(p_i\\) is the probability that each trial ends up in outcome \\(i,\\) then the vector \\((X_1, \\dots, X_k)\\) with \\(X_i\\) being the number of trials that end up in outcome \\(i\\) is distributed \\(\\textnormal{Mult}_k(n, p)\\) with \\(p = (p_1, \\dots, p_k).\\)"
+  },
+  {
+    "objectID": "appendixa.html#uniform",
+    "href": "appendixa.html#uniform",
+    "title": "Appendix A — Distributions",
+    "section": "A.7 Uniform",
+    "text": "A.7 Uniform\nSuppose \\(X \\sim \\textnormal{Unif}(a, b).\\) Then, \\(X\\) has PDF \\[\nf(x) = \\frac{1}{b-a},\n\\] where \\(x \\in (a, b).\\)\nIf we pick a uniform random number between \\(a\\) and \\(b\\) with \\(a &lt; b,\\) then the distribution of that number is \\(\\textnormal{Unif}(a, b).\\)"
+  },
+  {
+    "objectID": "appendixa.html#beta",
+    "href": "appendixa.html#beta",
+    "title": "Appendix A — Distributions",
+    "section": "A.8 Beta",
+    "text": "A.8 Beta\nSuppose \\(X \\sim \\textnormal{Beta}(\\alpha, \\beta).\\) Then, \\(X\\) has PDF \\[\nf(x) = \\frac{\\Gamma(\\alpha + \\beta)}{\\Gamma(\\alpha)\\Gamma(\\beta)}x^{\\alpha-1}(1-x)^{\\beta-1} \\propto x^{\\alpha-1}(1-x)^{\\beta-1},\n\\] where \\(x \\in (0, 1).\\)\nThe \\(\\textnormal{Beta}(1, 1)\\) distribution is equivalent to the \\(\\textnormal{Unif}(0, 1)\\) distribution."
+  },
+  {
+    "objectID": "appendixa.html#beta-binomial",
+    "href": "appendixa.html#beta-binomial",
+    "title": "Appendix A — Distributions",
+    "section": "A.9 Beta-Binomial",
+    "text": "A.9 Beta-Binomial\nSuppose \\(X \\sim \\betabinom(n, \\alpha, \\beta).\\) Then, \\(X\\) has PMF \\[\nP(X = k) = {n \\choose k} \\frac{\\Gamma(\\alpha+k)\\Gamma(\\beta+n-k)}{\\Gamma(\\alpha+\\beta+n)} \\frac{\\Gamma(\\alpha+\\beta)}{\\Gamma(\\alpha)\\Gamma(\\beta)},\n\\] with support \\(k \\in \\{0, \\dots, n\\}.\\)\nIf \\(p \\sim \\textnormal{Beta}(\\alpha, \\beta)\\) and \\(X|p \\sim \\text{Bin}(n, p),\\) then marginally we have \\(X \\sim \\betabinom(n, \\alpha, \\beta).\\)"
+  },
+  {
+    "objectID": "appendixa.html#expo",
+    "href": "appendixa.html#expo",
+    "title": "Appendix A — Distributions",
+    "section": "A.10 Expo",
+    "text": "A.10 Expo\nSuppose \\(X \\sim \\textnormal{Expo}(\\lambda).\\) Then, \\(X\\) has PDF \\[\nf(x) = \\lambda e^{-\\lambda x},\n\\] where \\(x \\in (0, \\infty).\\)"
+  },
+  {
+    "objectID": "appendixa.html#weibull",
+    "href": "appendixa.html#weibull",
+    "title": "Appendix A — Distributions",
+    "section": "A.11 Weibull",
+    "text": "A.11 Weibull\nSuppose \\(X \\sim \\Wei(\\lambda, \\gamma).\\) Then, \\(X\\) has PDF \\[\nf(x) = \\gamma \\lambda e^{-\\lambda x^\\gamma}x^{\\gamma - 1},\n\\] where \\(x \\in (0, \\infty).\\)\nIf \\(X \\sim \\textnormal{Expo}(\\lambda),\\) then \\(X^{1/\\gamma} \\sim \\Wei(\\lambda, \\gamma).\\)"
+  },
+  {
+    "objectID": "appendixa.html#pareto",
+    "href": "appendixa.html#pareto",
+    "title": "Appendix A — Distributions",
+    "section": "A.12 Pareto",
+    "text": "A.12 Pareto\nSuppose \\(X \\sim \\Pareto(m, \\alpha).\\) Then, \\(X\\) has PDF \\[\nf(x) = \\frac{\\alpha m^\\alpha}{x^{\\alpha+1}} \\propto \\frac{1}{x^{\\alpha+1}},\n\\] with \\(x \\geq m.\\)\nIf \\(Y \\sim \\textnormal{Expo}(\\lambda),\\) then \\(me^Y \\sim \\Pareto(m, \\lambda).\\)\nSimilarly, if \\(Y \\sim \\Pareto(m, \\lambda),\\) then \\(\\log Y - \\log m \\sim \\textnormal{Expo}(\\lambda).\\)"
+  },
+  {
+    "objectID": "appendixa.html#gamma",
+    "href": "appendixa.html#gamma",
+    "title": "Appendix A — Distributions",
+    "section": "A.13 Gamma",
+    "text": "A.13 Gamma\nSuppose \\(X \\sim \\textnormal{Gamma}(a, \\lambda).\\) Then, \\(X\\) has PDF \\[\nf(x) = \\frac{1}{\\Gamma(a)}(\\lambda x)^a e^{-\\lambda x} \\frac{1}{x} \\propto x^{a-1}e^{-\\lambda x},\n\\] where \\(x \\in (0, \\infty).\\) Here, \\(\\Gamma\\) is the Gamma function, defined as \\[\n\\Gamma(a) = \\int_0^\\infty z^{a-1}e^{-z}dz.\n\\]\nIf \\(X_1, \\dots, X_n \\overset{\\mathrm{iid}}{\\sim}\\textnormal{Expo}(\\lambda),\\) then \\(X_1 + \\dots + X_n \\sim \\textnormal{Gamma}(n, \\lambda).\\)"
+  },
+  {
+    "objectID": "appendixa.html#inverse-gamma",
+    "href": "appendixa.html#inverse-gamma",
+    "title": "Appendix A — Distributions",
+    "section": "A.14 Inverse-Gamma",
+    "text": "A.14 Inverse-Gamma\nSuppose \\(X \\sim \\invgamma(\\alpha, \\beta).\\) Then, \\(X\\) has PDF \\[\nf(x) = \\frac{\\beta^\\alpha}{\\Gamma(\\alpha)}x^{-\\alpha-1}\\exp(-\\beta/x) \\propto x^{-\\alpha-1}\\exp(-\\beta/x),\n\\] where \\(x \\in (0, \\infty).\\)\nIf \\(X \\sim \\textnormal{Gamma}(a, \\lambda),\\) then \\(1/X \\sim \\invgamma(a, \\lambda).\\)"
+  },
+  {
+    "objectID": "appendixa.html#normal",
+    "href": "appendixa.html#normal",
+    "title": "Appendix A — Distributions",
+    "section": "A.15 Normal",
+    "text": "A.15 Normal\nSuppose \\(X \\sim \\mathcal{N}(\\mu, \\sigma^2).\\) Then, \\(X\\) has PDF \\[\nf(x) = \\frac{1}{\\sigma\\sqrt{2\\pi}}e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}} \\propto \\exp\\left(-\\frac{(x-\\mu)^2}{2\\sigma^2}\\right),\n\\] where \\(x \\in \\mathbb{R}.\\)"
+  },
+  {
+    "objectID": "appendixa.html#chi-square",
+    "href": "appendixa.html#chi-square",
+    "title": "Appendix A — Distributions",
+    "section": "A.16 Chi-Square",
+    "text": "A.16 Chi-Square\nSuppose \\(X \\sim \\chi^2_n.\\) Then, \\(X\\) has PDF \\[\nf(x) = \\frac{1}{2^{n/2}\\Gamma(n/2)}x^{n/2-1}e^{-x/2},\n\\] where \\(x \\in (0, \\infty).\\)\nThe \\(\\chi^2_n\\) distribution is equivalent to the \\(\\textnormal{Gamma}(n/2, 1/2)\\) distribution.\nIf \\(Z_1, \\dots, Z_n \\overset{\\mathrm{iid}}{\\sim}\\mathcal{N}(0, 1),\\) then \\(Z_1^2 + \\dots + Z_n^2 \\sim \\chi^2_n.\\)"
+  },
+  {
+    "objectID": "appendixa.html#student-t",
+    "href": "appendixa.html#student-t",
+    "title": "Appendix A — Distributions",
+    "section": "A.17 Student-t",
+    "text": "A.17 Student-t\nSuppose \\(X \\sim t_n.\\) Then, \\(X\\) has PDF \\[\nf(x) = \\frac{\\Gamma((n+1)/2)}{\\Gamma(n/2)\\sqrt{n\\pi}}\\left(1+\\frac{x^2}{n}\\right)^{-(n+1)/2},\n\\] where \\(x \\in \\mathbb{R}.\\)\nIf \\(Z \\sim \\mathcal{N}(0, 1)\\) and \\(V \\sim \\chi^2_n\\) with \\(Z\\) and \\(V\\) independent, then \\[\n\\frac{Z}{\\sqrt{V/n}} \\sim t_n.\n\\]"
+  },
+  {
+    "objectID": "appendixa.html#normal-inverse-gamma-nig",
+    "href": "appendixa.html#normal-inverse-gamma-nig",
+    "title": "Appendix A — Appendix A: Distributions",
+    "section": "A.18 Normal Inverse Gamma ($\\nig$)",
+    "text": "A.18 Normal Inverse Gamma ($\\nig$)\nSuppose \\((\\mu, \\sigma^2) \\sim \\nig(\\mu_0, \\nu, \\alpha, \\beta)\\). Then, \\((\\mu, \\sigma^2)\\) has joint PDF \\[\\begin{align*}\nf(\\mu, \\sigma^2) &= \\frac{\\beta^\\alpha\\sqrt{\\nu}}{\\Gamma(\\alpha)\\sqrt{2\\pi\\sigma^2}}\\left(\\frac{1}{\\sigma^2}\\right)^{\\alpha+1}\\exp\\left(-\\frac{2\\beta+\\nu(\\mu-\\mu_0)^2}{2\\sigma^2}\\right)\\\\\n&\\propto \\left(\\frac{1}{\\sigma^2}\\right)^{\\alpha+3/2}\\exp\\left(-\\frac{2\\beta+\\nu(\\mu-\\mu_0)^2}{2\\sigma^2}\\right).\n\\end{align*}\\] where \\(\\mu \\in \\mathbb{R}\\) and \\(\\sigma^2 &gt; 0.\\)\nIf \\(\\mu|\\sigma^2 \\sim \\mathcal{N}(\\mu_0, \\sigma^2/\\nu)\\) and \\(\\sigma^2 \\sim \\invgamma(\\alpha, \\beta),\\) then \\((\\mu, \\sigma^2) \\sim \\nig(\\mu_0, \\nu, \\alpha, \\beta).\\)"
+  },
+  {
+    "objectID": "appendixa.html#multivariate-normal-mvn",
+    "href": "appendixa.html#multivariate-normal-mvn",
+    "title": "Appendix A — Distributions",
+    "section": "A.18 Multivariate Normal (MVN)",
+    "text": "A.18 Multivariate Normal (MVN)\nSuppose \\(X \\sim \\mathcal{N}(\\mu, \\Sigma),\\) where \\(X = (X_1, \\dots, X_k) \\in \\mathbb{R}^k.\\) Then, \\(X\\) has joint PDF \\[\\begin{align*}\nf(x) &= \\frac{1}{(2\\pi)^{k/2}|\\Sigma|^{1/2}}\\exp\\left(-\\frac{1}{2}(x-\\mu)^T\\Sigma^{-1}(x-\\mu)\\right)\\\\\n&\\propto \\exp\\left(-\\frac{1}{2}(x-\\mu)^T\\Sigma^{-1}(x-\\mu)\\right),\n\\end{align*}\\] where \\(x = (x_1, \\dots, x_k) \\in \\mathbb{R}^k.\\) Here, \\(|\\Sigma|\\) is the determinant of \\(\\Sigma.\\)\nLet \\(\\Sigma_{ij}\\) be the \\((ij)\\)-element of \\(\\Sigma.\\) Then, it is true that \\(\\textnormal{Var}(X_i) = \\Sigma_{ii}\\) and \\(\\textnormal{Cov}(X_i, X_j) = \\Sigma_{ij}.\\)"
+  },
+  {
+    "objectID": "appendixa.html#wishart",
+    "href": "appendixa.html#wishart",
+    "title": "Appendix A — Appendix A: Distributions",
+    "section": "A.20 Wishart",
+    "text": "A.20 Wishart\nSuppose \\(X \\in \\mathbb{R}^{p \\times p}\\) has \\(X \\sim \\wishart(n, \\Psi).\\) Then, \\(X\\) has joint PDF \\[\\begin{align*}\nf(X) &= \\frac{|X|^{(n-p-1)/2}e^{-\\textnormal{tr}(\\Psi^{-1}X)/2}}{2^{np/2}|\\Psi|^{n/2}\\pi^{{p\\choose2}/2}\\prod_{j=1}^p\\Gamma((n+1-j)/2)}\\\\\n&\\propto |X|^{(n-p-1)/2}e^{-\\textnormal{tr}(\\Psi^{-1}X)/2} .\n\\end{align*}\\] Here, \\(X\\) must be symmetric and positive semidefinite.\nIf \\(X_1, \\dots, X_n \\sim \\mathcal{N}(0, \\Psi)\\) are random column vectors in \\(\\mathbb{R}^n,\\) then \\(XX^T \\sim \\wishart(n, \\Psi),\\) where \\[\nX = \\begin{bmatrix} X_1 & \\dots & X_n \\end{bmatrix}.\n\\] We also have that \\(XX^T = \\sum_{i=1}^n X_iX_i^T.\\)"
+  },
+  {
+    "objectID": "appendixa.html#inverse-wishart",
+    "href": "appendixa.html#inverse-wishart",
+    "title": "Appendix A — Appendix A: Distributions",
+    "section": "A.21 Inverse-Wishart",
+    "text": "A.21 Inverse-Wishart\nSuppose \\(X \\in \\mathbb{R}^{p \\times p}\\) has \\(X \\sim \\invwishart(\\nu, \\Psi).\\) Then, \\(X\\) has joint PDF \\[\\begin{align*}\nf(X) &= \\frac{|\\Psi|^{\\nu/2}|X|^{-(\\nu+p+1)/2}\\exp(-\\frac{1}{2}\\textnormal{tr}(\\Psi X^{-1}))}{2^{\\nu p/2}\\pi^{{p \\choose 2}/2}\\prod_{j=1}^p \\Gamma(\\frac{\\nu+1-j}{2})}\\\\\n&\\propto |X|^{-(\\nu+p+1)/2}\\exp\\left(-\\frac{1}{2}\\textnormal{tr}(\\Psi X^{-1})\\right).\n\\end{align*}\\] Here, \\(X\\) must be symmetric positive semidefinite.\nIf \\(X \\sim \\wishart(n, \\Psi),\\) then \\(X^{-1} \\sim \\invwishart(n, \\Psi).\\)"
+  },
+  {
+    "objectID": "appendixa.html#normal-inverse-wishart-niw",
+    "href": "appendixa.html#normal-inverse-wishart-niw",
+    "title": "Appendix A — Appendix A: Distributions",
+    "section": "A.22 Normal Inverse Wishart (NIW)",
+    "text": "A.22 Normal Inverse Wishart (NIW)\nSuppose \\((\\mu, \\Sigma) \\sim \\niw(\\mu_0, \\kappa, \\nu, \\Psi)\\) with \\(\\mu \\in \\mathbb{R}^p\\) and \\(\\Sigma \\in \\mathbb{R}^{p\\times p}.\\) Then, \\((\\mu, \\Sigma)\\) has joint PDF \\[\\begin{align*}\nf(\\mu, \\Sigma) &= \\frac{|\\Psi|^{\\nu/2}|\\Sigma|^{-(\\nu+p+1)/2}\\exp(-\\frac{1}{2}\\textnormal{tr}(\\Psi \\Sigma^{-1}))}{2^{\\nu p/2}\\pi^{{p \\choose 2}/2}\\prod_{j=1}^p \\Gamma(\\frac{\\nu+1-j}{2})} \\cdot \\frac{\\kappa^{p/2}}{(2\\pi)^{p/2}|\\Sigma|^{1/2}}\\exp\\left(-\\frac{\\kappa}{2}(\\mu-\\mu_0)^T\\Sigma^{-1}(\\mu-\\mu_0)\\right)\\\\\n&\\propto |\\Sigma|^{-(\\nu+p+2)/2}\\exp\\left(-\\frac{1}{2}\\textnormal{tr}(\\Psi\\Sigma^{-1}) - \\frac{\\kappa}{2}(\\mu-\\mu_0)^T\\Sigma^{-1}(\\mu-\\mu_0)\\right)\n\\end{align*}\\] Here, \\(\\Sigma\\) must be symmetric and positive semidefinite.\nIf \\(\\Sigma \\sim \\invwishart(\\nu, \\Psi)\\) and \\(\\mu|\\Sigma \\sim \\mathcal{N}(\\mu_0, \\Sigma/\\kappa),\\) then \\((\\mu, \\Sigma) \\sim \\niw(\\mu_0, \\kappa, \\nu, \\Psi).\\)"
+  },
+  {
+    "objectID": "appendixa.html#dirichlet",
+    "href": "appendixa.html#dirichlet",
+    "title": "Appendix A — Appendix A: Distributions",
+    "section": "A.23 Dirichlet",
+    "text": "A.23 Dirichlet\nSuppose \\(X = (X_1, \\dots, X_k) \\sim \\Dir(\\alpha)\\) with \\(\\alpha = (\\alpha_1, \\dots, \\alpha_k)\\) and \\(\\alpha_i &gt; 0\\) for all \\(i \\in \\{1, \\dots, k\\}.\\) Then, \\(X\\) has joint PDF \\[\nf(x) = \\frac{\\Gamma(\\sum_{j=1}^k \\alpha_j)}{\\prod_{j=1}^k \\Gamma(\\alpha_j)}\\prod_{j=1}^n x_j^{\\alpha_j-1},\n\\] where \\(x_i &gt; 0\\) for all \\(i \\in \\{1, \\dots, k\\}\\) and \\(x_1 + \\dots + x_n = 1.\\)"
+  },
+  {
+    "objectID": "appendixa.html#exponential-families-ef",
+    "href": "appendixa.html#exponential-families-ef",
+    "title": "Appendix A — Appendix A: Distributions",
+    "section": "A.24 Exponential Families (EF)",
+    "text": "A.24 Exponential Families (EF)\nAn r.v. \\(X\\) follows a distribution in Exponential Family with natural parameter \\(\\theta\\) if we can write the PDF/PMF of the form \\[\nf(x) = \\exp(\\theta T(x) - A(\\theta))h(x),\n\\] where \\(A(\\theta)\\) has no \\(x\\) dependence and \\(h(x)\\) has no \\(\\theta\\) dependence.\nIf \\(T(x) = x,\\) then the distribution is in Natural Exponential Family (NEF). Binomial, Normal, and Gamma are examples of distributions that are in NEF (and hence EF)."
+  },
+  {
+    "objectID": "appendixb.html#b.1-probability-and-counting",
+    "href": "appendixb.html#b.1-probability-and-counting",
+    "title": "Appendix B — Appendix B: Useful Results",
+    "section": "B.1 B.1: Probability and Counting",
+    "text": "B.1 B.1: Probability and Counting\n\nB.1.1 Multiplication Rule\nConsider a series of two trials, where the first trial has \\(a\\) possible outcomes and for each of these outcomes, the second trial has \\(b\\) possible outcomes. Then the total number of possible pairs of outcomes from the two trials is \\(ab.\\)\n\n\nB.1.2 Naive Definition of Probability\nLet \\(S\\) be the sample space where every outcome is equally likely. If \\(A \\subseteq S\\) is an event, then\n\\[\nP(A) = \\frac{|A|}{|S|},\n\\]\nthe number of outcomes in \\(A\\) divided by the number of outcomes in \\(S.\\)"
+  },
+  {
+    "objectID": "ch2.html",
+    "href": "ch2.html",
+    "title": "2  Conditional Probability",
+    "section": "",
+    "text": "(Original Monty Hall). On the Monty Hall game, a contestant chooses one of three closed doors, two of which have a goat behind them and one of which has a car. Each door has equal probabilities of having the car behind it. The contestant wants to win the car. After the selection is made, Monty Hall, who knows where the car is, opens one of the two remaining doors. Monty Hall will always open a door with a goat behind it, and if he has a choice, then he picks one of the two doors at random with equal probabilities. Monty then offers the contestant the option of switching to the other unopened door. What is the probability that the contestant will win the car if they switch doors?\n\n\n\n\n\n\nSolution\n\n\n\n\n\nWithout loss of generality, suppose the contestant originally chooses door 1 and Monty opens door 2. Let \\(C_i\\) be the event that the car is behind Door \\(i\\) and \\(M_i\\) be the event that Monty opens Door \\(i\\) and reveals a goat. We are looking for \\(P(C_3 | M_2).\\) By Bayes’ Rule and LOTP, this is \\[ P(C_3|M_2) = \\frac{P(M_2|C_3)P(C_3)}{P(M_2|C_1)P(C_1) + P(M_2|C_2)P(C_2) + P(M_2|C_3)P(C_3)}. \\] Clearly, \\(P(M_2 |C_2) = 0.\\) \\(P(M_2|C_3) = 1\\) as if the contestant chooses door 1 and the car is behind door 3, Monty will always open door 2. Moreover, \\(P(M_2|C_1) = 1/2\\) as if the car is behind door 1 and the contestant initially chooses door 1, Monty will open door 2 or door 3 with equal probabilities. Finally, \\(P(C_i) = 1/3\\) for \\(i = 1, 2, 3.\\) This gives us \\[ P(C_3|M_2) = \\frac{1/3}{(1/2)(1/3) + (1/3)} = \\frac{2}{3}. \\] Therefore, the contestant should switch to have a better chance to win the car.\n\n\n\n(Reverse Monty Hall) Monty is trying a new version of his Monty Hall game. Instead of two doors containing goats and one door containing a car, there will now be two doors containing a car and one door containing a goat. The contestant initially chooses one of the three doors. Then, Monty, who knows where the car is, will open one of the two remaining doors. Monty Hall will always open a door with a \\(car\\) behind it, and if he has a choice, he will pick one of the two doors at random with equal probabilities. Monty then offers the contestant the option of switching to the other unopened door. What is the probability that the contestant will win the car if they switch doors?\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThis is the exact same scenario as the regular Monty Hall problem except that cars act as goats and the goat acts as the car. Hence, the probability of winning the car by switching should be equivalent to the probability of winning a goat by switching in the original problem. Thus, it is \\(\\frac{1}{3}.\\) The contestant should not switch to have a higher probability of winning the car.\n\n\n\n(Monty Troll). Monty Hall has realized that every one of his contestants chooses a door and then switches to have a \\(2/3\\) chance of winning. Monty is tired of this and decides to enact a little trolling mechanism. After the contestant chooses a door and Monty opens a door, a loud speaker and a microphone will be delivered to the unopened door that the contestant did not choose. Given that the car is behind this door, a fake bleating sound will be made with probability \\(f.\\) If a goat is behind this door, then the goat will make an actual bleating sound with probability \\(b.\\) Whether a bleating sound is made is conditionally independent with what door Monty opened given which door has the car behind it. The contestant cannot tell the difference between a fake and a real bleat. All other rules of Monty Hall stay the same. The contestant chooses door 1 and Monty reveals a goat behind door 2. A few seconds later, a loud bleating sound is heard behind door 3. What is the probability that the contestant will win if they switch doors?\n\n\n\n\n\n\nSolution\n\n\n\n\n\nLet \\(B\\) be the event that a bleating sound is heard, \\(C_i\\) be the event that the car is behind door \\(i,\\) and \\(M_i\\) be the event that Monty opens door \\(i\\) to reveal a goat for \\(i = 1, 2, 3.\\) By Bayes’ Rule and LOTP,$$P(C_3 |M_2, B) = \\frac{P(M_2, B|C_3)P(C_3)}{P(M_2, B|C_1)P(C_1) + P(M_2, B|C_3)P(C_3)}.$$($P(M_2, B|C_2)P(C_2)$ was not included as \\(P(M_2|C_2) = 0.\\)) As \\(M_i\\) and \\(B\\) are conditionally independent given \\(C_j,\\) we have \\(P(M_2, B|C_3) = P(M_2|C_3)P(B|C_3) = 1 \\cdot f = f\\) and \\(P(M_2, B|C_1) = P(M_2|C_1)P(B|C_1) = (1/2)b.\\) Hence, the probability is$$P(C_3|M_2, B) = \\frac{f(1/3)}{b(1/6)+f(1/3)} = \\frac{2f}{2f+b}.$$\n\n\n\n(Repetitive Monty) Monty decides to change his game so that some doors may be empty. Specifically, one door is chosen with equal probabilities to hold the first goat. Afterwards, another door is chosen with equal probabilities to hold the second goat (the same door chosen before can be chosen again). Then, one of the three doors is randomly chosen with equal probabilities to hold the car. Thus, the doors that each goat and the car are hidden behind are independent of one another and a situation where a single door has both goats and the car can occur. After the contestant chooses their initial door, Monty will open a door with nothing behind it if he can. If he cannot, he will open a door with only one goat behind it if he can. If he cannot do that either, he will open a door with two goats behind it. Monty will never open a door with the car behind it. If Monty has a choice, then he chooses one of the two remaining doors with equal probabilities. All other rules of the original Monty Hall game stay the same.\n\nThe contestant chooses door 1, and Monty reveals nothing behind door 2. What is the probability that the contestant will win by switching to the other door?\nWhat is the probability of the contestant winning by switching if Monty reveals a goat behind door 2 instead?\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\na. Let \\(M_i\\) denote the event that Monty opens door \\(i\\) and reveals nothing and \\(C_i\\) denote the event that the car is behind door \\(i.\\) Then, by Bayes’ Rule and LOTP, \\[\nP(C_3|M_2) = \\frac{P(M_2|C_3)P(C_3)}{P(M_2|C_1)P(C_1) + P(M_2|C_2)P(C_2) + P(M_2|C_3)P(C_3)}.\n\\] Again, \\(P(M_2|C_2) = 0.\\) Moreover, \\(P(M_2|C_3)\\) is simply the probability that no goat is behind door 2 as if the car is behind door 3, Monty must opens door 1. This probability is \\((2/3)(2/3) = 4/9.\\)\nNow we calculate \\(P(M_2|C_1).\\) Let \\(E_i\\) be the event that neither goats are behind door \\(i.\\) We have that \\(P(M_2|C_1) = P(M_2,E_2|C_1)\\) since \\(M_2\\) implies \\(E_2.\\) Therefore, we have that\n\\[\nP(M_2|C_1) = P(M_2|E_2,C_1)P(E_2|C_1).\n\\]\nNote that \\(P(E_2|C_1) = \\frac{4}{9}\\) using logic from before. Now, the probability that Monty decides to open door 2 when there is nothing behind it depends on if there’s anything behind door 3. We have using LOTP with extra conditioning that\n\\[\nP(M_2|E_2,C_1) = P(M_2|E_2,C_1,E_3)P(E_3|E_2,C_1) + P(M_2|E_2^c,C_1,E_3)P(E_2^c|C_1,E_3).\n\\]\nFirst consider \\(P(E_3|E_2,C_1).\\) If neither goat is behind door 2, each goat is independently behind door 1 or door 3 with equal probabilities. Therefore, the probability that neither of them ends up behind door 3 is \\(1/4.\\) Now, note that \\(P(M_2|E_2^c,C_1,E_3)=1\\) since if door 2 has no goats and door 3 has some goats, Monty will reveal nothing behind door 2. Finally, \\(P(M_2|E_2,C_1,E_3) = 1/2\\) since Monty has equal probabilities of revealing nothing behind door 2 or door 3 when neither door has anything behind them. Therefore,\n\\[\nP(M_2|E_2,C_1) = \\frac{1}{2}\\cdot \\frac{1}{4} + 1 \\cdot \\frac{3}{4} = \\frac{7}{8} \\implies P(M_2|C_1) = \\frac{7}{8} \\cdot \\frac{4}{9} = \\frac{7}{18}.\n\\]\nPlugging all of this back in, we find that\n\\[\nP(C_3|M_2) = \\frac{(4/9)(1/3)}{(4/9)(1/3)+(7/18)(1/3)} = \\frac{8}{15}.\n\\]\nThis probability is slightly larger than \\(0.5,\\) so the contestant should still switch.\nb. Let \\(M_i\\) be the event that Monty opens door \\(i\\) and reveals exactly one goat and \\(C_i\\) be the event that the car is behind door \\(i\\) for \\(i = 1, 2, 3.\\) Then, By Bayes’ Rule and LOTP, \\[\nP(C_3|M_2) = \\frac{P(M_2|C_3)P(C_3)}{P(M_2|C_1)P(C_1) + P(M_2|C_2)P(C_2) + P(M_2|C_3)P(C_3)}.\n\\] Once again, \\(P(M_2|C_2) = 0.\\) Consider \\(P(M_2|C_1).\\) If the car is in door 1, then the only way Monty will reveal a goat behind door 2 is if both doors 2 and 3 contained a goat and Monty randomly chose door 2 (as if one of the doors did not contain a goat, Monty would have revealed nothing behind that door). The probability of this happening is the probability that goat 1 is behind door 2 or door 3 times the probability that goat 2 is behind one of the remaining doors between door 2 and door 3, which is \\((2/3)(1/3) = 2/9.\\) Hence, \\(P(M_2|C_1) = 2/9.\\)\nFinally, consider \\(P(M_2|C_3).\\) If the car is behind door 3, Monty is guaranteed to open door 2, so we just need there to be a single goat behind door 2. The probability that goat 1 is behind door 2 and goat 2 is not is \\((1/3)(2/3) = 2/9\\) and the probability that goat 2 is behind door 2 and goat 1 is not is \\((1/3)(2/3) = 2/9,\\) so the probability of this is \\(4/9.\\) Plugging these in, we find \\[\nP(C_3|M_2) = \\frac{(4/9)(1/3)}{(2/9)(1/3)+(4/9)(1/3)} = \\frac{2}{3}.\n\\]So the contestant should switch and they have a better chance to win the car using this method than if Monty revealed nothing."
+  },
+  {
+    "objectID": "appendixb.html#probability-and-counting",
+    "href": "appendixb.html#probability-and-counting",
+    "title": "Appendix B — Useful Results",
+    "section": "B.1 Probability and Counting",
+    "text": "B.1 Probability and Counting\n\nB.1.1 Multiplication Rule\nConsider a series of two trials, where the first trial has \\(a\\) possible outcomes and for each of these outcomes, the second trial has \\(b\\) possible outcomes. Then the total number of possible pairs of outcomes from the two trials is \\(ab.\\)\n\n\nB.1.2 Naive Definition of Probability\nLet \\(S\\) be the sample space where every outcome is equally likely. If \\(A \\subseteq S\\) is an event, then\n\\[\nP(A) = \\frac{|A|}{|S|},\n\\]\nthe number of outcomes in \\(A\\) divided by the number of outcomes in \\(S.\\)\n\n\nB.1.3 Principle of Inclusion Exclusion (PIE)\nIf \\(A\\) and \\(B\\) are events, then\n\\[\nP(A \\cup B) = P(A) + P(B) - P(A, B).\n\\]\nIf \\(C\\) is also an event, then\n\\[\nP(A \\cup B \\cup C) = P(A) + P(B) + P(C) - P(A,B)-P(A,C)-P(B,C)+P(A,B,C).\n\\]\nCould be good to put Venn diagrams here.\nIn general, if \\(A_1, \\dots, A_n\\) are events, then\n\\[\nP\\left(\\bigcup_{i=1}^n A_i\\right) = \\sum_{i} P(A_i) - \\sum_{i &lt; j}P(A_i,A_j) + \\sum_{i &lt; j &lt; k} P(A_i,A_j,A_k) - \\dots + (-1)^{n+1}P(A_1, \\dots, A_n).\n\\]\nIn words, we add all of the single probabilities up, then subtract all the pairwise probabilities, then add back all the triplet probabilities, subtract all the quadruple probabilities, etc.\n\n\nB.1.4 Binomial Coefficients\nIf there are \\(n\\) distinct objects and we pick \\(k\\) of them without replacement, then the total number of possible sets of \\(k\\) objects (in other words, order does not matter) we can end up with is given by\n\\[\n{n \\choose k} = \\frac{n!}{(n-k)!k!}.\n\\]\n\n\nB.1.5 Bose-Einstein\nIf there are \\(n\\) distinct objects and we choose \\(k\\) times with replacement and order does not matter, then the total number of ways this can happen is\n\\[\n{n + k-1 \\choose k}.\n\\]\nIf each choice is equally likely to be any of the \\(n\\) objects and the choices are independent of one another, then these outcomes are not equally likely. Hence, using the naive definition of probability on Bose-Einstein will fail."
+  },
+  {
+    "objectID": "appendixb.html#conditional-probability",
+    "href": "appendixb.html#conditional-probability",
+    "title": "Appendix B — Useful Results",
+    "section": "B.2 Conditional Probability",
+    "text": "B.2 Conditional Probability\n\nB.2.1 Conditional Probability\nIf \\(A\\) and \\(B\\) are events, then the probability of \\(A\\) given \\(B,\\) notated as \\(P(A|B),\\) is given by\n\\[\nP(A|B) = \\frac{P(A,B)}{P(B)}.\n\\]\nThe equation above also gives us this equality:\n\\[\nP(A,B) = P(A|B)P(B) = P(B|A)P(A).\n\\]\nNote that \\(P(A|B)\\) and \\(P(B|A)\\) are different things. Falsely equating these two is known as the Prosecutor’s Fallacy."
+  },
+  {
+    "objectID": "appendixa.html#discrete-distributions",
+    "href": "appendixa.html#discrete-distributions",
+    "title": "Appendix A — Distributions",
+    "section": "A.1 Discrete Distributions",
+    "text": "A.1 Discrete Distributions\n\nA.1.1 Bernoulli\nSuppose \\(X \\sim \\textnormal{Bern}(p).\\) Then, \\(X\\) has PMF \\[\nP(X = 1) = p, \\; P(X = 0) = 1-p.\n\\] In other words, \\(X\\) is 1 with \\(p\\) probability and 0 otherwise.\n\n\nA.1.2 Binomial\nSuppose \\(X \\sim \\text{Bin}(n, p).\\) Then, \\(X\\) has PMF \\[\nP(X = k) = {n \\choose k} p^k(1-p)^{n-k},\n\\] with support \\(k \\in \\{0, \\dots, n\\}.\\)\nIf \\(I_1, \\dots, I_n \\overset{\\mathrm{iid}}{\\sim}\\textnormal{Bern}(p),\\) then \\(I_1 + \\dots + I_n \\sim \\text{Bin}(n, p).\\)\nIf we have \\(n\\) independent trials each with probability \\(p\\) of succeeding, then the number of successes over the \\(n\\) trials is distributed as \\(\\text{Bin}(n, p).\\)\nThrough the story, \\(\\text{Bin}(1, p)\\) is the same distribution as \\(\\textnormal{Bern}(p)\\) since either the single trial succeeds or it doesn’t.\n\n\nA.1.3 Geometric\nSuppose \\(X \\sim \\textnormal{Geom}(p).\\) Then, \\(X\\) has PMF \\[\nP(X = k) = (1-p)^kp\n\\] with support \\(k \\in \\{0, 1, 2, \\dots \\}.\\)\nIf we have trials with independent success probability \\(p\\) and we kept doing trials until we get a success, the number of failures is distributed as \\(\\textnormal{Geom}(p).\\)\n\n\nA.1.4 First Success\nSuppose \\(X \\sim \\textnormal{FS}(p).\\) Then, \\(X\\) has PMF \\[\nP(X = k) = (1-p)^{k-1}p\n\\] with support \\(k \\in \\{1, 2, \\dots \\}.\\)\nIf we have trials with independent success probability \\(p\\) and we kept doing trials until we get a success, the number of trials, inclduing the success, is distributed as \\(\\textnormal{FS}(p).\\)\nIf \\(X \\sim \\textnormal{FS}(p),\\) then \\(X-1 \\sim \\textnormal{Geom}(p)\\) as \\(X-1\\) is the number of trials when we do not include the success. Similarly, if \\(X \\sim \\textnormal{Geom}(p),\\) then \\(X+1 \\sim \\textnormal{FS}(p).\\)\n\n\nA.1.5 Negative Binomial\nSuppose \\(X \\sim \\textnormal{NBin}(r, p).\\) Then, \\(X\\) has PMF \\[\nP(X = k) = {r + k - 1 \\choose k}p^r(1-p)^k\n\\] with support \\(k \\in \\{0, 1, 2, \\dots\\}.\\)\nIf \\(X_1, \\dots, X_n \\overset{\\mathrm{iid}}{\\sim}\\textnormal{Geom}(p),\\) then \\(X_1 + \\dots + X_n \\sim \\textnormal{NBin}(n, p).\\)\nSimilar to Geometric, if we have trials with independent success probability \\(p\\) and we keep doing trials until we get \\(r\\) successes, the number of failures is distributed as \\(\\textnormal{NBin}(r, p).\\)\nUsing this story, \\(\\textnormal{NBin}(1, p)\\) is the same distribution as \\(\\textnormal{Geom}(p).\\)\n\n\nA.1.6 Poisson\nSuppose \\(X \\sim \\textnormal{Pois}(\\lambda).\\) Then, \\(X\\) has PMF \\[\nP(X = k) = \\frac{e^{-\\lambda}\\lambda^k}{k!}\n\\] with support \\(k \\in \\{0, 1, 2, \\dots\\}.\\)\nIf we have \\(n\\) trials that are weakly dependent or independent, and the probability of success for the \\(i\\)th trial for \\(i \\in \\{1, \\dots, n\\}\\) is equal to \\(p_i\\) where the \\(p_i\\)’s are small and \\(n\\) is large, the number of successes is approximately distributed as \\(\\textnormal{Pois}\\left(n(p_1+\\dots+p_n)\\right).\\)\n\n\nA.1.7 Hypergeometric\nSuppose \\(X \\sim \\textnormal{HGeom}(w, b, n).\\) Then, \\(X\\) has PMF \\[\nP(X = k) = \\frac{{w \\choose k}{b \\choose n-k}}{{w+b \\choose n}},\n\\] with \\(k \\in \\{0, \\dots, n\\}.\\)\nIf we have \\(w\\) white cubes and \\(b\\) black cubes and we pick \\(n\\) of them without replacement, then the number of white cubes we draw is distributed as \\(\\textnormal{HGeom}(w, b, n).\\)"
+  },
+  {
+    "objectID": "appendixa.html#continuous-distributions",
+    "href": "appendixa.html#continuous-distributions",
+    "title": "Appendix A — Distributions",
+    "section": "A.2 Continuous Distributions",
+    "text": "A.2 Continuous Distributions\n\nA.2.1 Uniform\nSuppose \\(X \\sim \\textnormal{Unif}(a, b).\\) Then, \\(X\\) has PDF \\[\nf(x) = \\frac{1}{b-a},\n\\] where \\(x \\in (a, b).\\)\nIf we pick a uniform random number between \\(a\\) and \\(b\\) with \\(a &lt; b,\\) then the distribution of that number is \\(\\textnormal{Unif}(a, b).\\)\n\n\nA.2.2 Beta\nSuppose \\(X \\sim \\textnormal{Beta}(\\alpha, \\beta).\\) Then, \\(X\\) has PDF \\[\nf(x) = \\frac{\\Gamma(\\alpha + \\beta)}{\\Gamma(\\alpha)\\Gamma(\\beta)}x^{\\alpha-1}(1-x)^{\\beta-1} \\propto x^{\\alpha-1}(1-x)^{\\beta-1},\n\\] where \\(x \\in (0, 1).\\)\nThe \\(\\textnormal{Beta}(1, 1)\\) distribution is equivalent to the \\(\\textnormal{Unif}(0, 1)\\) distribution.\n\n\nA.2.3 Expo\nSuppose \\(X \\sim \\textnormal{Expo}(\\lambda).\\) Then, \\(X\\) has PDF \\[\nf(x) = \\lambda e^{-\\lambda x},\n\\] where \\(x \\in (0, \\infty).\\)\n\n\nA.2.4 Weibull\nSuppose \\(X \\sim \\Wei(\\lambda, \\gamma).\\) Then, \\(X\\) has PDF \\[\nf(x) = \\gamma \\lambda e^{-\\lambda x^\\gamma}x^{\\gamma - 1},\n\\] where \\(x \\in (0, \\infty).\\)\nIf \\(X \\sim \\textnormal{Expo}(\\lambda),\\) then \\(X^{1/\\gamma} \\sim \\Wei(\\lambda, \\gamma).\\)\n\n\nA.2.5 Pareto\nSuppose \\(X \\sim \\Pareto(m, \\alpha).\\) Then, \\(X\\) has PDF \\[\nf(x) = \\frac{\\alpha m^\\alpha}{x^{\\alpha+1}} \\propto \\frac{1}{x^{\\alpha+1}},\n\\] with \\(x \\geq m.\\)\nIf \\(Y \\sim \\textnormal{Expo}(\\lambda),\\) then \\(me^Y \\sim \\Pareto(m, \\lambda).\\)\nSimilarly, if \\(Y \\sim \\Pareto(m, \\lambda),\\) then \\(\\log Y - \\log m \\sim \\textnormal{Expo}(\\lambda).\\)\n\n\nA.2.6 Gamma\nSuppose \\(X \\sim \\textnormal{Gamma}(a, \\lambda).\\) Then, \\(X\\) has PDF \\[\nf(x) = \\frac{1}{\\Gamma(a)}(\\lambda x)^a e^{-\\lambda x} \\frac{1}{x} \\propto x^{a-1}e^{-\\lambda x},\n\\] where \\(x \\in (0, \\infty).\\) Here, \\(\\Gamma\\) is the Gamma function, defined as \\[\n\\Gamma(a) = \\int_0^\\infty z^{a-1}e^{-z}dz.\n\\]\nIf \\(X_1, \\dots, X_n \\overset{\\mathrm{iid}}{\\sim}\\textnormal{Expo}(\\lambda),\\) then \\(X_1 + \\dots + X_n \\sim \\textnormal{Gamma}(n, \\lambda).\\)\n\n\nA.2.7 Normal\nSuppose \\(X \\sim \\mathcal{N}(\\mu, \\sigma^2).\\) Then, \\(X\\) has PDF \\[\nf(x) = \\frac{1}{\\sigma\\sqrt{2\\pi}}e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}} \\propto \\exp\\left(-\\frac{(x-\\mu)^2}{2\\sigma^2}\\right),\n\\] where \\(x \\in \\mathbb{R}.\\)\n\n\nA.2.8 Chi-Square\nSuppose \\(X \\sim \\chi^2_n.\\) Then, \\(X\\) has PDF \\[\nf(x) = \\frac{1}{2^{n/2}\\Gamma(n/2)}x^{n/2-1}e^{-x/2},\n\\] where \\(x \\in (0, \\infty).\\)\nThe \\(\\chi^2_n\\) distribution is equivalent to the \\(\\textnormal{Gamma}(n/2, 1/2)\\) distribution.\nIf \\(Z_1, \\dots, Z_n \\overset{\\mathrm{iid}}{\\sim}\\mathcal{N}(0, 1),\\) then \\(Z_1^2 + \\dots + Z_n^2 \\sim \\chi^2_n.\\)\n\n\nA.2.9 Student-t\nSuppose \\(X \\sim t_n.\\) Then, \\(X\\) has PDF \\[\nf(x) = \\frac{\\Gamma((n+1)/2)}{\\Gamma(n/2)\\sqrt{n\\pi}}\\left(1+\\frac{x^2}{n}\\right)^{-(n+1)/2},\n\\] where \\(x \\in \\mathbb{R}.\\)\nIf \\(Z \\sim \\mathcal{N}(0, 1)\\) and \\(V \\sim \\chi^2_n\\) with \\(Z\\) and \\(V\\) independent, then \\[\n\\frac{Z}{\\sqrt{V/n}} \\sim t_n.\n\\]"
+  },
+  {
+    "objectID": "appendixa.html#multivariate-distributions",
+    "href": "appendixa.html#multivariate-distributions",
+    "title": "Appendix A — Distributions",
+    "section": "A.3 Multivariate Distributions",
+    "text": "A.3 Multivariate Distributions\n\nA.3.1 Multinomial\nSuppose \\(X = (X_1, \\dots, X_k) \\sim \\textnormal{Mult}_k(n, p),\\) where \\(p = (p_1, \\dots, p_k).\\) Then, \\(X\\) has joint PMF \\[\nP(X_1 = x_1, \\dots, X_k = x_k) = \\frac{n!}{x_1! \\dots x_k!} p_1^{x_1} \\dots p_k^{x_k}\n\\] with \\(x_i \\geq 0\\) for all \\(i \\in \\{1, \\dots, k\\}\\) and \\(x_1 + \\dots + x_k = n.\\)\nSuppose we have \\(n\\) independent trials, each of which ends with one of \\(k\\) different outcomes. If \\(p_i\\) is the probability that each trial ends up in outcome \\(i,\\) then the vector \\((X_1, \\dots, X_k)\\) with \\(X_i\\) being the number of trials that end up in outcome \\(i\\) is distributed \\(\\textnormal{Mult}_k(n, p)\\) with \\(p = (p_1, \\dots, p_k).\\)\n\n\nA.3.2 Multivariate Normal (MVN)\nSuppose \\(X \\sim \\mathcal{N}(\\mu, \\Sigma),\\) where \\(X = (X_1, \\dots, X_k) \\in \\mathbb{R}^k.\\) Then, \\(X\\) has joint PDF \\[\\begin{align*}\nf(x) &= \\frac{1}{(2\\pi)^{k/2}|\\Sigma|^{1/2}}\\exp\\left(-\\frac{1}{2}(x-\\mu)^T\\Sigma^{-1}(x-\\mu)\\right)\\\\\n&\\propto \\exp\\left(-\\frac{1}{2}(x-\\mu)^T\\Sigma^{-1}(x-\\mu)\\right),\n\\end{align*}\\] where \\(x = (x_1, \\dots, x_k) \\in \\mathbb{R}^k.\\) Here, \\(|\\Sigma|\\) is the determinant of \\(\\Sigma.\\)\nLet \\(\\Sigma_{ij}\\) be the \\((ij)\\)-element of \\(\\Sigma.\\) Then, it is true that \\(\\textnormal{Var}(X_i) = \\Sigma_{ii}\\) and \\(\\textnormal{Cov}(X_i, X_j) = \\Sigma_{ij}.\\)"
+  }
+]

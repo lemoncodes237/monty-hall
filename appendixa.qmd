@@ -1,0 +1,165 @@
+# Distributions
+
+{{< include _macros.tex >}}
+
+## Discrete Distributions
+
+### Bernoulli
+
+Suppose $X \sim \Bern(p).$ Then, $X$ has PMF $$
+P(X = 1) = p, \; P(X = 0) = 1-p.
+$$ In other words, $X$ is 1 with $p$ probability and 0 otherwise.
+
+### Binomial
+
+Suppose $X \sim \Bin(n, p).$ Then, $X$ has PMF $$
+P(X = k) = {n \choose k} p^k(1-p)^{n-k},
+$$ with support $k \in \{0, \dots, n\}.$
+
+If $I_1, \dots, I_n \iid \Bern(p),$ then $I_1 + \dots + I_n \sim \Bin(n, p).$
+
+If we have $n$ independent trials each with probability $p$ of succeeding, then the number of successes over the $n$ trials is distributed as $\Bin(n, p).$
+
+Through the story, $\Bin(1, p)$ is the same distribution as $\Bern(p)$ since either the single trial succeeds or it doesn't.
+
+### Geometric
+
+Suppose $X \sim \Geom(p).$ Then, $X$ has PMF $$
+P(X = k) = (1-p)^kp
+$$ with support $k \in \{0, 1, 2, \dots \}.$
+
+If we have trials with independent success probability $p$ and we kept doing trials until we get a success, the number of failures is distributed as $\Geom(p).$
+
+### First Success
+Suppose $X \sim \FS(p).$ Then, $X$ has PMF $$
+P(X = k) = (1-p)^{k-1}p
+$$ with support $k \in \{1, 2, \dots \}.$
+
+If we have trials with independent success probability $p$ and we kept doing trials until we get a success, the number of trials, inclduing the success, is distributed as $\FS(p).$
+
+If $X \sim \FS(p),$ then $X-1 \sim \Geom(p)$ as $X-1$ is the number of trials when we do not include the success. Similarly, if $X \sim \Geom(p),$ then $X+1 \sim \FS(p).$
+
+### Negative Binomial
+
+Suppose $X \sim \NBin(r, p).$ Then, $X$ has PMF $$
+P(X = k) = {r + k - 1 \choose k}p^r(1-p)^k
+$$ with support $k \in \{0, 1, 2, \dots\}.$
+
+If $X_1, \dots, X_n \iid \Geom(p),$ then $X_1 + \dots + X_n \sim \NBin(n, p).$
+
+Similar to Geometric, if we have trials with independent success probability $p$ and we keep doing trials until we get $r$ successes, the number of failures is distributed as $\NBin(r, p).$
+
+Using this story, $\NBin(1, p)$ is the same distribution as $\Geom(p).$ 
+
+### Poisson
+
+Suppose $X \sim \Pois(\lambda).$ Then, $X$ has PMF $$
+P(X = k) = \frac{e^{-\lambda}\lambda^k}{k!}
+$$ with support $k \in \{0, 1, 2, \dots\}.$
+
+If we have $n$ trials that are *weakly* dependent or independent, and the probability of success for the $i$th trial for $i \in \{1, \dots, n\}$ is equal to $p_i$ where the $p_i$'s are small and $n$ is large, the number of successes is approximately distributed as $\Pois\left(n(p_1+\dots+p_n)\right).$
+
+### Hypergeometric
+
+Suppose $X \sim \HGeom(w, b, n).$ Then, $X$ has PMF $$
+P(X = k) = \frac{{w \choose k}{b \choose n-k}}{{w+b \choose n}},
+$$ with $k \in \{0, \dots, n\}.$
+
+If we have $w$ white cubes and $b$ black cubes and we pick $n$ of them without replacement, then the number of white cubes we draw is distributed as $\HGeom(w, b, n).$
+
+## Continuous Distributions
+
+### Uniform
+
+Suppose $X \sim \Unif(a, b).$ Then, $X$ has PDF $$
+f(x) = \frac{1}{b-a},
+$$ where $x \in (a, b).$
+
+If we pick a uniform random number between $a$ and $b$ with $a < b,$ then the distribution of that number is $\Unif(a, b).$
+
+### Beta
+
+Suppose $X \sim \Beta(\alpha, \beta).$ Then, $X$ has PDF $$
+f(x) = \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta-1} \propto x^{\alpha-1}(1-x)^{\beta-1},
+$$ where $x \in (0, 1).$
+
+The $\Beta(1, 1)$ distribution is equivalent to the $\Unif(0, 1)$ distribution.
+
+### Expo
+
+Suppose $X \sim \Expo(\lambda).$ Then, $X$ has PDF $$
+f(x) = \lambda e^{-\lambda x},
+$$ where $x \in (0, \infty).$
+
+### Weibull
+
+Suppose $X \sim \Wei(\lambda, \gamma).$ Then, $X$ has PDF $$
+f(x) = \gamma \lambda e^{-\lambda x^\gamma}x^{\gamma - 1},
+$$ where $x \in (0, \infty).$
+
+If $X \sim \Expo(\lambda),$ then $X^{1/\gamma} \sim \Wei(\lambda, \gamma).$
+
+### Pareto
+
+Suppose $X \sim \Pareto(m, \alpha).$ Then, $X$ has PDF $$
+f(x) = \frac{\alpha m^\alpha}{x^{\alpha+1}} \propto \frac{1}{x^{\alpha+1}},
+$$ with $x \geq m.$
+
+If $Y \sim \Expo(\lambda),$ then $me^Y \sim \Pareto(m, \lambda).$
+
+Similarly, if $Y \sim \Pareto(m, \lambda),$ then $\log Y - \log m \sim \Expo(\lambda).$
+
+### Gamma
+
+Suppose $X \sim \Gam(a, \lambda).$ Then, $X$ has PDF $$
+f(x) = \frac{1}{\Gamma(a)}(\lambda x)^a e^{-\lambda x} \frac{1}{x} \propto x^{a-1}e^{-\lambda x},
+$$ where $x \in (0, \infty).$ Here, $\Gamma$ is the Gamma function, defined as $$
+\Gamma(a) = \int_0^\infty z^{a-1}e^{-z}dz.
+$$
+
+If $X_1, \dots, X_n \iid \Expo(\lambda),$ then $X_1 + \dots + X_n \sim \Gam(n, \lambda).$
+
+### Normal
+
+Suppose $X \sim \N(\mu, \sigma^2).$ Then, $X$ has PDF $$
+f(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}} \propto \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right),
+$$ where $x \in \R.$
+
+### Chi-Square
+
+Suppose $X \sim \chi^2_n.$ Then, $X$ has PDF $$
+f(x) = \frac{1}{2^{n/2}\Gamma(n/2)}x^{n/2-1}e^{-x/2},
+$$ where $x \in (0, \infty).$
+
+The $\chi^2_n$ distribution is equivalent to the $\Gam(n/2, 1/2)$ distribution.
+
+If $Z_1, \dots, Z_n \iid \N(0, 1),$ then $Z_1^2 + \dots + Z_n^2 \sim \chi^2_n.$
+
+### Student-t
+
+Suppose $X \sim t_n.$ Then, $X$ has PDF $$
+f(x) = \frac{\Gamma((n+1)/2)}{\Gamma(n/2)\sqrt{n\pi}}\left(1+\frac{x^2}{n}\right)^{-(n+1)/2},
+$$ where $x \in \R.$
+
+If $Z \sim \N(0, 1)$ and $V \sim \chi^2_n$ with $Z$ and $V$ independent, then $$
+\frac{Z}{\sqrt{V/n}} \sim t_n.
+$$
+
+## Multivariate Distributions
+
+### Multinomial
+
+Suppose $X = (X_1, \dots, X_k) \sim \Mult_k(n, p),$ where $p = (p_1, \dots, p_k).$ Then, $X$ has joint PMF $$
+P(X_1 = x_1, \dots, X_k = x_k) = \frac{n!}{x_1! \dots x_k!} p_1^{x_1} \dots p_k^{x_k}
+$$ with $x_i \geq 0$ for all $i \in \{1, \dots, k\}$ and $x_1 + \dots + x_k = n.$
+
+Suppose we have $n$ independent trials, each of which ends with one of $k$ different outcomes. If $p_i$ is the probability that each trial ends up in outcome $i,$ then the vector $(X_1, \dots, X_k)$ with $X_i$ being the number of trials that end up in outcome $i$ is distributed $\Mult_k(n, p)$ with $p = (p_1, \dots, p_k).$
+
+### Multivariate Normal (MVN)
+
+Suppose $X \sim \N(\mu, \Sigma),$ where $X = (X_1, \dots, X_k) \in \R^k.$ Then, $X$ has joint PDF \begin{align*}
+f(x) &= \frac{1}{(2\pi)^{k/2}|\Sigma|^{1/2}}\exp\left(-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)\right)\\
+&\propto \exp\left(-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)\right),
+\end{align*} where $x = (x_1, \dots, x_k) \in \R^k.$ Here, $|\Sigma|$ is the determinant of $\Sigma.$
+
+Let $\Sigma_{ij}$ be the $(ij)$-element of $\Sigma.$ Then, it is true that $\var(X_i) = \Sigma_{ii}$ and $\cov(X_i, X_j) = \Sigma_{ij}.$
