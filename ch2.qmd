@@ -185,6 +185,96 @@ This is the largest section by far as the original Monty Hall problem in essence
         If $p = 1$ then $1/(p+1) = 1/2$. In this case, if Billy is behind door 2 then Monty will definitely open door 2, so conditioning on $M_2 \cap B_2$ is equivalent to conditioning on $B_2$. Using a frequentist interpretation, imagine playing the game many times, say 12,000. We would expect each of the 6 permutations of (car, Billy, Gilly) to appear in about 2,000 games, and that Billy would be behind door 2 in about 4,000 games. Conditioning on $B_2$ says to filter down to just these 4,000 or so games. Among these games, we'd expect that for about 2,000 games the configuration is (car, Billy, Gilly) and for about 2,000 games the configuration is (Gilly, Billy, car).
     :::
 
+1. (Wizard Monty) To stop his contestants from winning a car so easily, Monty went to Hogwarts and has become a wizard. A regular Monty Hall game will be played. However, after the contestant chooses a door, if the car is behind one of the two remaining doors, Monty will cast a spell that succeeds with probability $s.$ If the spell succeeds, the goat behind the contestant's chosen door and the car switch places. If the spell fails, nothing will happen. The contestant has no way of determining whether or not Monty cast a spell and whether or not it was successful. Afterwards, Monty will open one of the remaining doors with a goat behind it. If he has a choice, he will pick between the two doors with equal probabilities. The contestant initially chooses door 1, and Monty reveals a goat behind door 2. What is the probability that the contestant will win by switching?
+
+   ::: {.callout-caution collapse="true"}
+   ## Solution
+
+    Let $M_i$ and $C_i$ denote the usual. Then,
+    $$
+    P(C_3|M_2) = \frac{P(M_2|C_3)P(C_3)}{P(M_2|C_1)P(C_1) + P(M_2|C_3)P(C_3)}.
+    $$
+    Clearly, $P(M_2|C_3)=1$ and $P(M_2|C_1) = 1/2.$ Now we calculate $P(C_1).$ Let $I_j$ be the event that the car was initially behind door $J$ and let $S$ be the event that Monty successfully cast a spell. Then, by LOTP,
+    $$
+    P(C_1) = P(C_1|I_1)P(I_1)+P(C_1|I_1^c, S)P(I_1^c, S) + P(C_1|I_1^c, S^c)P(I_1^c, S^c).
+    $$
+    We know $P(C_1|I_1^c, S^c) = 0$ and $P(C_1|I_1^c, S) = P(C_1|I_1) = 1.$ Moreover, we have $P(I_1^c, S) = P(S|I_1^c)P(I_1^c) = 2s/3.$ Therefore, $P(C_1) = (1)(1/3)+(1)(2s/3) = (2s+1)/3.$
+    
+    By symmetry, $P(C_2) = P(C_3).$ As $P(C_1^c) = (2-2s)/3,$ we have $P(C_3) = (1-s)/3.$ Plugging all of this in, we get
+    $$
+    P(C_3|M_2) = \frac{(1)(1-s)/3}{(1/2)(2s+1)/3+(1)(1-s)/3} = \frac{2-2s}{3}.
+    $$
+    Notice that this was also $P(C_1^c),$ which makes sense as if the car was behind door 2 or door 3 after the spell was cast, the contestant would win by switching. Plugging some values in, $s = 0$ gives us a $2/3$ chance of winning, which makes sense as the spell being guaranteed to fail turns this into a regular Monty Hall game. If $s=1,$ then the probability becomes $0,$ which makes sense as if the spell always succeeds, the contestant will never win by switching.
+    
+    Doing some calculations, we see that if $s > 1/4,$ the contestant should stick with their original choice to have a better chance of winning. If $s < 1/4,$ the contestant should switch. If $s = 1/4,$ it does not matter.
+   :::
+
+1. (Helpful Monty) Monty Hall has been alerted that if the contestant wins a car, he will also win a car, so now he has decided to use his wizard powers from the previous problem (Wizard Monty) to help the contestant. After the contestant makes their initial choice, if there is a car in the door the contestant initially chose, Monty will cast a spell that has probability $s$ of succeeding. 
+
+    (a) In this part, if the spell succeeds, the car behind the door the contestant initially chose will be switched with the goat behind door 2 or door 3 with equal probabilities. If the spell fails, nothing happens. All other rules of the Monty Hall game remain the same. The contestant initially chooses door 1 and Monty reveals a goat behind door 2. What is the probability that the contestant will win by switching?
+
+    (b) Now instead, suppose that if the spell succeeds, then the car exchanges spots with the goat whose door number is smaller than the other (i.e. if the contestant chooses door 1 and the car is behind door 1, if the spell succeeds, the car will be behind door 2 with certainty as $2 < 3$). All other rules stay the same. The contestant initially chooses door 1 and Monty reveals a goat behind door 2. What is the probability that the contestant will win by switching?
+
+   ::: {.callout-caution collapse="true"}
+   ## Solution
+
+    (a) For this part, we will use a shortcut: If the car ends up in door 2 or door 3 after the spell (or no spell if the car was not behind door 1 in the first place), then the contestant will win by switching as Monty will open the other door. Also notice that there is nothing that makes door 2 special from door 3, so the probability that Monty opens door 2 is equal to the probability that Monty opens door 3. If the car ends up in door 1, the contestant will lose. 
+
+        There is a $2/3$ probability that the car was initially behind door 2 or door 3. If the car was behind door 1 with $1/3$ probability, it will be moved to door 2 or door 3 with probability $s.$ Hence, the probability that the contestant will win is
+        $$
+        P(Win) = \frac{2+s}{3}.
+        $$
+        Plugging in some values, if $s = 1,$ we see that the probability of winning is $1$ as expected as Monty will always make sure the car is behind the other unopened door. If $s = 0,$ the probability reduces down to $2/3$ as expected as it becomes a regular Monty Hall game.
+    
+    (b) Notice that we cannot use our approach from the previous part as there is now a factor that distinguishes door 2 from door 3. Let $M_i$ and $C_i$ denote the usual. Then,
+        $$
+        P(C_3|M_2) = \frac{P(M_2|C_3)P(C_3)}{P(M_2|C_1)P(C_1) + P(M_2|C_3)P(C_3)}.
+        $$
+        We have $P(M_2|C_3) = 1$ and $P(M_2|C_1) = 1/2.$ We also know $P(C_3) = 1/3$ as if the car started out behind doors 1 or 2, it could not have moved to behind door 3 (because of the spell only being able to move a car from door 1 to door 2). Now, consider $P(C_1).$ The probability that the car will stay behind door 1 is if it started behind door 1 and the spell failed, which has probability $(1-s)/3.$ Thus, we get
+        $$
+        P(C_3|M_2) = \frac{1/3}{(1-s)/6+1/3} = \frac{2}{3-s}.
+        $$
+        If $s = 1$ (in which case the spell always succeeds), the probability is $1$ as expected as the goat behind door 2 indicates Monty did not cast the spell, meaning the car was not behind door 1. If $s = 0$ (in which case the spell always fails), the probability becomes $2/3$ as expected as the game reduces down to the original Monty Hall game.
+   :::
+
+1. (Monty Monty) Monty is a contestant on the Monty Hall show. Monty uses the strategy of initially picking door 1, and changing his choice after a door is revealed. Afterwards, Monty immediately brings on a contestant to play another Monty Hall game. 
+
+    (a) If Monty won a car when he played on the show, a regular Monty Hall game will be played. However, if Monty did not win a car, all three doors will have a goat behind it. The contestant initially chooses door 1, and Monty reveals a goat behind door 2. What is the probability that the contestant will win a car by switching to door 3?
+
+    (b) Now instead suppose that if Monty lost, there will be two goats and one toy car. When Monty opens a door, he can reveal a toy car. Moreover, if he has a choice between revealing a toy car and a goat, he will choose either with equal probabilities. The contestant initially chooses door 1, and Monty reveals a goat behind door 2. What is the probability that the contestant will win a car (not a toy car) by switching to door 3?
+
+   ::: {.callout-caution collapse="true"}
+   ## Solution
+
+   (a) Letting $W$ denote the event that Monty won his game and letting $C_i$ and $M_i$ denote the usual events, we have by LOTP
+        $$
+        P(C_3|M_2) = P(C_3|M_2, W)P(W | M_2) + P(C_3|M_2, W^c)P(W^c | M_2).
+        $$
+        Clearly, $P(C_3|M_2, W^c) = 0$ as the contestant cannot get the car if Monty did not win. Moreover, we know $P(C_3|M_2, W) = 2/3.$ Thus, we only need to find $P(W|M_2).$ By Bayes' Rule and LOTP,
+        $$
+        P(W|M_2) = \frac{P(M_2|W)P(W)}{P(M_2|W)P(W)+P(M_2|W^c)P(W^c)}.
+        $$
+        By symmetry, $P(M_2|W) = P(M_2|W^c) = 1/2.$ Moreover, $P(W) = 2/3$ from the solution to Problem 1. Hence,
+        $$
+        P(W|M_2) = \frac{(1/2)(2/3)}{(1/2)(2/3)+(1/2)(1/3)} = \frac{2}{3}.
+        $$
+        Thus, $P(C_3|M_2) = (2/3)(2/3) = 4/9.$ Another way to see this is that knowing $M_2$ doesn't give us any information about $W$; the probability of Monty opening door 2 and revealing a goat is $1/2$ regardless of if Monty won a car or not. Hence, $P(W|M_2) = P(W) = 2/3.$
+    
+    (b) Once again, we have
+        $$
+        P(C_3|M_2) = P(C_3|M_2, W)P(W | M_2) + P(C_3|M_2, W^c)P(W^c | M_2).
+        $$
+        We know $P(C_3|M_2, W^c)$ is still equal to zero, so we once again simply need to calculate $P(W|M_2).$ We have by Bayes' Rule and LOTP
+        $$
+        P(W|M_2) = \frac{P(M_2|W)P(W)}{P(M_2|W)P(W)+P(M_2|W^c)P(W^c)}.
+        $$
+        Once again, $P(M_2|W) = 1/2.$ However, $P(M_2|W^c) = 1/3$. This is because Monty will choose door 2 with probabilty $1/2$ and the probability that it is a goat (not a toy car) is $2/3,$ giving us the probability. Therefore, this time,
+        $$
+        P(W|M_2) = \frac{(1/2)(2/3)}{(1/2)(2/3)+(1/3)(1/3)} = \frac{3}{4} \implies P(C_3|M_2) = \frac{1}{2}.
+        $$
+        So the contestant has a slightly higher chance to win the car in this scenario compared to the scenario outlined in the previous part.
+   :::
+
 7.  (Repetitive Monty) Monty decides to change his game so that some doors may be empty. Specifically, one door is chosen with equal probabilities to hold the first goat. Afterwards, another door is chosen with equal probabilities to hold the second goat (the same door chosen before can be chosen again). Then, one of the three doors is randomly chosen with equal probabilities to hold the car. Thus, the doors that each goat and the car are hidden behind are independent of one another and a situation where a single door has both goats and the car can occur. After the contestant chooses their initial door, Monty will open a door with nothing behind it if he can. If he cannot, he will open a door with only one goat behind it if he can. If he cannot do that either, he will open a door with two goats behind it. Monty will never open a door with the car behind it. If Monty has a choice, then he chooses one of the two remaining doors with equal probabilities. All other rules of the original Monty Hall game stay the same.
 
     (a) The contestant chooses door 1, and Monty reveals nothing behind door 2. What is the probability that the contestant will win by switching to the other door?
@@ -232,6 +322,22 @@ This is the largest section by far as the original Monty Hall problem in essence
         P(C_3|M_2) = \frac{(4/9)(1/3)}{(2/9)(1/3)+(4/9)(1/3)} = \frac{2}{3}.
         $$ So the contestant should switch and they have a better chance to win the car using this method than if Monty revealed nothing.
     :::
+
+1. (Hidden Door) The Monty Hall game is played, and after the contestant picks door 1, Monty reveals a goat behind door 2. However, before the contestant makes his choice, Monty moves the curtain and suddenly reveals a hidden fourth door. Assume that at the start of the game, each of the four doors had the same probability of having a car, and that Monty always opens door 2 or door 3 and never door 4. If the contestant wants to maximize their chance of winning, what door should they pick, and what probability of winning do they have by doing so?
+
+   ::: {.callout-caution collapse="true"}
+   ## Solution
+
+   We first find the probability that the car is behind door 1. By Bayes' Rule and LOTP, using the usual event notations,
+    $$
+    P(C_1|M_2) = \frac{P(M_2|C_1)P(C_1)}{P(M_2|C_1)P(C_1) + P(M_2|C_3)P(C_3) + P(M_2|C_4)P(C_4)}.
+    $$
+    We know $P(M_2|C_1) = P(M_2|C_4) = 1/2$ as Monty always reveals door 2 or door 3. Moreover, $P(M_2|C_3) = 1.$ Plugging these in,
+    $$
+    P(C_1|M_2) = \frac{(1/2)(1/4)}{(1/2)(1/4)+(1)(1/4)+(1/2)(1/4)} = \frac{1}{4}.
+    $$
+    To find $P(C_3|M_2)$ or $P(C_4|M_2),$ we simply replace the numerator with $P(M_2|C_3)P(C_3)$ or $P(M_2|C_4)P(C_4),$ respectively. Doing this, we find that choosing door 3, which gives the contestant a $1/2$ chance of winning, is the optimal choice.
+   :::
 
 1. (For Joe) Consider the following variation of the Monty Hall problem, where in some situations Monty may not open a door and give the contestant the choice of whether to switch doors. There are 3 doors, with 2 containing goats and 1 containing a car.  The car is equally likely to be anywhere, and Monty knows where the car is. Let $0 \leq g \leq 1$ and $0 \leq c \leq 1$.
 
