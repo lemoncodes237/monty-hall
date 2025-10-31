@@ -163,3 +163,7 @@ f(x) &= \frac{1}{(2\pi)^{k/2}|\Sigma|^{1/2}}\exp\left(-\frac{1}{2}(x-\mu)^T\Sigm
 \end{align*} where $x = (x_1, \dots, x_k) \in \R^k.$ Here, $|\Sigma|$ is the determinant of $\Sigma.$
 
 Let $\Sigma_{ij}$ be the $(ij)$-element of $\Sigma.$ Then, it is true that $\var(X_i) = \Sigma_{ii}$ and $\cov(X_i, X_j) = \Sigma_{ij}.$
+
+If $X \sim \N(\mu, \Sigma),$ then for any $n$-tuple of real numbers $(a_i, \dots, a_k),$ we have that $a_1X_1 + \dots + a_kX_k$ is Normal, where we take constants to be Normal with zero variance.
+
+If $X \sim \N(\mu, \Sigma)$ and $\cov(X_i, X_j) = 0,$ then $X_i$ and $X_j$ are independent. That is, uncorrelatedness and independence imply each other within an MVN.

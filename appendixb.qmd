@@ -77,3 +77,52 @@ P(A,B) = P(A|B)P(B) = P(B|A)P(A).
 $$
 
 Note that $P(A|B)$ and $P(B|A)$ are different things. Falsely equating these two is known as the **Prosecutor's Fallacy**.
+
+### Bayes' Rule
+
+If $A$ and $B$ are events, then
+$$
+P(A|B) = \frac{P(B|A)P(A)}{P(B)}.
+$$
+Moreover, if $C$ is an event, then we can get Bayes' Rule with extra conditioning:
+$$
+P(A|B,C) = \frac{P(B|A,C)P(A|C)}{P(B|C)}.
+$$
+Note that we add conditioning on $C$, and we condition on $C$ for every single probability in the equation. An easy way to check if you have applied Bayes' Rule with extra conditioning properly is to see if the additioning condition you're adding, in this case $C$, appears after the conditioning bar in every single probability. If there is any probability with no conditioning bar or if there is any probability where $C$ appears *before* the conditioning bar, that is incorrect!
+
+### Law of Total Probability (LOTP)
+
+Suppose $A$ is an event and $B_1, \dots, B_k$ form a partition of the sample space. Then,
+$$
+P(A) = \sum_{i=1}^k P(A|B_i)P(B_i).
+$$
+One useful partition is $B, B^c,$ in which case we get
+$$
+P(A) = P(A|B)P(B)+P(A|B^c)P(B^c).
+$$
+We can also add extra conditioning on $C$ to get LOTP with extra conditioning:
+$$
+P(A|C) = \sum_{i=1}^k P(A|B_i,C)P(B_i|C).
+$$
+Once again, note that $C$ appears after the conditioning bar in *every single* probability. If there is any probability with no conditioning bar or there is a probability with $C$ before the conditioning bar when you are doing LOTP with extra conditioning, that is incorrect!
+
+Combining Bayes' Rule and LOTP, this equation forms, which is very useful:
+$$
+P(A|B) = \frac{P(B|A)P(A)}{P(B|A)P(A)+P(B|A^c)P(A^c)}.
+$$
+
+### Independence
+
+Two events $A$ and $B$ are independent if
+$$
+P(A,B) = P(A)P(B).
+$$
+This is equivalent to $P(A|B) = P(A).$ Intuitively, independence means that knowing whether one event happened tells you nothing about the probability of the other event happening.
+
+$A$ and $B$ are conditionally independent given $C$ if
+$$
+P(A,B|C) = P(A|C)P(B|C).
+$$
+This means that given $C,$ knowing additionally whether one event happened still tells you nothing about the probability of the other event happening.
+
+Independence and conditional independence are different things and do not imply each other. Conditional independence given $C$ also does not imply conditional independence given $C^c.$ Can you think of examples?

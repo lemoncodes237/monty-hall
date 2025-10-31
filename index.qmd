@@ -3,3 +3,13 @@
 Imagine you wake up in a bright studio, and you see three doors.
 
 To assist with whatever you might need in this situation, this guide is here for you.
+
+## Purpose
+
+This book is meant to be a companion book to any introductory undergraduate probability course. Of course, this is not required; we hope that anyone who has some interest in probability will be able to read through this book and take something away from it.
+
+We will use terminology that is standard from *Introduction to Probability* by Joe Blitzstein and Jessica Hwang, and readers who are not taking a probability course other than Stat 110 at Harvard are encouraged to look at the appendices to resolve any differences in terminology.
+
+We recommend that students look at problems as they learn the concepts required for them in their probability course. Therefore, the problems are separated into chapters that align with the chapters in *Introduction to Probability*. Once you finish all of the concepts required for a chapter, you are ready to look at its problems. Of course, nothing stops you from reading the appendices for the main results before attempting to solve the problems, and you are welcome to do that if you wish. We believe all problems in this book are instructive, so it should be a nice companion to any probability student who wants interesting probability problems about what they are learning.
+
+Although the original Monty Hall problem is primarily a Bayes' Rule and LOTP problem, we believe that it can be much more; in fact, through a principle we call the "Universality of the Monty Hall", we claim that any probability concept can be illustrated with a Monty Hall problem. We hope that this book will be able to convince you that this principle is true.

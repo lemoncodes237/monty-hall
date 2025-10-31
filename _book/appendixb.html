@@ -122,7 +122,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Afterword</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -175,6 +175,9 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#conditional-probability" id="toc-conditional-probability" class="nav-link" data-scroll-target="#conditional-probability"><span class="header-section-number">B.2</span> Conditional Probability</a>
   <ul class="collapse">
   <li><a href="#conditional-probability-1" id="toc-conditional-probability-1" class="nav-link" data-scroll-target="#conditional-probability-1"><span class="header-section-number">B.2.1</span> Conditional Probability</a></li>
+  <li><a href="#bayes-rule" id="toc-bayes-rule" class="nav-link" data-scroll-target="#bayes-rule"><span class="header-section-number">B.2.2</span> Bayes’ Rule</a></li>
+  <li><a href="#law-of-total-probability-lotp" id="toc-law-of-total-probability-lotp" class="nav-link" data-scroll-target="#law-of-total-probability-lotp"><span class="header-section-number">B.2.3</span> Law of Total Probability (LOTP)</a></li>
+  <li><a href="#independence" id="toc-independence" class="nav-link" data-scroll-target="#independence"><span class="header-section-number">B.2.4</span> Independence</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -259,6 +262,37 @@ P(A|B) = \frac{P(A,B)}{P(B)}.
 P(A,B) = P(A|B)P(B) = P(B|A)P(A).
 \]</span></p>
 <p>Note that <span class="math inline">\(P(A|B)\)</span> and <span class="math inline">\(P(B|A)\)</span> are different things. Falsely equating these two is known as the <strong>Prosecutor’s Fallacy</strong>.</p>
+</section>
+<section id="bayes-rule" class="level3" data-number="B.2.2">
+<h3 data-number="B.2.2" class="anchored" data-anchor-id="bayes-rule"><span class="header-section-number">B.2.2</span> Bayes’ Rule</h3>
+<p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are events, then <span class="math display">\[
+P(A|B) = \frac{P(B|A)P(A)}{P(B)}.
+\]</span> Moreover, if <span class="math inline">\(C\)</span> is an event, then we can get Bayes’ Rule with extra conditioning: <span class="math display">\[
+P(A|B,C) = \frac{P(B|A,C)P(A|C)}{P(B|C)}.
+\]</span> Note that we add conditioning on <span class="math inline">\(C\)</span>, and we condition on <span class="math inline">\(C\)</span> for every single probability in the equation. An easy way to check if you have applied Bayes’ Rule with extra conditioning properly is to see if the additioning condition you’re adding, in this case <span class="math inline">\(C\)</span>, appears after the conditioning bar in every single probability. If there is any probability with no conditioning bar or if there is any probability where <span class="math inline">\(C\)</span> appears <em>before</em> the conditioning bar, that is incorrect!</p>
+</section>
+<section id="law-of-total-probability-lotp" class="level3" data-number="B.2.3">
+<h3 data-number="B.2.3" class="anchored" data-anchor-id="law-of-total-probability-lotp"><span class="header-section-number">B.2.3</span> Law of Total Probability (LOTP)</h3>
+<p>Suppose <span class="math inline">\(A\)</span> is an event and <span class="math inline">\(B_1, \dots, B_k\)</span> form a partition of the sample space. Then, <span class="math display">\[
+P(A) = \sum_{i=1}^k P(A|B_i)P(B_i).
+\]</span> One useful partition is <span class="math inline">\(B, B^c,\)</span> in which case we get <span class="math display">\[
+P(A) = P(A|B)P(B)+P(A|B^c)P(B^c).
+\]</span> We can also add extra conditioning on <span class="math inline">\(C\)</span> to get LOTP with extra conditioning: <span class="math display">\[
+P(A|C) = \sum_{i=1}^k P(A|B_i,C)P(B_i|C).
+\]</span> Once again, note that <span class="math inline">\(C\)</span> appears after the conditioning bar in <em>every single</em> probability. If there is any probability with no conditioning bar or there is a probability with <span class="math inline">\(C\)</span> before the conditioning bar when you are doing LOTP with extra conditioning, that is incorrect!</p>
+<p>Combining Bayes’ Rule and LOTP, this equation forms, which is very useful: <span class="math display">\[
+P(A|B) = \frac{P(B|A)P(A)}{P(B|A)P(A)+P(B|A^c)P(A^c)}.
+\]</span></p>
+</section>
+<section id="independence" class="level3" data-number="B.2.4">
+<h3 data-number="B.2.4" class="anchored" data-anchor-id="independence"><span class="header-section-number">B.2.4</span> Independence</h3>
+<p>Two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if <span class="math display">\[
+P(A,B) = P(A)P(B).
+\]</span> This is equivalent to <span class="math inline">\(P(A|B) = P(A).\)</span> Intuitively, independence means that knowing whether one event happened tells you nothing about the probability of the other event happening.</p>
+<p><span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are conditionally independent given <span class="math inline">\(C\)</span> if <span class="math display">\[
+P(A,B|C) = P(A|C)P(B|C).
+\]</span> This means that given <span class="math inline">\(C,\)</span> knowing additionally whether one event happened still tells you nothing about the probability of the other event happening.</p>
+<p>Independence and conditional independence are different things and do not imply each other. Conditional independence given <span class="math inline">\(C\)</span> also does not imply conditional independence given <span class="math inline">\(C^c.\)</span> Can you think of examples?</p>
 
 
 </section>

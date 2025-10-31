@@ -2,6 +2,10 @@
 
 {{< include _macros.tex >}}
 
+This is a very short section as Monty Hall really is not complete without conditional probability. We simply provide problems that involve setting up the Monty Hall problem with no conditional probability derivations and wait until conditional probability is introduced in the next chapter to give the bulk of the problems.
+
+## Problems
+
 1.  (Buggy Code) Monty is preparing to host the Monty Hall show with $d$ doors. In today's show, he will be using four types of prizes: cars, goats, apples, and scooters. Monty originally was going to have $c$ cars, $g$ goats, $a$ apples, and $s$ scooters, but his intern accidentally wrote code that puts a car, goat, apple, or scooter behind each door with equal probabilities. That is, all sequences of length $d$ consisting of cars, goats, apples, and scooters are equally likely. It is possible that there is no car and it is also possible that all doors hold a car.
 
     (a) Suppose the producer is only interested in how many cars, goats, apples, and scooters the show would need to host this show. Therefore, they are interested in the total number of possible 4-tuples $(x, y, z, w)$, where $x, y, z, w$ are the number of cars, goats, apples, and scooters, respectively, that will be in the show. How many possibilities are there for these 4-tuples?

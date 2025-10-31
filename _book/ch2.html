@@ -123,7 +123,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Afterword</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -161,7 +161,13 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#problems" id="toc-problems" class="nav-link active" data-scroll-target="#problems"><span class="header-section-number">2.1</span> Problems</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -183,6 +189,9 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p>This is the largest section by far as the original Monty Hall problem in essence is a conditional probability problem utilizing Bayes’ Rule and LOTP. All of these problems are interesting to a certain extent, but it is very understandable for readers to get tired of looking at problems involving Bayes’ Rule and LOTP over and over again. Hence, we would suggest that the reader doesn’t try to solve all of these problems and instead pick out ones that seem interesting to them the most. Although if you really enjoy these problems, go ahead and try to solve them all!</p>
+<section id="problems" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="problems"><span class="header-section-number">2.1</span> Problems</h2>
 <ol start="2" type="1">
 <li><p>(Original Monty Hall). On the Monty Hall game, a contestant chooses one of three closed doors, two of which have a goat behind them and one of which has a car. Each door has equal probabilities of having the car behind it. The contestant wants to win the car. After the selection is made, Monty Hall, who knows where the car is, opens one of the two remaining doors. Monty Hall will always open a door with a goat behind it, and if he has a choice, then he picks one of the two doors at random with equal probabilities. Monty then offers the contestant the option of switching to the other unopened door. What is the probability that the contestant will win the car if they switch doors?</p>
 <div id="answer1" class="callout callout-style-default callout-caution callout-titled">
@@ -218,7 +227,12 @@ Solution
 </div>
 </div>
 </div></li>
-<li><p>(Monty Troll). Monty Hall has realized that every one of his contestants chooses a door and then switches to have a <span class="math inline">\(2/3\)</span> chance of winning. Monty is tired of this and decides to enact a little trolling mechanism. After the contestant chooses a door and Monty opens a door, a loud speaker and a microphone will be delivered to the unopened door that the contestant did not choose. Given that the car is behind this door, a fake bleating sound will be made with probability <span class="math inline">\(f.\)</span> If a goat is behind this door, then the goat will make an actual bleating sound with probability <span class="math inline">\(b.\)</span> Whether a bleating sound is made is conditionally independent with what door Monty opened given which door has the car behind it. The contestant cannot tell the difference between a fake and a real bleat. All other rules of Monty Hall stay the same. The contestant chooses door 1 and Monty reveals a goat behind door 2. A few seconds later, a loud bleating sound is heard behind door 3. What is the probability that the contestant will win if they switch doors?</p>
+<li><p>(Lazy Monty) The original Monty Hall game is to be played, but if Monty has a choice between door 2 and door 3 and they both contain goats, Monty will choose to open door 2 with probability <span class="math inline">\(p &gt; 1/2\)</span> as it is closer to him. All other rules of the original Monty Hall game stay the same. The contestant originally chooses door 1, and Monty reveals a goat behind door 2. What is the probability that the contestant will win by switching?</p>
+<p>::: {.callout-caution collapse=“true”} ## Solution</p>
+<p>The calculation stays the same as in the original Monty Hall game (See Original Monty Hall), but this time, <span class="math inline">\(P(M_2|C_1) = p\)</span> instead of <span class="math inline">\(1/2\)</span> as Monty no longer has equal probabilities to choose between door 2 and door 3 if the contestant originally chooses door 1. Hence, the probability calculation becomes <span class="math display">\[
+P(C_3|M_2) = \frac{(1)(1/3)}{(p)(1/3)+(1)(1/3)} = \frac{1}{p+1}.
+\]</span> Note that when <span class="math inline">\(p = 1/2,\)</span> this reduces down to <span class="math inline">\(2/3,\)</span> which makes sense. The interesting part is that if <span class="math inline">\(p=1,\)</span> the probability is <span class="math inline">\(1/2\)</span>. So if Monty always prefers to open door 2 over door 3 when he can, it doesn’t matter if we switch or not when Monty opens door 2. (Bonus: Does this mean that you can conclude that the probability you win the car in the <span class="math inline">\(p=1\)</span> case before the start of the game is <span class="math inline">\(1/2\)</span>? Hint: You cannot.) :::</p></li>
+<li><p>(Any Door) Monty Hall is trying a new version of his game where after the contestant chooses a door, Monty chooses one of the two doors with the goat in it at random and opens it. Therefore, Monty can open the initial door the contestant chose if it contained a goat! If Monty opens the door that the contestant initially chose, then the contestant must choose between the two unopened doors. All other rules of the original Monty Hall game stay the same. The contestant initially chooses door 1, and Monty reveals a goat behind door 2. What is the probability that the contestant will win the car by switching?</p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -231,15 +245,15 @@ Solution
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(B\)</span> be the event that a bleating sound is heard, <span class="math inline">\(C_i\)</span> be the event that the car is behind door <span class="math inline">\(i,\)</span> and <span class="math inline">\(M_i\)</span> be the event that Monty opens door <span class="math inline">\(i\)</span> to reveal a goat for <span class="math inline">\(i = 1, 2, 3.\)</span> By Bayes’ Rule and LOTP,$$P(C_3 |M_2, B) = \frac{P(M_2, B|C_3)P(C_3)}{P(M_2, B|C_1)P(C_1) + P(M_2, B|C_3)P(C_3)}.$$($P(M_2, B|C_2)P(C_2)$ was not included as <span class="math inline">\(P(M_2|C_2) = 0.\)</span>) As <span class="math inline">\(M_i\)</span> and <span class="math inline">\(B\)</span> are conditionally independent given <span class="math inline">\(C_j,\)</span> we have <span class="math inline">\(P(M_2, B|C_3) = P(M_2|C_3)P(B|C_3) = 1 \cdot f = f\)</span> and <span class="math inline">\(P(M_2, B|C_1) = P(M_2|C_1)P(B|C_1) = (1/2)b.\)</span> Hence, the probability is$$P(C_3|M_2, B) = \frac{f(1/3)}{b(1/6)+f(1/3)} = \frac{2f}{2f+b}.$$</p>
+<p>Letting <span class="math inline">\(M_i\)</span> and <span class="math inline">\(C_i\)</span> denote the usual, we have <span class="math display">\[
+P(C_3|M_2) = \frac{P(M_2|C_3)P(C_3)}{P(M_2|C_1)P(C_1) + P(M_2|C_3)P(C_3)}.
+\]</span> First consider <span class="math inline">\(P(M_2|C_3).\)</span> If the car is behind door 3, then Monty will choose between door 1 and door 2 at random, so this probability is <span class="math inline">\(1/2.\)</span> Moreover, <span class="math inline">\(P(M_2|C_1) = 1/2\)</span> for similar reasons. Plugging these in, we find <span class="math display">\[
+P(C_3|M_2) = \frac{(1/2)(1/3)}{(1/2)(1/3)+(1/2)(1/3)} = \frac{1}{2}.
+\]</span> Therefore, it doesn’t matter whether the contestant switches or not; they will have a <span class="math inline">\(50\%\)</span> chance to win the car no matter what strategy they use.</p>
 </div>
 </div>
 </div></li>
-<li><p>(Repetitive Monty) Monty decides to change his game so that some doors may be empty. Specifically, one door is chosen with equal probabilities to hold the first goat. Afterwards, another door is chosen with equal probabilities to hold the second goat (the same door chosen before can be chosen again). Then, one of the three doors is randomly chosen with equal probabilities to hold the car. Thus, the doors that each goat and the car are hidden behind are independent of one another and a situation where a single door has both goats and the car can occur. After the contestant chooses their initial door, Monty will open a door with nothing behind it if he can. If he cannot, he will open a door with only one goat behind it if he can. If he cannot do that either, he will open a door with two goats behind it. Monty will never open a door with the car behind it. If Monty has a choice, then he chooses one of the two remaining doors with equal probabilities. All other rules of the original Monty Hall game stay the same.</p>
-<ol type="a">
-<li><p>The contestant chooses door 1, and Monty reveals nothing behind door 2. What is the probability that the contestant will win by switching to the other door?</p></li>
-<li><p>What is the probability of the contestant winning by switching if Monty reveals a goat behind door 2 instead?</p></li>
-</ol>
+<li><p>(Forgetful Monty) Monty Hall is about to host his show, but he has forgotten which doors hold the goats and which door holds the car. Hence, after the contestant makes their initial choice, Monty will randomly open one of the two remaining doors with equal probabilities. If Monty reveals a car, then the contestant instantly loses. If Monty reveals a goat, then the contestant is given the choice to switch or stick to their initial choice as usual. All other rules and assumptions of the original Monty Hall game apply. The contestant chooses door 1 and Monty reveals a goat behind door 2. What is the contestant’s probability of winning if they switch?</p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -252,7 +266,158 @@ Solution
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>a. Let <span class="math inline">\(M_i\)</span> denote the event that Monty opens door <span class="math inline">\(i\)</span> and reveals nothing and <span class="math inline">\(C_i\)</span> denote the event that the car is behind door <span class="math inline">\(i.\)</span> Then, by Bayes’ Rule and LOTP, <span class="math display">\[
+<p>By Bayes’ Rule and LOTP, <span class="math display">\[
+P(C_3|M_2) = \frac{P(M_2|C_3)P(C_3)}{P(M_2|C_1)P(C_1) + P(M_2|C_3)P(C_3)}.
+\]</span> Consider <span class="math inline">\(P(M_2|C_3).\)</span> As Monty randomly chooses between door 2 and door 3, the probability that Monty opens door 2 is <span class="math inline">\(1/2.\)</span> Moreover, as the car is behind door 3, the goat must be behind door 2, so this probability is <span class="math inline">\(1/2.\)</span> Similarly, <span class="math inline">\(P(M_2|C_1) = 1/2\)</span> as it is simply the probability that Monty opens door 2. Hence, plugging this in, we have <span class="math display">\[
+P(C_3|M_2) = \frac{(1/2)(1/3)}{(1/2)(1/3)+(1/2)(1/3)} = \frac{1}{2}.
+\]</span> Therefore, it does not matter whether the contestant switches or not.</p>
+</div>
+</div>
+</div></li>
+<li><p>(Somewhat Forgetful Monty) Monty has forgotten where the goats and the car are again, but unlike in the previous problem, he does remember one door that the goat is behind! However, he still does not remember where the other goat and the car are. Each goat is equally likely to be the goat that Monty remembers the location of and Monty remembering the goat’s location is independent of the original arrangement of goats and the car.</p>
+<p>After the contestant makes their initial choice, if the door Monty knows the goat is behind is one of the two remaining doors, Monty will open that door. However, if neither of the two doors is the door Monty knows the goat is behind (because the contestant’s initial choice was that door), Monty opens one of the two remaining doors at random. If Monty reveals a car, the contestant instantly loses. If Monty reveals a goat, the contestant can choose to stick with their initial choice or switch, as usual.</p>
+<p>The contestant initially chooses door 1 and Monty reveals a goat behind door 2. What is the probability that the contestant will win the car by switching?</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(M_i\)</span> and <span class="math inline">\(C_i\)</span> denote the usual. Moreover, let <span class="math inline">\(K_i\)</span> be the event that Monty knows that a goat is behind door <span class="math inline">\(i.\)</span> Then, by Bayes’ Rule and LOTP, <span class="math display">\[
+P(C_3|M_2) = \frac{P(M_2|C_3)P(C_3)}{P(M_2|C_1)P(C_1) + P(M_2|C_3)P(C_3)}.
+\]</span> We first calculate <span class="math inline">\(P(M_2|C_3).\)</span> By LOTP, <span class="math display">\[
+P(M_2|C_3) = P(M_2|C_3, K_2)P(K_2 | C_3) + P(M_2|C_3, K_2^c)P(K_2^c|C_3).
+\]</span> Clearly, <span class="math inline">\(P(M_2|C_3, K_2) = 1\)</span> and <span class="math inline">\(P(M_2|C_3, K_2^c) = 1/2.\)</span> Moreover, <span class="math inline">\(P(K_2|C_3) = 1/2\)</span> as if the car is behind door 3, Monty must either be remembering the location of the goat behind door 1 or the goat behind door 2 with equal probabilities. Hence, we get <span class="math inline">\(P(M_2|C_3) = (1)(1/2)+(1/2)(1/2) = 3/4.\)</span> Now we find <span class="math inline">\(P(M_2|C_1).\)</span> By LOTP, <span class="math display">\[
+P(M_2|C_1) = P(M_2|C_1, K_2)P(K_2 | C_1) + P(M_2|C_1, K_2^c)P(K_2^c|C_1).
+\]</span> Once again, <span class="math inline">\(P(M_2|C_1, K_2) = 1.\)</span> However, this time, <span class="math inline">\(P(M_2|C_1, K_2^c) = 0\)</span> as if the goats are hidden behind door 2 and door 3 and Monty does not know whether there is a goat behind door 2, he must know that a goat is hidden behind door 3. Thus, <span class="math inline">\(P(M_2|C_1) = 1/2.\)</span> Plugging these in, <span class="math display">\[
+P(C_3|M_2) = \frac{(3/4)(1/3)}{(1/2)(1/3)+(3/4)(1/3)} = \frac{3}{5}.
+\]</span> Thus, the contestant should still switch, but their probability of winning is smaller than the original Monty Hall game.</p>
+</div>
+</div>
+</div></li>
+<li><p>(Manty Holl) Monty Hall has an identical twin named Manty Holl, and he has joined the Monty Hall game. No one can tell the difference between Monty Hall and Manty Holl In each game, Monty Hall is the host with probability <span class="math inline">\(m\)</span> and Manty Holl is the host with probability <span class="math inline">\(1-m.\)</span> The contestant is not told which of the two is hosting the show before the game begins.</p>
+<p>When Monty Hall is the host, a regular Monty Hall game is played. However, when Manty Holl is the host, due to his little experience in hosting a game show, he forgets the arrangement of the prizes and hence after the contestant initially chooses a door, Manty randomly opens one of the two remaining doors with equal probabilities. If Manty Holl accidentally reveals a car, the contestant loses by default. All other rules of the Monty Hall game stay the same and the arrangement of goats and the car does not depend on who is hosting the show.</p>
+<p>The contestant initially chooses door 1, and the host (who could be Monty or Manty) reveals a goat behind door 2. What is the probability the contestant would win by switching?</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+Let <span class="math inline">\(M_i\)</span> denote the event that the host opens door <span class="math inline">\(i\)</span> and reveals a goat and <span class="math inline">\(C_i\)</span> denote the event that the car is behind door <span class="math inline">\(i\)</span> for <span class="math inline">\(i = 1, 2, 3.\)</span> We are once again looking for <span class="math inline">\(P(C_3|M_2).\)</span> Letting <span class="math inline">\(R\)</span> denote the event that Monty Hall is the host and not Manty Holl, using LOTP gives us <span class="math display">\[
+P(C_3|M_2) = P(C_3|M_2, R)P(R|M_2) + P(C_3|M_2, R^c)P(R^c|M_2).
+\]</span> From our previous calculations we know <span class="math inline">\(P(C_3|M_2, R) = 2/3\)</span> (See Problem 1) and <span class="math inline">\(P(C_3|M_2, R^c) = 1/2\)</span> (See Problem 11). Hence, we only need to find <span class="math inline">\(P(R|M_2).\)</span> By Bayes’ Rule and LOTP, we have <span class="math display">\[
+P(R|M_2) = \frac{P(M_2|R)P(R)}{P(M_2|R)P(R)+P(M_2|R^c)P(R^c)}.
+\]</span> We first find <span class="math inline">\(P(M_2|R).\)</span> By LOTP, we have <span class="math display">\[
+P(M_2|R) = P(M_2|R, C_1)P(C_1|R) + P(M_2|R, C_3)P(C_3|R).
+\]</span> Clearly, <span class="math inline">\(P(C_i|R) = P(C_i)\)</span> as where the car is does not depend on whether Monty or Manty is hosting the show. Moreover, <span class="math inline">\(P(M_2|R, C_1) = 1/2\)</span> as if Monty is the host and the car is behind door 1, Monty will randomly choose between door 2 and door 3 to open. Similarly, <span class="math inline">\(P(M_2|R, C_3) = 1.\)</span> Therefore, <span class="math inline">\(P(M_2|R) = (1/2)(1/3)+(1)(1/3) = 1/2.\)</span>
+<p>Now, we calculate <span class="math inline">\(P(M_2|R^c),\)</span> which by LOTP, is equal to <span class="math display">\[
+P(M_2|R^c) = P(M_2|R^c, C_1)P(C_1|R^c) + P(M_2|R^c, C_3)P(C_3|R^c).
+\]</span> We know <span class="math inline">\(P(M_2|R^c, C_1) = P(M_2|R^c, C_3) = 1/2\)</span> as if Manty is the host, he will always randomly open door 2 or door 3 with equal probabilities. Hence, <span class="math inline">\(P(M_2|R^c) = (1/2)(1/3)+(1/2)(1/3) = 1/3.\)</span> Plugging all of these in, <span class="math display">\[
+P(R|M_2) = \frac{(1/2)m}{(1/2)m+(1/3)(1-m)} = \frac{3m}{m+2}.
+\]</span> Hence, <span class="math inline">\(\displaystyle P(R^c|M_2) = 1 - P(R|M_2) = \frac{2-2m}{m+2}.\)</span> Finally, plugging this into our original equation gives us <span class="math display">\[
+P(C_3|M_2) = (2/3)P(R|M_2) + (1/2)P(R^c|M_2) = \frac{2m}{m+2}+\frac{1-m}{m+2} = \frac{m+1}{m+2}.
+\]</span> Plugging in trivial cases, if <span class="math inline">\(m = 0\)</span> (in which case Manty is always the host), the probability becomes <span class="math inline">\(1/2\)</span> as expected since if Manty is always the host, the problem reduces down to the Forgetful Monty problem (Problem 11). Moreover, if <span class="math inline">\(m = 1\)</span> (in which case Monty is always the host), the probability becomes <span class="math inline">\(2/3\)</span> as expected as if Monty is always the host, the problem reduces down to the original Monty Hall problem (Problem 1). Also, as <span class="math inline">\(0 &lt; m \leq 1\)</span> implies that this probability is greater than <span class="math inline">\(1/2,\)</span> the contestant should always switch for all values of <span class="math inline">\(m\)</span> except <span class="math inline">\(m = 0,\)</span> in which case it does not matter.</p>
+<p><span class="math inline">\(\textbf{Note}\)</span>: One might be tempted to use the result of Forgetful Monty. We know that after a goat is revealed, if Manty is host, then we have a <span class="math inline">\(1/2\)</span> probability of winning the car by switching, but if Monty is host, then we have a <span class="math inline">\(2/3\)</span> chance. Using the probability that Monty is host, one might then conclude that the answer is <span class="math display">\[
+P(C_3|M_2) = \frac{1}{2}(1-m) + \frac{2}{3}m  = \frac{3-3m+4m}{6} = \frac{3+m}{6}.
+\]</span> But this is not the answer that we got! Can you see what went wrong with that logic? (Hint: Make sure to always condition on everything you know!)</p>
+</div>
+</div>
+</div></li>
+<li><p>(For Joe) To add more variety, Monty Hall has updated the prizes on his show. There are three doors, with one prize behind each door. One door has a car behind it, one has a goat, and one has a cow, with all permutations equally likely. Monty knows what is behind each door.</p>
+<p>Jack, who is the contestant, will choose a door. Monty will then open a door (other than the one that Jack chose), revealing the goat or the cow. He will then let Jack choose whether to switch to the other unopened door. If Monty has a choice of which door to open, then with probability <span class="math inline">\(p\)</span> (with <span class="math inline">\(0 &lt; p \leq 1\)</span>) he will open the door with the cow.</p>
+<p>Unbeknownst to Monty, the cow is Jack’s beloved pet, Milky White, which Jack had been forced to sell years ago. Jack doesn’t want the car; his only goal is to regain Milky White.</p>
+<p>Jack chooses Door 1. Monty then opens Door 2, revealing the goat. If Jack decides to switch then what is the probability, given the above information, that he will regain Milky White? Should he switch?</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(G_j\)</span> and <span class="math inline">\(W_j\)</span> be the events that the goat and cow are behind Door <span class="math inline">\(j\)</span>, respectively. Let <span class="math inline">\(M_j\)</span> be the event that Monty opens Door <span class="math inline">\(j\)</span>. By Bayes’ rule and LOTP, <span class="math display">\[P(W_3 | M_2, G_2) = \frac{P(M_2,G_2 | W_3)P(W_3)}{P(M_2,G_2)} = \frac{P(M_2,G_2 | W_3)P(W_3)}{P(M_2,G_2|W_1)P(W_1) + P(M_2,G_2|W_3)P(W_3) },\]</span> since <span class="math inline">\(G_2 \cap W_2\)</span> is impossible. We have <span class="math display">\[ P(M_2,G_2|W_3)  = P(G_2|W_3) P(M_2|G_2, W_3) =  \frac{1}{2} \cdot (1-p) = \frac{1-p}{2},\]</span> since if the cow is behind Door 3 then the goat is behind Door 1 or Door 2, with equal probabilities; and if the cow is behind Door 3 and the goat is behind Door 2, then Monty will open Door 3 with probability <span class="math inline">\(p\)</span>. Similarly, <span class="math display">\[P(M_2,G_2|W_1) = P(G_2|W_1) P(M_2|G_2,W_1) = \frac{1}{2} \cdot 1 = \frac{1}{2}.\]</span> Thus, if Jack switches to Door 3 then his probability of regaining Milky White is <span class="math display">\[ P(W_3 | M_2, G_2) = \frac{ \frac{1-p}{2} \cdot \frac{1}{3}}{ \frac{1}{2} \cdot \frac{1}{3} + \frac{1-p}{2} \cdot \frac{1}{3}} = \frac{1-p}{2-p}.\]</span> So he should switch, since by not switching his probability of success is <span class="math display">\[P(W_1 | M_2, G_2) = 1 - \frac{1-p}{2-p} = \frac{1}{2-p} &gt; \frac{1-p}{2-p}.\]</span> As a check, note that in the case <span class="math inline">\(p = 1/2\)</span> the problem is equivalent, in terms of information about where the car is, to the original Monty Hall problem. So the conditional probability that Door 3 has the car is <span class="math inline">\(2/3\)</span>, giving conditional probability <span class="math inline">\(1/3\)</span> that Door 3 has Milky~White, which agrees with our above result since <span class="math inline">\((1/2)/(3/2) = 1/3\)</span>.</p>
+<p>As another check, note that in the extreme case <span class="math inline">\(p = 1\)</span>, Door <span class="math inline">\(3\)</span> definitely has the car (else Monty would have opened Door <span class="math inline">\(3\)</span> to reveal Milky White), which agrees with our above result since <span class="math inline">\((1-1)/(2-1) = 0\)</span>.</p>
+</div>
+</div>
+</div></li>
+<li><p>(For Joe) You are the contestant on the Monty Hall show. You get to choose one of three doors. One door has a car behind it, and the other two doors have goats behind them. All six possibilities for which entity is behind which door are equally likely. Monty knows exactly what is behind each door. Monty will open a door (other than the one you chose), revealing a goat. He will then let you choose whether to switch from your current choice to the other unopened door.</p>
+<p>Monty has grown fond of the two goats, and has named them Billy and Gilly. He thinks that one of the goats is more photogenic than the other. If he has a choice of which door to open, then with probability <span class="math inline">\(p\)</span> he will open the door that has Billy (where <span class="math inline">\(0 \leq p \leq 1\)</span>).</p>
+<p>For concreteness, let your initial choice be door 1. Suppose that you decide in advance that you will switch, after Monty reveals a goat.</p>
+<ol type="a">
+<li><p>Find the unconditional probability that you will get the car.</p></li>
+<li><p>Monty now opens door 2, revealing Billy. Given this information, find the probability that you will get the car.</p></li>
+<li><p>What does your answer to (b) reduce to in the simple cases <span class="math inline">\(p = 0, p = 1/2,\)</span> and <span class="math inline">\(p = 1\)</span>? Give intuitive explanations for why the answers in these three cases make sense.</p></li>
+</ol>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="a">
+<li><p>Let <span class="math inline">\(C_i, B_i, G_i\)</span> be the events that the car, Billy, Gilly is behind door <span class="math inline">\(i\)</span>, respectively. Let <span class="math inline">\(M_i\)</span> be the event that Monty opens door <span class="math inline">\(i\)</span>. Let <span class="math inline">\(W\)</span> be the event that you win the car. As in the original Monty Hall problem, <span class="math display">\[ P(W) = P(W|C_1)P(C_1) + P(W|C_2)P(C_2) + P(W|C_3)P(C_3) = 0 + \frac{1}{3} +  \frac{1}{3}  = \frac{2}{3}.\]</span></p></li>
+<li><p>Given that Monty opens door 2, <span class="math inline">\(W\)</span> is equivalent to <span class="math inline">\(C_3\)</span>. By Bayes’ rule and LOTP,</p>
+<p><span class="math display">\[\begin{align*}
+P(W | M_2, B_2) &amp;= P(C_3 | M_2, B_2)\\
+&amp;= \frac{P(M_2,B_2 |C_3)P(C_3)}{P(M_2,B_2)} \\
+&amp;=  \frac{P(M_2,B_2 |C_3)P(C_3)}{P(M_2,B_2 |C_1)P(C_1)+P(M_2,B_2 |C_3)P(C_3)},
+\end{align*}\]</span></p>
+<p>since <span class="math inline">\(P(M_2,B_2|C_2) = 0\)</span>.</p>
+<p>If the car is behind door 3 then Billy is equally likely to be behind door 1 or door 2, and Monty will definitely open door 2. So</p>
+<p><span class="math display">\[P(M_2,B_2|C_3) = P(B_2|C_3) P(M_2|B_2,C_3) = \frac{1}{2} \cdot 1 = \frac{1}{2}.\]</span></p>
+<p>If the car is behind door 1 then Billy is equally likely to be behind door 2 or door 3, and Monty will have a choice of opening door 2 or door 3. So</p>
+<p><span class="math display">\[P(M_2,B_2|C_1) = P(B_2|C_1) P(M_2|B_2,C_1) = \frac{1}{2} \cdot p = \frac{p}{2}.\]</span></p>
+<p>Thus,</p>
+<p><span class="math display">\[P(W|M_2,B_2) = \frac{ \frac{1}{2} \cdot \frac{1}{3}}{  \frac{p}{2} \cdot \frac{1}{3} + \frac{1}{2} \cdot \frac{1}{3}} = \frac{1}{p+1}.\]</span></p></li>
+<li><p>If <span class="math inline">\(p = 0\)</span> then <span class="math inline">\(1/(p+1) = 1\)</span>. In this case, Monty will reveal Billy only if he is forced to. Since Monty reveal Billy, the car must be behind door 3 (else Monty would have opened door 3 instead, revealing Gilly). Then you’ll definitely get the car by switching.</p>
+<p>If <span class="math inline">\(p = 1/2\)</span> then <span class="math inline">\(1/(p+1) = 2/3\)</span>. Here the problem reduces to the original Monty Hall problem, for which we already knew the answer was 2/3. The two goats have different but not different impacts on the in this case; observing Billy behind door 2 gives the same information about the location of the car as observing Gilly behind door 2 would have.</p>
+<p>If <span class="math inline">\(p = 1\)</span> then <span class="math inline">\(1/(p+1) = 1/2\)</span>. In this case, if Billy is behind door 2 then Monty will definitely open door 2, so conditioning on <span class="math inline">\(M_2 \cap B_2\)</span> is equivalent to conditioning on <span class="math inline">\(B_2\)</span>. Using a frequentist interpretation, imagine playing the game many times, say 12,000. We would expect each of the 6 permutations of (car, Billy, Gilly) to appear in about 2,000 games, and that Billy would be behind door 2 in about 4,000 games. Conditioning on <span class="math inline">\(B_2\)</span> says to filter down to just these 4,000 or so games. Among these games, we’d expect that for about 2,000 games the configuration is (car, Billy, Gilly) and for about 2,000 games the configuration is (Gilly, Billy, car).</p></li>
+</ol>
+</div>
+</div>
+</div></li>
+<li><p>(Repetitive Monty) Monty decides to change his game so that some doors may be empty. Specifically, one door is chosen with equal probabilities to hold the first goat. Afterwards, another door is chosen with equal probabilities to hold the second goat (the same door chosen before can be chosen again). Then, one of the three doors is randomly chosen with equal probabilities to hold the car. Thus, the doors that each goat and the car are hidden behind are independent of one another and a situation where a single door has both goats and the car can occur. After the contestant chooses their initial door, Monty will open a door with nothing behind it if he can. If he cannot, he will open a door with only one goat behind it if he can. If he cannot do that either, he will open a door with two goats behind it. Monty will never open a door with the car behind it. If Monty has a choice, then he chooses one of the two remaining doors with equal probabilities. All other rules of the original Monty Hall game stay the same.</p>
+<ol type="a">
+<li><p>The contestant chooses door 1, and Monty reveals nothing behind door 2. What is the probability that the contestant will win by switching to the other door?</p></li>
+<li><p>What is the probability of the contestant winning by switching if Monty reveals a goat behind door 2 instead?</p></li>
+</ol>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="a">
+<li><p>Let <span class="math inline">\(M_i\)</span> denote the event that Monty opens door <span class="math inline">\(i\)</span> and reveals nothing and <span class="math inline">\(C_i\)</span> denote the event that the car is behind door <span class="math inline">\(i.\)</span> Then, by Bayes’ Rule and LOTP, <span class="math display">\[
 P(C_3|M_2) = \frac{P(M_2|C_3)P(C_3)}{P(M_2|C_1)P(C_1) + P(M_2|C_2)P(C_2) + P(M_2|C_3)P(C_3)}.
 \]</span> Again, <span class="math inline">\(P(M_2|C_2) = 0.\)</span> Moreover, <span class="math inline">\(P(M_2|C_3)\)</span> is simply the probability that no goat is behind door 2 as if the car is behind door 3, Monty must opens door 1. This probability is <span class="math inline">\((2/3)(2/3) = 4/9.\)</span></p>
 <p>Now we calculate <span class="math inline">\(P(M_2|C_1).\)</span> Let <span class="math inline">\(E_i\)</span> be the event that neither goats are behind door <span class="math inline">\(i.\)</span> We have that <span class="math inline">\(P(M_2|C_1) = P(M_2,E_2|C_1)\)</span> since <span class="math inline">\(M_2\)</span> implies <span class="math inline">\(E_2.\)</span> Therefore, we have that</p>
@@ -265,25 +430,218 @@ P(M_2|E_2,C_1) = P(M_2|E_2,C_1,E_3)P(E_3|E_2,C_1) + P(M_2|E_2^c,C_1,E_3)P(E_2^c|
 \]</span></p>
 <p>First consider <span class="math inline">\(P(E_3|E_2,C_1).\)</span> If neither goat is behind door 2, each goat is independently behind door 1 or door 3 with equal probabilities. Therefore, the probability that neither of them ends up behind door 3 is <span class="math inline">\(1/4.\)</span> Now, note that <span class="math inline">\(P(M_2|E_2^c,C_1,E_3)=1\)</span> since if door 2 has no goats and door 3 has some goats, Monty will reveal nothing behind door 2. Finally, <span class="math inline">\(P(M_2|E_2,C_1,E_3) = 1/2\)</span> since Monty has equal probabilities of revealing nothing behind door 2 or door 3 when neither door has anything behind them. Therefore,</p>
 <p><span class="math display">\[
-P(M_2|E_2,C_1) = \frac{1}{2}\cdot \frac{1}{4} + 1 \cdot \frac{3}{4} = \frac{7}{8} \implies P(M_2|C_1) = \frac{7}{8} \cdot \frac{4}{9} = \frac{7}{18}.
+P(M_2|E_2,C_1) = \frac{1}{2}\cdot \frac{1}{4} + 1 \cdot \frac{3}{4} = \frac{7}{8} \implies P(M_2|C_1) =  \frac{7}{8} \cdot \frac{4}{9} = \frac{7}{18}.
 \]</span></p>
 <p>Plugging all of this back in, we find that</p>
 <p><span class="math display">\[
 P(C_3|M_2) = \frac{(4/9)(1/3)}{(4/9)(1/3)+(7/18)(1/3)} = \frac{8}{15}.
 \]</span></p>
-<p>This probability is slightly larger than <span class="math inline">\(0.5,\)</span> so the contestant should still switch.</p>
-<p>b. Let <span class="math inline">\(M_i\)</span> be the event that Monty opens door <span class="math inline">\(i\)</span> and reveals exactly one goat and <span class="math inline">\(C_i\)</span> be the event that the car is behind door <span class="math inline">\(i\)</span> for <span class="math inline">\(i = 1, 2, 3.\)</span> Then, By Bayes’ Rule and LOTP, <span class="math display">\[
+<p>This probability is slightly larger than <span class="math inline">\(0.5,\)</span> so the contestant should still switch.</p></li>
+<li><p>Let <span class="math inline">\(M_i\)</span> be the event that Monty opens door <span class="math inline">\(i\)</span> and reveals exactly one goat and <span class="math inline">\(C_i\)</span> be the event that the car is behind door <span class="math inline">\(i\)</span> for <span class="math inline">\(i = 1, 2, 3.\)</span> Then, By Bayes’ Rule and LOTP, <span class="math display">\[
 P(C_3|M_2) = \frac{P(M_2|C_3)P(C_3)}{P(M_2|C_1)P(C_1) + P(M_2|C_2)P(C_2) + P(M_2|C_3)P(C_3)}.
 \]</span> Once again, <span class="math inline">\(P(M_2|C_2) = 0.\)</span> Consider <span class="math inline">\(P(M_2|C_1).\)</span> If the car is in door 1, then the only way Monty will reveal a goat behind door 2 is if both doors 2 and 3 contained a goat and Monty randomly chose door 2 (as if one of the doors did not contain a goat, Monty would have revealed nothing behind that door). The probability of this happening is the probability that goat 1 is behind door 2 or door 3 times the probability that goat 2 is behind one of the remaining doors between door 2 and door 3, which is <span class="math inline">\((2/3)(1/3) = 2/9.\)</span> Hence, <span class="math inline">\(P(M_2|C_1) = 2/9.\)</span></p>
 <p>Finally, consider <span class="math inline">\(P(M_2|C_3).\)</span> If the car is behind door 3, Monty is guaranteed to open door 2, so we just need there to be a single goat behind door 2. The probability that goat 1 is behind door 2 and goat 2 is not is <span class="math inline">\((1/3)(2/3) = 2/9\)</span> and the probability that goat 2 is behind door 2 and goat 1 is not is <span class="math inline">\((1/3)(2/3) = 2/9,\)</span> so the probability of this is <span class="math inline">\(4/9.\)</span> Plugging these in, we find <span class="math display">\[
 P(C_3|M_2) = \frac{(4/9)(1/3)}{(2/9)(1/3)+(4/9)(1/3)} = \frac{2}{3}.
-\]</span>So the contestant should switch and they have a better chance to win the car using this method than if Monty revealed nothing.</p>
+\]</span> So the contestant should switch and they have a better chance to win the car using this method than if Monty revealed nothing.</p></li>
+</ol>
+</div>
+</div>
+</div></li>
+<li><p>(For Joe) Consider the following variation of the Monty Hall problem, where in some situations Monty may not open a door and give the contestant the choice of whether to switch doors. There are 3 doors, with 2 containing goats and 1 containing a car. The car is equally likely to be anywhere, and Monty knows where the car is. Let <span class="math inline">\(0 \leq g \leq 1\)</span> and <span class="math inline">\(0 \leq c \leq 1\)</span>.</p>
+<p>The contestant chooses a door. If this initial choice has the car, then Monty will secretly flip a coin with probability <span class="math inline">\(c\)</span> of Heads. If the coin lands Heads, Monty will open another door, revealing a goat (choosing with equal probabilities among his two choices of door), and then offer the contestant the choice of whether to switch to the other unopened door. If the coin lands Tails, Monty will not open a door, and the contestant will have to stick with their initial choice.</p>
+<p>If the contestant’s initial choice has a goat, then Monty will secretly flip a coin with probability <span class="math inline">\(g\)</span> of Heads. If the coin lands Heads, Monty will open another door, revealing a goat, and then offer the contestant the choice of whether to switch to the other unopened door. If the coin lands Tails, Monty will not open a door, and the contestant will have to stick with their initial choice.</p>
+<p>The contestant decides in advance to use the following strategy: initially choose Door 1. Then, if Monty opens a door and offers the choice of whether to switch, do switch.</p>
+<ol type="a">
+<li><p>Find the unconditional probability that the contestant will get the car.</p></li>
+<li><p>Check what your answer to (a) reduces to in the extreme cases where <span class="math inline">\(g, c \in \{0,1\}\)</span>. Explain why your answer makes sense in each of these four extreme cases.</p></li>
+</ol>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="a">
+<li><p>Let’s define some relevant events:</p>
+<p>By LOTP, conditioning on where the car is,</p>
+<p><span class="math display">\[P(W) = P(W|C_1)P(C_1) + P(W|C_2)P(C_2) + P(W|C_3)P(C_3).\]</span> By assumption, <span class="math inline">\(P(C_i) = 1/3\)</span> for <span class="math inline">\(i=1,2,3\)</span>. To find <span class="math inline">\(P(W|C_1)\)</span>, let’s further condition on whether Monty’s coin landed Heads:</p>
+<p><span class="math display">\[\begin{align*}
+P(W|C_1) &amp;= P(W|C_1,H)P(H|C_1) + P(W|C_1,H^c)P(H^c|C_1)\\
+&amp;= 0 \cdot c + 1 \cdot (1-c)\\
+&amp;= 1-c,
+\end{align*}\]</span></p>
+<p>since, given <span class="math inline">\(C_1\)</span>, the contestant will get the car if and only if they don’t switch. Similarly,</p>
+<p><span class="math display">\[\begin{align*}
+P(W|C_2) &amp;= P(W|C_2,H)P(H|C_2) + P(W|C_2,H^c)P(H^c|C_2)\\
+&amp;= 1 \cdot g + 0 \cdot (1-g)\\
+&amp;= g.
+\end{align*}\]</span></p>
+<p>By the same calculation, with <span class="math inline">\(C_3\)</span>’s in place of the <span class="math inline">\(C_2\)</span>’s, we also have</p>
+<p><span class="math display">\[P(W|C_3) = g.\]</span></p>
+<p>Thus,</p>
+<p><span class="math display">\[P(W) =  \frac{1-c}{3} +  \frac{g}{3} + \frac{g}{3} = \frac{1-c+2g}{3}.\]</span></p></li>
+<li><p>If <span class="math inline">\(g=1,c=1,\)</span> the answer reduces down to <span class="math inline">\(2/3.\)</span> This makes sense as this means Monty will always allow the contestant to switch, and thus we are back to the original Monty Hall problem.</p>
+<p>If <span class="math inline">\(g=1,c=0,\)</span> the answer reduces down to <span class="math inline">\(1.\)</span> This case means that Monty will let the contestant switch when the contestant originally chose a goat and never let them switch if they originally chose a car. In this case, the contestant does indeed always win; if they originally chose a goat, they will switch to the door that has a car, and if they originally chose a car, they will be forced to stick with their original case.</p>
+<p>The contrasting case is <span class="math inline">\(g=0,c=1,\)</span> which gives <span class="math inline">\(0.\)</span> This is the opposite of what happened before; now the contestant will only switch when they choose the door with the car originally, and then will switch to a door with a goat. Hence, they cannot win the car by always switching.</p>
+<p>Finally, if <span class="math inline">\(g=0,c=0,\)</span> the probability is <span class="math inline">\(1/3.\)</span> This makes sense as if the contestant cannot switch, the probability they win the car is simply the probability their initial pick out of 3 doors contains the car.</p></li>
+</ol>
+</div>
+</div>
+</div></li>
+<li><p>(Random Monty) Monty is trying another version of his game where each of the three doors has a probability of <span class="math inline">\(p\)</span> to contain a car and a probability of <span class="math inline">\(q=1-p\)</span> to contain a goat independently of whether the other doors contain goats or cars. Therefore, all three doors might contain goats or all three doors might contain cars. After the contestant makes their initial choice, Monty will reveal a car out of the two remaining doors if he can and reveal a goat otherwise. If Monty can make a choice, then he will randomly choose between the two doors with equal probabilities. The contestant initially chooses door 1, and Monty reveals a car behind door 2. What is the probability that the contestant will win by switching?</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Letting <span class="math inline">\(M_i\)</span> denote the event that Monty reveals a car behind door <span class="math inline">\(i\)</span> and <span class="math inline">\(C_i\)</span> denote the event that a car is behind door <span class="math inline">\(i\)</span> for <span class="math inline">\(i = 1, 2, 3,\)</span> we use Bayes’ Rule and LOTP to get <span class="math display">\[
+P(C_3|M_2) = \frac{P(M_2|C_3)P(C_3)}{P(M_2|C_3)P(C_3)+P(M_2|C_3^c)P(C_3^c)}.
+\]</span> Notice that we should not use LOTP with <span class="math inline">\(C_1,\)</span> <span class="math inline">\(C_2,\)</span> and <span class="math inline">\(C_3\)</span> as these events are no longer partitions of the event space (all of them or none of them can happen now!). We first find <span class="math inline">\(P(M_2|C_3).\)</span> Given that a car is behind door 3, Monty will only reveal a car behind door 2 if a car is behind door 2 (with probability <span class="math inline">\(p\)</span>) and Monty randomly chose to open door 2 (with probability <span class="math inline">\(1/2\)</span>). Hence, <span class="math inline">\(P(M_2|C_3) = p/2.\)</span></p>
+<p>Now we find <span class="math inline">\(P(M_2|C_3^c).\)</span> If there is a goat behind door 3, then Monty will always reveal door 2 if there is a car behind door 2. Hence, this probability is equal to the probability that a car is behind door 2, <span class="math inline">\(p.\)</span> Using the fact that <span class="math inline">\(P(C_3) = p\)</span> and <span class="math inline">\(P(C_3^c) = q,\)</span> we have <span class="math display">\[
+P(C_3|M_2) = \frac{(p/2)(p)}{(p/2)(p)+(p)(q)} = \frac{p}{2-p}.
+\]</span> Plugging in some values, if <span class="math inline">\(p = 1\)</span> (in which case all three doors must contain a car), we get the probability is equal to <span class="math inline">\(1\)</span> as expected. If <span class="math inline">\(p = 0\)</span> (in which case all three doors must contain a goat), we get a probability of <span class="math inline">\(0\)</span> as expected. Also notice that as <span class="math inline">\(2-p \geq 1,\)</span> this probability is always less than or equal to <span class="math inline">\(p,\)</span> which makes intuitive sense as Monty revealing a car behind door 2 makes it more likely that there is no car behind door 3. Hence, as the probability that the contestant would win the car by sticking with their initial choice is <span class="math inline">\(p,\)</span> the contestant should never switch.</p>
+</div>
+</div>
+</div></li>
+<li><p>(For Joe) Sonia is the contestant on the Monty Hall show. Monty plans to run the game in the standard way. The rest of this paragraph reviews the standard Monty Hall setup. There are three doors. Behind one there is a car, and behind the other two there are goats. Sonia hopes to win the car. Initially, all possibilities are equally likely for where the car is. Sonia will choose a door. Then Monty (who knows where the car is) will open a different door, revealing a goat, and offer Sonia the option of switching. If Monty has a choice of which door to open to reveal a goat, he will choose with equal probabilities.</p>
+<p>Sonia happens to be standing close to door 3, and not close to door 1 or door 2. She initially chooses door 1. Monty then opens door 2, revealing a goat. But just as Sonia is about to announce that she would like to switch to door 3, she hears a sound coming from behind door 3. The sound is very faint, so she is unsure what caused the sound, e.g., it could have been the bleating of a goat or the vrooming of the car.</p>
+<p>From a point of view of before the game started, let <span class="math inline">\(b\)</span> be the probability that Sonia will hear a sound from behind door 3, given that door 3 has a goat. Similarly, let <span class="math inline">\(v\)</span> be the probability that she will hear a sound from behind door 3, given that door 3 has the car. Assume that Monty opening door 2 is conditionally independent of Sonia hearing a sound from behind door 3, given what is behind door 3.</p>
+<p>Given the above information, find the probability that Sonia will get the car if she switches to door 3. Also, check what your answer reduces to in the case <span class="math inline">\(b=v\)</span> (in which case the sound is irrelevant), and discuss whether your answer makes sense in this case.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(C_j\)</span> be the event that door <span class="math inline">\(j\)</span> has the car, <span class="math inline">\(M_j\)</span> be the event that Monty opens door <span class="math inline">\(j\)</span>, and <span class="math inline">\(H_j\)</span> be the event that Sonia hears a sound from behind door <span class="math inline">\(j\)</span>. By Bayes’ rule, <span class="math display">\[ P(C_3  | M_2, H_3) = \frac{ P(M_2, H_3 | C_3) P(C_3)}{P(M_2,H_3)}.\]</span> For the numerator, <span class="math inline">\(P(C_3) = 1/3\)</span> and, by conditional independence, <span class="math display">\[ P(M_2, H_3 | C_3) = P(M_2 | C_3) P(H_3 | C_3) =  v.\]</span> Expanding the denominator by LOTP gives <span class="math display">\[ P(M_2,H_3|C_1) P(C_1) + P(M_2,H_3|C_2) P(C_2) + P(M_2,H_3|C_3) P(C_3)  = \frac{b}{2} \cdot \frac{1}{3} + 0 + v \cdot \frac{1}{3}.\]</span> Thus, <span class="math display">\[ P(C_3 | M_2, H_3) = \frac{ \frac{v}{3}}{ \frac{b}{6} +  \frac{v}{3}} = \frac{2v}{b + 2v}.\]</span> If <span class="math inline">\(b = v\)</span>, then this answer reduces to <span class="math inline">\(2/3\)</span>, which makes sense since in this case the sound provides no information about what is behind door 3, so then the problem reduces to the classic Monty Hall problem.</p>
+</div>
+</div>
+</div></li>
+<li><p>(For Joe) Monty Hall, hoping to double the fun and excitement of his game, introduces a version that doubles the number of cars and the number of goats. As usual, there are three doors. But now there are two cars and four goats, with two prizes behind each door. All possibilities for what’s where are equally likely, and Monty knows what’s where.</p>
+<p>The contestant chooses a door. Monty will then open a different door, and offer the contestant the choice of whether or not to switch to the other unopened door. If possible, Monty will open a door with two goats. If that’s not possible, Monty will open a door with a car and a goat. If Monty is choosing between two doors each of which has two goats, or each of which has a car and a goat, then he chooses with equal probabilities. Suppose that the contestant decides in advance to choose Door 1 initially, and then to switch after Monty opens a door.</p>
+<ol type="a">
+<li><p>Find the probability that Door 1 has both cars.</p></li>
+<li><p>Find the unconditional probability that the contestant will get both cars.</p></li>
+<li><p>Find the unconditional probability that the contestant will get at least one car.</p></li>
+<li><p>Monty now opens Door 2, revealing two goats. Given this information, find the probability that the contestant will get at least one car.</p></li>
+</ol>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="a">
+<li><p>Imagine that behind each door there are two zones, and one car or goat is placed in each zone. Label the zones <span class="math inline">\(1,2,\dots,6\)</span> where the first two zones are behind Door 1, the next two are behind Door 2, etc. Let <span class="math inline">\(C_j\)</span> be the event that there is a car in Zone <span class="math inline">\(j\)</span>. Then</p>
+<p><span class="math display">\[P(C_1,C_2) = P(C_1)P(C_2|C_1) = \frac{2}{6} \cdot \frac{1}{5} = \frac{1}{15}.\]</span></p></li>
+<li><p>Let <span class="math inline">\(A_j\)</span> be the event that Door <span class="math inline">\(j\)</span> has both cars. The contestant will get both cars if and only if <span class="math inline">\(A_2 \cup A_3\)</span> occurs. For example, if <span class="math inline">\(A_2\)</span> occurs then Monty will open Door 3, revealing two goats, and then the contestant will switch to Door 2 and get both cars. By the same reasoning as in (a),</p>
+<p><span class="math display">\[P(A_j) = \frac{1}{15}, \textrm{ for $j = 1,2,3$}.\]</span></p>
+<p>By disjointness,</p>
+<p><span class="math display">\[P(A_2 \cup A_3) = P(A_2) + P(A_3) = \frac{2}{15}.\]</span></p></li>
+<li><p>If Door 1 has both cars then the contestant will not get a car. Otherwise, the contestant will get at least one car: either Door 2 and Door 3 will both have cars, or one of these two doors will have both cars. In the latter case Monty will open a door with two goats and the contestant will switch to the door with both cars. Thus, the probability is</p>
+<p><span class="math display">\[P(A_1^c) = 1 - P(A_1) = \frac{14}{15}.\]</span></p></li>
+<li><p>Let <span class="math inline">\(G_j\)</span> be the event that Door <span class="math inline">\(j\)</span> has two goats and <span class="math inline">\(M_j\)</span> be the event that Monty opens Door <span class="math inline">\(j\)</span>. Given <span class="math inline">\(M_2\)</span> and <span class="math inline">\(G_2\)</span>, the contestant will get at least one car if and only if Door <span class="math inline">\(1\)</span> doesn’t have both cars. So the desired probability is</p>
+<p><span class="math display">\[P(A_1^c | M_2, G_2) = 1 - P(A_1 | M_2,G_2).\]</span></p>
+<p>By Bayes’ rule,</p>
+<p><span class="math display">\[P(A_1 | M_2,G_2) = \frac{  P(M_2|A_1,G_2)P(A_1|G_2)}{P(M_2|G_2)}.\]</span> We have</p>
+<p><span class="math display">\[P(M_2|A_1,G_2) = \frac{1}{2},\]</span></p>
+<p>since if there are two cars behind Door 1 and two goats behind Door 2, then there are two goats behind Door 3, and Monty will choose randomly between Door 2 and Door 3. Also,</p>
+<p><span class="math display">\[P(A_1|G_2) = 2 \cdot \frac{1}{4} \cdot \frac{1}{3} = \frac{1}{6},\]</span></p>
+<p>by the same reasoning as in (a) except now with 2 doors, 2 cars, and 2 goats. By LOTP,</p>
+<p><span class="math display">\[P(M_2|G_2) = P(M_2|A_1,G_2)P(A_1|G_2) + P(M_2|A_1^c,G_2)P(A_1^c|G_2) = \frac{1}{2} \cdot \frac{1}{6}  + 1 \cdot \frac{5}{6} = \frac{11}{12}.\]</span></p>
+<p>Hence,</p>
+<p><span class="math display">\[P(A_1^c | M_2, G_2)  = 1 - \frac{ \frac{1}{2} \cdot \frac{1}{6}}{\frac{11}{12}} = 1 - \frac{1}{11} = \frac{10}{11}.\]</span></p></li>
+</ol>
+</div>
+</div>
+</div></li>
+<li><p>(Hungry Monty) Monty Hall is planning to host the Monty Hall game as usual, but after eating exquisite goat meat for the past year, Monty has now gotten a love for goat meat and, after the goats and the car are hidden behind doors before the game, might eat the goats before the game even begins. For each goat, the probability that Monty will eat the goat before the game begins is <span class="math inline">\(p\)</span> and is independent of whether or not Monty eats the other goat and the whether each goat is eaten is also conditionally independent given which doors the goats and the car are hidden behind. Moreover, whether Monty eats a goat is also independent to the doors the goats and the car are hidden behind. Once the game starts and the contestant makes their initial choice, Monty opens a door with a goat behind it if he can and opens a door with nothing (because Monty ate the goat at that door) behind it if he cannot. Monty will still never reveal the car. If Monty has a choice, he chooses between the two remaining doors with equal probabilities.</p>
+<ol type="a">
+<li><p>The contestant chooses the first door and Monty reveals a goat behind the second door. What is the probability that the contestant will win the car by switching?</p></li>
+<li><p>This time, Monty reveals nothing behind the second door. What is the probability that the contestant will win the car by switching?</p></li>
+</ol>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="a">
+<li><p>Letting <span class="math inline">\(M_i\)</span> denote the event that Monty reveals nothing behind door <span class="math inline">\(i\)</span> and <span class="math inline">\(C_i\)</span> denote the event that the car is behind door <span class="math inline">\(i\)</span> for <span class="math inline">\(i = 1, 2, 3,\)</span> we end up with the exact same formula at the top of the solution to Problem 6 using Bayes’ Rule and LOTP.</p>
+<p>We first consider <span class="math inline">\(P(M_2|C_3).\)</span> If the car is behind door 3, Monty must reveal door 2, so this is the probability that the goat behind door 2 was eaten, which happens with probability <span class="math inline">\(p.\)</span></p>
+<p>Now considering <span class="math inline">\(P(M_2|C_1),\)</span> we know for Monty to open door 2 and reveal nothing, there must have been nothing in behind both doors 2 and 3 (as if there was a goat behind door 3 and nothing behind door 2, Monty would have revealed the goat behind door 3). Moreover, after this is satisfied, Monty must have picked door 2 with <span class="math inline">\(1/2\)</span> probability. Combining this information, <span class="math inline">\(P(M_2|C_1) = (1/2)p^2.\)</span> Plugging these in, <span class="math display">\[
+P(C_3|M_2) = \frac{(1/3)p}{(1/2)p^2(1/3)+(1/3)p} = \frac{2}{p+2}.
+\]</span> If <span class="math inline">\(p = 1,\)</span> the probability of winning is <span class="math inline">\(2/3,\)</span> which makes sense as the game reduces down to the original Monty Hall game except that there are two doors with nothing behind them and one door with the car behind it. Notice that this probability also decreases as <span class="math inline">\(p\)</span> increases. This makes intuitive sense because the lower <span class="math inline">\(p\)</span> is, the harder it is for Monty to open an empty door when the car is behind door 1 (which requires Monty to eat both goats with probability <span class="math inline">\(p^2\)</span>) compared to opening an empty door when the car is behind door 3 (which only requires Monty to eat the goat behind door 2 with probability <span class="math inline">\(p\)</span>).</p></li>
+<li><p>Letting <span class="math inline">\(M_i\)</span> denote the event that Monty reveals nothing behind door <span class="math inline">\(i\)</span> and <span class="math inline">\(C_i\)</span> denote the event that the car is behind door <span class="math inline">\(i\)</span> for <span class="math inline">\(i = 1, 2, 3,\)</span> we end up with the exact same formula as before.</p>
+<p>We first consider <span class="math inline">\(P(M_2|C_3).\)</span> If the car is behind door 3, Monty must reveal door 2, so this is the probability that the goat behind door 2 was eaten, which happens with probability <span class="math inline">\(p.\)</span></p>
+<p>Now considering <span class="math inline">\(P(M_2|C_1),\)</span> we know for Monty to open door 2 and reveal nothing, there must have been nothing in behind both doors 2 and 3 (as if there was a goat behind door 3 and nothing behind door 2, Monty would have revealed the goat behind door 3). Moreover, after this is satisfied, Monty must have picked door 2 with <span class="math inline">\(1/2\)</span> probability. Combining this information, <span class="math inline">\(P(M_2|C_1) = (1/2)p^2.\)</span> Plugging these in, <span class="math display">\[
+P(C_3|M_2) = \frac{(1/3)p}{(1/2)p^2(1/3)+(1/3)p} = \frac{2}{p+2}.
+\]</span> If <span class="math inline">\(p = 1,\)</span> the probability of winning is <span class="math inline">\(2/3,\)</span> which makes sense as the game reduces down to the original Monty Hall game except that there are two doors with nothing behind them and one door with the car behind it. Notice that this probability also decreases as <span class="math inline">\(p\)</span> increases. This makes intuitive sense because the lower <span class="math inline">\(p\)</span> is, the harder it is for Monty to open an empty door when the car is behind door 1 (which requires Monty to eat both goats with probability <span class="math inline">\(p^2\)</span>) compared to opening an empty door when the car is behind door 3 (which only requires Monty to eat the goat behind door 2 with probability <span class="math inline">\(p\)</span>).</p></li>
+</ol>
+</div>
+</div>
+</div></li>
+<li><p>(Very Hungry Monty) All the cars contestants have been receiving from him has made Monty very famished to the point he can even eat a car. First, a goat is hidden behind two doors and a car is hidden behind the remaining door as usual. Then, similar to the Hungry Monty game from Game 6, for each goat, Monty Hall has a probability of <span class="math inline">\(g\)</span> to eat the goat before the game begins, independent of whether the other goat was eaten. Moreover, Monty has a probability of <span class="math inline">\(c\)</span> to eat the entire car before the game begins. Monty eating a car, Monty eating each goat, and the doors the goats and the car are hidden behind are all independent events. Moreover, Monty eating a car and Monty eating each goat are also conditionally independent given which doors the goats and the car are hidden behind.</p>
+<p>After the contestant chooses a door, Monty will open a door with a goat behind it if he can and will open an empty door if he cannot. Monty will never reveal the car (however, if the car was eaten, then Monty is allowed to reveal the door that the car was originally behind). All other rules of the original Monty Hall game apply. The contestant first chooses door 1 and Monty reveals nothing behind door 2. What is the probability that the contestant will win the car if they switch?</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(M_i\)</span> denote the event that Monty reveals nothing behind door <span class="math inline">\(i\)</span> and <span class="math inline">\(C_i\)</span> denote the event that the car is (or was) behind door <span class="math inline">\(i\)</span> for <span class="math inline">\(i = 1, 2, 3.\)</span> Let <span class="math inline">\(W\)</span> be the event that the contestant wins and <span class="math inline">\(V\)</span> be the event that Monty eats the car. We want <span class="math inline">\(P(W),\)</span> which is equal to <span class="math inline">\(P(V^c, C_3 | M_2),\)</span> the probability that the car is behind door 3 and the car has not been eaten yet. By Bayes’ Rule and LOTP, <span class="math display">\[
+P(V^c, C_3|M_2) = \frac{P(M_2|V^c, C_3)P(V^c, C_3)}{P(M_2|C_1)P(C_1)+P(M_2|C_2)P(C_2)+P(M_2|C_3)P(C_3)}.
+\]</span></p>
+<p>Note that <span class="math inline">\(P(M_2|C_2) \neq 0\)</span> because Monty could have eaten the car behind door 2. As <span class="math inline">\(V^c\)</span> and <span class="math inline">\(C_3\)</span> are independent events, we have <span class="math inline">\(P(V^c, C_3) = P(V^c)P(C_3) = (1-c)/3.\)</span> Now we examine <span class="math inline">\(P(M_2|V^c, C_3).\)</span> If the car is behind door 3 and the car has not been eaten yet, Monty must reveal door 2. Hence, the probability that Monty will reveal a goat behind door 2 in this case is simply the probability that the goat behind door 2 is eaten, which occurs with probability <span class="math inline">\(g.\)</span></p>
+<p>Now we look at <span class="math inline">\(P(M_2|C_1).\)</span> In this case, Monty must have opened door 2 because both goats have been eaten and Monty randomly chose to open door 2. This happens with probability <span class="math inline">\(g^2/2.\)</span> Now consider <span class="math inline">\(P(M_2|C_2).\)</span> For this to happen, Monty must have eaten the car behind door 2 and the goat behind door 3 and randomly chose to open door 2. This happens with probability <span class="math inline">\(gc/2.\)</span></p>
+<p>We finally look at <span class="math inline">\(P(M_2|C_3).\)</span> By LOTP, <span class="math display">\[P(M_2|C_3) = P(M_2|C_3, V)P(V|C_3) + P(M_2|C_3, V^c)P(V^c|C_3).\]</span> As Monty eating the car does not depend on what door the car is behind, <span class="math inline">\(P(V|C_3) = c\)</span> and <span class="math inline">\(P(V^c|C_3) = 1-c.\)</span> Moreover, we already found <span class="math inline">\(P(M_2|C_3, V^c) = g.\)</span> Hence, we only need to find <span class="math inline">\(P(M_2|C_3, V).\)</span> In this case, Monty must eat the goat behind door 2 and choose to open door 2 (because door 3 is also empty). This happens with probability <span class="math inline">\(g/2.\)</span> Plugging all of these in, <span class="math display">\[\begin{align*}
+P(V, C_3|M_2) &amp;= \frac{g(1-c)/3}{(g^2/2)(1/3)+(gc/2)(1/3)+(g/2)(c)(1/3)+(g)(1-c)(1/3)}\\
+&amp;= \frac{2(1-c)}{g+2}.
+\end{align*}\]</span></p>
 </div>
 </div>
 </div></li>
 </ol>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -527,7 +885,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./summary.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Afterword</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
