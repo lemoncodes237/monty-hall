@@ -9,6 +9,7 @@ book:
     - index.qmd
     - ch1.qmd
     - ch2.qmd
+    - ch3.qmd
     - summary.qmd
     - references.qmd
   appendices:

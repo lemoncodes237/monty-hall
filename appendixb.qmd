@@ -1,4 +1,4 @@
-# Useful Results
+# Useful Results and Definitions
 
 {{< include _macros.tex >}}
 
@@ -126,3 +126,20 @@ $$
 This means that given $C,$ knowing additionally whether one event happened still tells you nothing about the probability of the other event happening.
 
 Independence and conditional independence are different things and do not imply each other. Conditional independence given $C$ also does not imply conditional independence given $C^c.$ Can you think of examples?
+
+## Random Variables and their Distributions
+
+### Random Variable
+Given an experiment with sample space $S,$ a random variable is a function from $S$ to the real numbers. For example, if we are rolling a 6-sided die and $X$ is defined to be two times the side that is rolled, then $X=2$ when a 1 is rolled, $X=4$ when a 2 is rolled, etc. Random variables are often shortened to r.v.s. The support of a random variable is the set of possible values that the r.v. can take on. In our example, the support is $\{2,4,6,8,10,12\}.$
+
+### Probability Mass Functions (PMF)
+A Probability Mass Funcction, or PMF, gives the probability of an r.v. taking on each value in its support. That is, for each $x$ in the support of an r.v. $X,$ the PMF of $X$ defines $P(X=x).$ Every valid PMF should sum up to 1 over its support. A PMF determines a random variable's distribution.
+
+### Cumulative Distribution Function (CDF)
+A Cumulative Distribution Function, or CDF, of a r.v. $X$ is a function $F_X(x)$ that maps the real numbers to $[0,1].$ It is defined as $F_X(x) = P(X \leq x).$ A CDF must be nondecreasing, right-continuous, and have $\lim_{x \to -\infty}F(x) = 0$ and $\lim_{x \to \infty} F(x) = 1.$ A CDF determines a random variable's distribution.
+
+### Distributions
+Notable distributions include the Bernoulli, Binomial, Geometric, Negative Binomial, and Hypergeometric, whose definitions can be found in Appendix A.
+
+### Indicator Random Variables
+Given an event $A,$ the random variable $I(A)$ which is equal to 1 when $A$ occurs and equal to 0 when $A$ does not occur is known as an indicator random variable. We have that $I(A) \sim \Bern(P(A))$ since $I(A)$ is equal to 1 with probability $P(A)$ and equal to 0 with probability $1-P(A).$

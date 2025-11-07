@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>110 Monty Hall Problems for Stat 110 - Appendix B — Useful Results</title>
+<title>110 Monty Hall Problems for Stat 110 - Appendix B — Useful Results and Definitions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -76,7 +76,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appendixa.html">Appendices</a></li><li class="breadcrumb-item"><a href="./appendixb.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Useful Results</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appendixa.html">Appendices</a></li><li class="breadcrumb-item"><a href="./appendixb.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Useful Results and Definitions</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -121,8 +121,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./ch3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Random Variables and their Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Afterword</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Afterword</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -149,7 +155,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./appendixb.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Useful Results</span></span></a>
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Useful Results and Definitions</span></span></a>
   </div>
 </li>
       </ul>
@@ -179,6 +185,14 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#law-of-total-probability-lotp" id="toc-law-of-total-probability-lotp" class="nav-link" data-scroll-target="#law-of-total-probability-lotp"><span class="header-section-number">B.2.3</span> Law of Total Probability (LOTP)</a></li>
   <li><a href="#independence" id="toc-independence" class="nav-link" data-scroll-target="#independence"><span class="header-section-number">B.2.4</span> Independence</a></li>
   </ul></li>
+  <li><a href="#random-variables-and-their-distributions" id="toc-random-variables-and-their-distributions" class="nav-link" data-scroll-target="#random-variables-and-their-distributions"><span class="header-section-number">B.3</span> Random Variables and their Distributions</a>
+  <ul class="collapse">
+  <li><a href="#random-variable" id="toc-random-variable" class="nav-link" data-scroll-target="#random-variable"><span class="header-section-number">B.3.1</span> Random Variable</a></li>
+  <li><a href="#probability-mass-functions-pmf" id="toc-probability-mass-functions-pmf" class="nav-link" data-scroll-target="#probability-mass-functions-pmf"><span class="header-section-number">B.3.2</span> Probability Mass Functions (PMF)</a></li>
+  <li><a href="#cumulative-distribution-function-cdf" id="toc-cumulative-distribution-function-cdf" class="nav-link" data-scroll-target="#cumulative-distribution-function-cdf"><span class="header-section-number">B.3.3</span> Cumulative Distribution Function (CDF)</a></li>
+  <li><a href="#distributions" id="toc-distributions" class="nav-link" data-scroll-target="#distributions"><span class="header-section-number">B.3.4</span> Distributions</a></li>
+  <li><a href="#indicator-random-variables" id="toc-indicator-random-variables" class="nav-link" data-scroll-target="#indicator-random-variables"><span class="header-section-number">B.3.5</span> Indicator Random Variables</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -187,7 +201,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Appendix B — Useful Results</h1>
+<h1 class="title">Appendix B — Useful Results and Definitions</h1>
 </div>
 
 
@@ -293,6 +307,29 @@ P(A,B) = P(A)P(B).
 P(A,B|C) = P(A|C)P(B|C).
 \]</span> This means that given <span class="math inline">\(C,\)</span> knowing additionally whether one event happened still tells you nothing about the probability of the other event happening.</p>
 <p>Independence and conditional independence are different things and do not imply each other. Conditional independence given <span class="math inline">\(C\)</span> also does not imply conditional independence given <span class="math inline">\(C^c.\)</span> Can you think of examples?</p>
+</section>
+</section>
+<section id="random-variables-and-their-distributions" class="level2" data-number="B.3">
+<h2 data-number="B.3" class="anchored" data-anchor-id="random-variables-and-their-distributions"><span class="header-section-number">B.3</span> Random Variables and their Distributions</h2>
+<section id="random-variable" class="level3" data-number="B.3.1">
+<h3 data-number="B.3.1" class="anchored" data-anchor-id="random-variable"><span class="header-section-number">B.3.1</span> Random Variable</h3>
+<p>Given an experiment with sample space <span class="math inline">\(S,\)</span> a random variable is a function from <span class="math inline">\(S\)</span> to the real numbers. For example, if we are rolling a 6-sided die and <span class="math inline">\(X\)</span> is defined to be two times the side that is rolled, then <span class="math inline">\(X=2\)</span> when a 1 is rolled, <span class="math inline">\(X=4\)</span> when a 2 is rolled, etc. Random variables are often shortened to r.v.s. The support of a random variable is the set of possible values that the r.v. can take on. In our example, the support is <span class="math inline">\(\{2,4,6,8,10,12\}.\)</span></p>
+</section>
+<section id="probability-mass-functions-pmf" class="level3" data-number="B.3.2">
+<h3 data-number="B.3.2" class="anchored" data-anchor-id="probability-mass-functions-pmf"><span class="header-section-number">B.3.2</span> Probability Mass Functions (PMF)</h3>
+<p>A Probability Mass Funcction, or PMF, gives the probability of an r.v. taking on each value in its support. That is, for each <span class="math inline">\(x\)</span> in the support of an r.v. <span class="math inline">\(X,\)</span> the PMF of <span class="math inline">\(X\)</span> defines <span class="math inline">\(P(X=x).\)</span> Every valid PMF should sum up to 1 over its support. A PMF determines a random variable’s distribution.</p>
+</section>
+<section id="cumulative-distribution-function-cdf" class="level3" data-number="B.3.3">
+<h3 data-number="B.3.3" class="anchored" data-anchor-id="cumulative-distribution-function-cdf"><span class="header-section-number">B.3.3</span> Cumulative Distribution Function (CDF)</h3>
+<p>A Cumulative Distribution Function, or CDF, of a r.v. <span class="math inline">\(X\)</span> is a function <span class="math inline">\(F_X(x)\)</span> that maps the real numbers to <span class="math inline">\([0,1].\)</span> It is defined as <span class="math inline">\(F_X(x) = P(X \leq x).\)</span> A CDF must be nondecreasing, right-continuous, and have <span class="math inline">\(\lim_{x \to -\infty}F(x) = 0\)</span> and <span class="math inline">\(\lim_{x \to \infty} F(x) = 1.\)</span> A CDF determines a random variable’s distribution.</p>
+</section>
+<section id="distributions" class="level3" data-number="B.3.4">
+<h3 data-number="B.3.4" class="anchored" data-anchor-id="distributions"><span class="header-section-number">B.3.4</span> Distributions</h3>
+<p>Notable distributions include the Bernoulli, Binomial, Geometric, Negative Binomial, and Hypergeometric, whose definitions can be found in Appendix A.</p>
+</section>
+<section id="indicator-random-variables" class="level3" data-number="B.3.5">
+<h3 data-number="B.3.5" class="anchored" data-anchor-id="indicator-random-variables"><span class="header-section-number">B.3.5</span> Indicator Random Variables</h3>
+<p>Given an event <span class="math inline">\(A,\)</span> the random variable <span class="math inline">\(I(A)\)</span> which is equal to 1 when <span class="math inline">\(A\)</span> occurs and equal to 0 when <span class="math inline">\(A\)</span> does not occur is known as an indicator random variable. We have that <span class="math inline">\(I(A) \sim \textnormal{Bern}(P(A))\)</span> since <span class="math inline">\(I(A)\)</span> is equal to 1 with probability <span class="math inline">\(P(A)\)</span> and equal to 0 with probability <span class="math inline">\(1-P(A).\)</span></p>
 
 
 </section>
