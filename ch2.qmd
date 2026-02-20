@@ -686,6 +686,62 @@ This is the largest section by far as the original Monty Hall problem in essence
      \end{align*}
     :::
 
+1. (Maximum Monty) Monty Hall has $n$ doors. Exactly $c$ cars will be hidden, where $c$ is an integer between 1 and $n,$ inclusive, with each integer being equally likely to be picked. After $c$ is chosen, the cars will be randomly hidden behind $c$ different doors, with each door equally likely to be picked, and the remaining doors will hold goats. A contestant on this show will, on each turn, either ask Monty to open a door or ask to end the game. If the contestant asks Monty to open a door, Monty will open a door with a goat if one remains; otherwise, Monty will use his wizard powers to turn one random car into a goat (without the contestant noticing) and open the door containing the new goat. The contestant cannot tell the difference between a goat and a goat that used to be a car. Afterwards, the contestant must choose between asking Monty to open another door and ending the game.
+
+    If the contestant asks for the game to end, Monty will reveal the prizes behind all of the remaining doors. If even $one$ of the unopened doors contains a goat, the contestant walks away with nothing. Otherwise, the contestant will win all of the cars that remain. A contestant wants to maximize the expected number of cars they will win. What strategy should they use, and what is the expected number of cars they will win by using it?
+
+   ::: {.callout-caution collapse="true"}
+   ## Solution
+
+    Let $G$ be the number of goats originally in the game. Let $X_k$ be the number of cars the contestant will win if they ask for the game to end after $k$ turns. We have $X_k = 0$ if $k < G$ and $X_k = n - k$ if $k \geq G.$ Therefore, we have
+    $$
+    E(X_k) = (n-k)P(G \leq k) = \frac{(n-k)(k+1)}{n},
+    $$
+    where we assume $k < n$ (as there is at least one car, there is no reason the contestant should ask Monty to open another door when all but one door have been opened). We can rewrite this as
+    $$
+    E(X_k) = -\frac{1}{n}k^2+\frac{n-1}{n}k+1,
+    $$
+    which is a downward sloping parabola, meaning it achieves its maximum value at its vertex. The coordinate of the vertex is $-((n-1)/n)/(-2/n) = (n-1)/2.$ Therefore, if $n$ is odd, we should set $k = (n-1)/2$ to maximize the expected number of cars won. Otherwise, by symmetry of the parabola, we can either have $k = n/2$ or $(n-2)/2$ to maximize the expected value.
+    
+    If $n$ is odd, we have
+    $$
+    E(X_{(n-1)/2}) = \frac{(n+1)^2}{4n}.
+    $$
+    If $n$ is even, we have
+    $$
+    E(X_{n/2}) = \frac{n+2}{4} = E(X_{(n-2)/2}).
+    $$
+   :::
+
+1. (Goats and Horses) A variant of the Monty Hall game is played. There are three doors as usual, and a door is first picked with equal probabilities to hold the car. Then, the other two doors will independently have either a goat or a horse behind it. The probability of a goat being hidden is $g$ and the probability of a horse being hidden is $1-g.$
+
+    Monty has a goat whistle, which only goats can hear, and a horse whistle, which only horses can hear. The contestant cannot tell the difference between the two whistles, but Monty can. If the contestant first picks a door with a goat, Monty will blow the horse whistle. If the contestant first picks a door with a horse, Monty will blow the goat whistle. If the contestant first picks the door with the car, Monty will either blow the goat whistle or the horse whistle with equal probabilities, independent of what prizes are in the other doors.
+
+    When a whistle is blown, each corresponding animal will exit their door with probability $p$ and stay behind the door with probability $1-p,$ independent of all the other animals and the arrangement of the prizes. Of course, because of how Monty chooses which whistle to blow, an animal will never exit the door the contestant initially picked.
+
+    The contestant initially picks door 1, and Monty blows a whistle, causing a goat to exit door 2 (of course, this means Monty blew the goat whistle). What is the probability that the car is behind door 3?
+
+   ::: {.callout-caution collapse="true"}
+   ## Solution
+
+    Let $W_g$ be the event of Monty blowing the goat whistle. Let $G_i, H_i,$ and $C_i$ denote the event of a goat, horse, and car being hidden behind door $i,$ respectively. Let $E_i$ denote the event of a goat escaping door $i$ after the whistle is blown. We wish to find $P(C_3|E_2,E_3^c).$
+
+    By Bayes' Rule and LOTP, we have $$
+     P(C_3|E_2,E_3^c) = \frac{P(E_2,E_3^c|C_3)P(C_3)}{P(E_2,E_3^c|C_3)P(C_3)+P(E_2,E_3^c|C_1)P(C_1)}.
+     $$ As usual, $P(C_3) = P(C_1) = 1/3,$ so those terms cancel out. Consider $P(E_2,E_3^c|C_3).$ If the car is hidden behind door 3, we know a goat will never escape door 3. Then, for the goat to escape door 2, we need door 1 to hold a horse (otherwise Monty would've blown the horse whistle) and door 2 to hold the goat, then have the goat escape once the whistle is blown. The arrangement has a $1/4$ probability of occurring, and the goat will escape with probability $p,$ so by independence, this probability is $p/4.$
+
+    Now consider $P(E_2,E_3^c|C_1).$ By LOTP, we have this is equal to $$
+     P(E_2,E_3^c|C_1,G_3,W_g)P(G_3|C_1,W_g)P(W_g|C_1)+P(E_2,E_3^c|C_1,H_3,W_g)P(H_3|C_1,W_g)P(W_g|C_1).
+     $$ Consider $P(E_2,E_3^c|C_1,G_3,W_g).$ We first need door 2 to hold a goat with probability $g,$ and then after the whistle is blown, that goat needs to escape with probability $p,$ and the goat behind door 3 needs to stay put with probability $1-p.$ Thus, this probability is $gp(1-p).$ Similarly, for $P(E_2,E_3^c|C_1,H_3,W_g),$ we need to have a goat to be behind door 2 with probability $g,$ then escape with probability $p,$ giving us a probability of $gp.$ (Notice that as a horse is behind door 3 and the goat whistle is blown, it will not escape.)
+
+    Given $C_1,$ we know the whistle Monty blows and the prizes in the other doors are independent. Thus, $P(G_3|C_1,W_g) = P(G_3|C_1) = g.$ For the same reason, $P(H_3|C_1,W_g) = 1-g.$ Finally, we know if the car is behind door 1, Monty will pick the goat whistle or horse whistle with equal probabilities, so $P(W_g|C_1) = 1/2.$ Combining all this together, we get $$
+     P(E_2,E_3^c|C_1) = \frac{1}{2}(g^2p(1-p)+gp(1-g)) = \frac{gp}{2}(1-gp).
+     $$ Thus, our final answer is $$
+     P(C_3|E_2,E_3^c) = \frac{p/4}{p/4+gp(1-gp)/2} = \frac{p}{p+2gp(1-gp)}.
+     $$
+   :::
+
+
 1. (Goat Breakout) A regular Monty Hall game is played, and the contestant initially chooses door 1. Before Monty reveals a door however, a goat destroys door 2 and runs away. "Well, I guess the goat did the revealing for me! Would you like to switch, or stick with your initial choice?" Monty announces.
 
     Suppose that each goat independently (and conditionally independently on the placement of the prizes) has an $m$ probability of destroying its door and escaping before Monty reveals a door. What is the probability that the contestant will win the car by switching to door 3?
