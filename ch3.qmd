@@ -6,11 +6,11 @@ Yay ch.3
 
 ## Problems
 
-1.  (Coin Flipping Doors) Monty will try out a new version of his Monty Hall game. He will begin with exactly one door. Monty will flip a coin, and if it lands on heads, Monty will hide a goat behind the door, and if it hands on tails, Monty will hide a car behind that door. If a goat was hidden, then Monty will add another door to the right of the original door and flip the coin again. Monty will continue this process of adding doors to the right until the car has been hidden.
+57. (Coin Flipping Doors) Monty will try out a new version of his Monty Hall game. He will begin with exactly one door. Monty will flip a coin, and if it lands on heads, Monty will hide a goat behind the door, and if it hands on tails, Monty will hide a car behind that door. If a goat was hidden, then Monty will add another door to the right of the original door and flip the coin again. Monty will continue this process of adding doors to the right until the car has been hidden.
 
     Afterwards, Monty will flip his coin again. If it lands on heads, the entire process stops. If it lands on tails, Monty adds another door to the right and flips the coin again. This process continues until the coin lands on heads.
 
-    After Monty is done adding doors, he will play a Monty Hall game where the contestant initially picks a door, Monty reveals \emph{one} of the remaining doors that contains a goat (randomly choosing between goat-containing doors with equal probabilities if he has a choice), and the contestant is allowed to make their final choice.
+    After Monty is done adding doors, he will play a Monty Hall game where the contestant initially picks a door, Monty reveals *one* of the remaining doors that contains a goat (randomly choosing between goat-containing doors with equal probabilities if he has a choice), and the contestant is allowed to make their final choice.
 
     The contestant walks into the Monty Hall game, and there are three doors. The contestant initially picks door 1, and Monty reveals a goat behind door 2. What is the probability that the car is behind door 3?
 
@@ -30,7 +30,7 @@ Yay ch.3
     $$ This is the same answer as in the original Monty Hall problem! One way to intuitively see this is that from the beginning, the probability of the car being behind door 1 is equal to the probability of the car being behind door 3 by symmetry because we are given $(C-1) + (D-C),$ both of which are independent $\Geom(1/2)$ r.v.s and hence by symmetry are equally likely to be 0 and 2, 1 and 1, or 2 and 2. Note that this did not depend on the $1/2$ value; hence, even if the coin was a biased coin that landed on heads with probability $p,$ the probability that the car is behind door 3 would still be $2/3.$ Moreover, once again by symmetry, even if Monty had revealed a goat behind door 3 instead, the probability that the car is behind door 2 would still be $2/3.$
     :::
 
-2.  (Monty's Bag) Monty has a bag with $c \geq 1$ cars and $g \geq 2$ goats and $h \geq 1$ hats. Let $n = c+g+h.$ Before the start of his show, Monty randomly grabs three prizes from his bag.
+1.  (Monty's Bag) Monty has a bag with $c \geq 1$ cars and $g \geq 2$ goats and $h \geq 1$ hats. Let $n = c+g+h.$ Before the start of his show, Monty randomly grabs three prizes from his bag.
 
     (a) What is the probability that when Monty grabs three prizes from his bag, there is exactly one car and two goats?
 
@@ -52,9 +52,9 @@ Yay ch.3
     (c) It is $2/3.$ It doesn't matter the process by which we got two goats and one car; all that matters is at the start of the game, there are two goats and one car that were randomly hidden behind the doors, with each arrangement equally likely.
     :::
 
-3.  (Coin Monty) Monty will be hosting a variant of his game with only cars. There are three doors, and independently for each door, Monty will flip a fair coin until it lands on heads. The number of tails he flips will be the number of cars hidden behind that door.
+1.  (Coin Monty) Monty will be hosting a variant of his game with only cars. There are three doors, and independently for each door, Monty will flip a fair coin until it lands on heads. The number of tails he flips will be the number of cars hidden behind that door.
 
-    Afterwards, the contestant will choose a door. Then, of the remaining two doors, Monty will open the door with fewer cars. If the two doors contain the same number of cars, Monty will always \emph{open the door of the smaller label}. For example, if he must choose between doors 1 and 3 and they have the same number of cars, Monty will always open door 1.
+    Afterwards, the contestant will choose a door. Then, of the remaining two doors, Monty will open the door with fewer cars. If the two doors contain the same number of cars, Monty will always *open the door of the smaller label*. For example, if he must choose between doors 1 and 3 and they have the same number of cars, Monty will always open door 1.
 
     You originally choose door 1, and Monty reveals $k$ cars behind door 2. What is the conditional distribution of the number of cars behind door 1 and the number of cars behind door 3?
 
@@ -74,7 +74,7 @@ Yay ch.3
      $$ we have that $C_3 - k | C_3 \geq k \sim \Geom(1/2).$ This property of retaining the distribution when we are told that an r.v. is at least some value is known as the memoryless property, and will become more important when we talk about the Exponential.
     :::
 
-4.  (Uniform Dollars) Monty is planning to host a version of his show with five doors as follows. Monty has $n$ boxes labeled 1 through $n$, where box $i$ contains $i$ dollars. Monty will choose five boxes without replacement, and then hide the boxes behind the five doors, with there being exactly one box per door. Assume that all possible arrangement of prizes are equally likely.
+1.  (Uniform Dollars) Monty is planning to host a version of his show with five doors as follows. Monty has $n$ boxes labeled 1 through $n$, where box $i$ contains $i$ dollars. Monty will choose five boxes without replacement, and then hide the boxes behind the five doors, with there being exactly one box per door. Assume that all possible arrangement of prizes are equally likely.
 
     When the show begins, the contestant will pick one of the five doors. Then, Monty, who knows exactly how many dollars are behind each door, will open the door with the smallest dollar value among the four doors the contestant did not initially choose. Then, the contestant may pick any of the four unopened doors for their final choice.
 
@@ -105,5 +105,121 @@ Yay ch.3
 
         After the prizes are chosen so that there is a door with less than $z$ dollars, the number of ways that the contestant can pick the exact door with $z$ dollars is 1. Therefore, by naive definition of probability, we have that the PMF is $$
         P(Z=z) = \frac{{n-1 \choose 3}- {n-z \choose 3}}{3{n \choose 4}}, \qquad z \in \{2, \dots, n\}.
+        $$
+    :::
+
+1.  (Uniform Dollars) Monty is planning to host a version of his show with five doors as follows. Monty has $n$ boxes labeled 1 through $n$, where box $i$ contains $i$ dollars and $n \geq 5$. Monty will choose five boxes without replacement, and then hide the boxes behind the five doors, with there being exactly one box per door. Assume that all possible arrangement of prizes are equally likely.
+
+    When the show begins, the contestant will pick one of the five doors. Then, Monty, who knows exactly how many dollars are behind each door, will open the door with the smallest dollar value among the four doors the contestant did not initially choose. Then, the contestant may pick any of the four unopened doors for their final choice.
+
+    A contestant on the show plans to use the following strategy. First pick door 1. Then, switch to one of the three other unopened doors.
+
+    (a) Let $X$ be the dollar value of the largest prize among the five doors. Find the distribution of $X.$
+
+    (b) Let $Y$ be the dollar value of the second lowest prize. Find the distribution of $Y.$ Why might the contestant care about the distribution of $Y$?
+
+    (c) Let $Z$ be the dollar value the contestant will win. Find the distribution of $Z.$
+
+    ::: {.callout-caution collapse="true"}
+    ## Solution
+
+    (a) First note that $X$ must be at least 5 and at most $n.$ This support already eliminates all named distributions. Note that the number of ways to pick five prizes is ${n \choose 5}.$ Of those, for $X$ to equal $x,$ we need to pick the box with $x$ dollars and then pick four boxes with prizes below $x,$ of which there are ${x-1 \choose 4}$ ways to do. Therefore, we get that the PMF of $X$ is
+    $$
+    P(X = x) = \frac{{x-1 \choose 4}}{{n \choose 5}}, \qquad x \in \{5, \dots, n\}.
+    $$
+
+    (b) First note that $Y$ must be at least 2 and at most $n-3.$ The size of the sample space is still the same. Of those, for $Y$ to equal $y,$ we need to pick the box with $y$ dollars, pick a box among the $y-1$ boxes with less dollars, and pick three boxes among the $n-y+1$ boxes with more dollars. Therefore, the PMF is
+    $$
+    P(Y=y) = \frac{(y-1){n-y+1 \choose 3}}{{n \choose 5}}, \qquad y \in \{2, \dots, n-3\}.
+    $$
+    The contestant might care about this distribution as this is the minimum number of dollars the contestant could win on the show; the contestant cannot choose the door with the least number of dollars as if it is among the four doors that the contestant didn't initially chose, Monty would have opened it.
+
+    (c) Note that to solve this problem, we can basically ignore the first door; if there were four doors and Monty got to immediately open one of them without the contestant doing anything, we would have the same result as the contestant is dedicated to switching. So only focus on the last four doors.
+
+        We have that $Z$ must be at least 2 and at most $n$ as if there is a door with 1 dollar among these four, Monty would have opened it. Now, we modify the sample space: we will have it be the set of ways to pick four prizes for the four doors and then for the contestant to pick one as their final choice. Note that there are ${n \choose 4}$ ways to choose the four doors, then the contestant will randomly pick one of the three doors that does not have the least valuable prize, so they will have 3 choices. Therefore, the size of the sample space is $3{n \choose 4}.$
+
+        Now we consider the number of ways that $Z$ can equal $z.$ For this to happen, first the box with $z$ dollars must be chosen. Then, at least one of the $z-1$ boxes with less than $z$ dollars must be chosen. Counting the number of ways that none of the remaining boxes are lower-valued to count the complement, we have that there are ${n-1 \choose 3} - {n-z \choose 3}$ ways to pick boxes such that the door with $z$ dollars is not the lowest. This is because if all three remaining do not hold less than $z$ dollars, then there are $n-z$ boxes with more than $z$ dollars to choose from and we must pick 3 boxes.
+
+        After the prizes are chosen so that there is a door with less than $z$ dollars, the number of ways that the contestant can pick the exact door with $z$ dollars is 1. Therefore, by naive definition of probability, we have that the PMF is
+        $$
+        P(Z=z) = \frac{{n-1 \choose 3}- {n-z \choose 3}}{3{n \choose 4}}, \qquad z \in \{2, \dots, n\}.
+        $$
+    :::
+
+1.  (Repeated Openings, Ch. 3) Monty Hall is hosting a version of his show with $n \geq 3$ doors. Exactly one of the doors will hold a car. The contestant will initially choose a door, and then Monty will open $k$ doors with goats that are not the contestant's initial choice.
+
+    Monty has been forgetful recently, so he may repeatedly reveal the same door multiple times. On each of the $k$ reveals, Monty will open one of the goat doors that the contestant did not initially choose with equal probabilities, where the doors he chooses to reveal are conditionally independent of the other reveals given which door holds the car. (Assume that this happens because e.g., the doors automatically close on their own and then Monty forgets what door he just opened.) This means that $k$ can be higher than $n.$ In fact, assume that $k \geq n.$
+
+    (a) Explain in words why after $k$ reveals, there must exist at least one door which was revealed more than once.
+
+    (b) What is the distribution of the number of doors that Monty must open until he reveals a door he already opened before?
+
+    (c) Find the probability that the car is behind the contestant's initial door given that Monty kept opening unique doors until he repeated for the $r$th door he opened, with $r \leq n.$ Find what your answer is equal to when $r = n$, and give an intuitive explanation.
+
+    ::: {.callout-caution collapse="true"}
+    ## Solution
+
+    (a) This is the Pigeonhole Property. If there are only $n-1$ doors that Monty can possibly reveal and Monty reveals at least $n$ of them, then it is impossible that none was opened more than once as if this was true, he could have revealed doors at most $n-1$ times.
+
+    (b) This is similar to the birthday problem. Let $X$ be the number of doors until Monty repeats a door. First note that the support of $X$ is $\{2, \dots, n\},$ since Monty must open at least 2 doors until he opens a repeat and if the contestant's initial door holds a car, Monty can open the other $n-1$ doors one time each and finally repeat on the $n$th try.
+
+        One thing that is useful to condition on is whether the contestant initially chose the door with the car or not. If they did choose the only car door, then Monty has $n-1$ choices to choose from. Otherwise, he has $n-2$ choices to choose from. So let $C$ be the event that the contestant's initial door holds the car. now we can write
+        $$
+        P(X=x) = P(X=x|C)P(C) + P(X=x|C^c)P(C^c).
+        $$
+        We know that $P(C) = 1/n$ since there are $n$ doors that the contestant can choose and only one of them holds the car. Now consider $P(X=x|C)$ for some $x \in \{2, \dots, n\}.$ Given $C,$ Monty has $n-1$ choices to choose from. Therefore, he must not repeat for the first $x-1$ choices then finally repeat with one of the $x-1$ doors he already opened on the $x$th opening. Therefore,
+        $$
+        P(X=x|C) = \frac{x-1}{n-1}\prod_{i=1}^{x-1} \frac{n-i}{n-1}
+        $$
+        Now consider $P(X=x|C^c).$ This is equal to zero when $x = n$ as Monty only has $n-2$ choices to choose from. When $x$ is less than $n,$ we get that
+        $$
+        P(X=x|C^c) = \frac{x-1}{n-2}\prod_{i=1}^{x-1}\frac{n-i-1}{n-2}.
+        $$
+        Note that when $x = n,$ the product becomes zero as $n-(n-1)-1 = 0.$ Therefore, the above probability still holds when $x = n.$ Therefore, we can write
+        $$
+        P(X=x) = f(x) = \frac{x-1}{n(n-1)}\prod_{i=1}^{x-1}\frac{n-i}{n-1} + \frac{(x-1)(n-1)}{n(n-2)}\prod_{i=1}^{x-1}\frac{n-i-1}{n-2}.
+        $$
+
+    (c) We want to find $P(C|X=u).$ By Bayes' Rule,
+    $$
+    P(C|X=u) = \frac{P(X=u|C)P(C)}{P(X=u)}.
+    $$
+    Plugging in our answer from part (a), we get that
+    $$
+    P(C|X=u) = \frac{\frac{x-1}{n-1}\prod_{i=1}^{x-1}\frac{n-i}{n-1}}{f(u)}.
+    $$
+    When $u = n,$ we get that $P(X=u) = f(u)$ is equal to the numerator due to the zero case we talked about before. Thus, we get a probability of 1. This makes sense as if Monty finally repeated on the $n$th opening, he must have opened the $n-1$ doors that the contestant did not initially choose one time each, in which case the initial choice is the only door that can still hold the car.
+    :::
+
+1.  (Limited Cars) Monty Hall has $n$ cars, and he is planning to give them all away on his shows! Every day, Monty Hall will have one contestant playing his game, and each contestant will switch with probability $p.$ The decision of each contestant to switch or not is independent. Suppose that $n$ and $p$ are known constants with $n > 0.$
+
+    (a) What is the distribution of the number of games that Monty will have to host before all $n$ cars have been given away?
+
+    (b) Suppose $m \leq n,$ with $m$ an integer. Find the distribution of the number of cars given away after $m$ games.
+
+    (c) Put a part about explaining minimum in the next part.
+
+    (c) Let $N$ bethe number of games until all cars have been given away. Find the distribution of the number of cars given away after $\min(N, n+1)$ games.
+
+    ::: {.callout-caution collapse="true"}
+    ## Solution
+
+    (a) First notice that the probability a contestant will win a car is $\frac{2}{3}p+\frac{1}{3}(1-p) = \frac{1}{3}(1+p).$ Let $N$ be the number of games until all cars have been given away. By the story of the Negative Binomial, we have that $N-n \sim \NBin(n, \frac{1}{3}(1+p))$ since $N-n$ counts the number of times the contestants fail to win the car. Therefore, using the Negative Binomial PMF, we have that
+    $$
+    P(N = k) = P(N-n = k-n) = {k-1 \choose n-1}\left(\frac{1}{3}(1+p)\right)^n\left(\frac{1}{3}(2-p)\right)^{k-n},
+    $$
+    with support $k \in \{n, n+1, \dots,\}.$
+
+    (b) Let $C_m$ be the number of cars given away after $m$ games. By the story of the Binomial, we have that $C_m \sim \Bin(m, \frac{1}{3}(1+p)).$
+
+    (c) First consider the support. We can give away 0 cars after $n+1$ games, and we can also give away all $n$ cars. Therefore, the support is $\{0, 1, \dots, n\}.$ Now, we make the important observation that we might as well assume that we play $n+1$ games, where if all the games end up with a win, then the last car is taken back. The distribution of the number of cars given away in this scenario is equivalent to the one given in the problem as we give away cars until we reach $n+1$ games or can't give away cars anymore.
+
+        Now, the number of wins in the $n+1$ games is Binomial as we discussed in part (b). The only difference is that we have to merge the PMF evaluation at $n$ and $n+1$ into one as they both imply $n$ cars were given away. Therefore, the PMF is given by
+        $$
+        P(C_{n+1} = k) = {n+1 \choose k}\left(\frac{1}{3}(1+p)\right)^k\left(\frac{1}{3}(2-p)\right)^{n-k+1}, k \in \{0, \dots, n-1\}
+        $$
+        and
+        $$
+        P(C_{n+1}=n) = \left(\frac{1}{3}(1+p)\right)^n\left(\frac{n+1}{3}(2-p) + \frac{1}{3}(1+p)\right).
         $$
     :::

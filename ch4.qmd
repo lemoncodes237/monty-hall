@@ -1,0 +1,126 @@
+# Expectation?
+
+{{< include _macros.tex >}}
+
+Yay ch.4
+
+## Problems
+
+1.  (Multiple Games) Monty has $c \geq 3$ cars and $g \geq 3$ goats, with $c+g=3n$ for some positive integer $n$. Monty will play $n$ games. He first randomly gives each prize a unique label from $1$ to $3n,$ with all arrangements equally likely. For the $i$th Monty Hall game, he will hide the prize with label $3i-2$ behind door 1, the prize with label $3i-1$ behind door 2, and the prize with label $3i$ behind door 3. So for game 1, prize 1, 2, and 3 will be hidden behind doors 1, 2, and 3, respectively.
+
+    Each Monty Hall game will proceed as follows. The contestant will initially pick a door. Then, if the two remaining doors contains a car and a goat, Monty will reveal the goat. If the two doors contain the same prize, then Monty will open one of them with equal probabilities. Then, the contestant will be given the choice to switch.
+
+    (a) Consider a single game. What is the distribution of the number of cars behind the three doors?
+
+    (b) The contestant employs the following strategy. They will first choose door 1. Then, once Monty reveals a door, they will switch. What is the probability they will win the car?
+
+    (c) In a game, the contestant chooses door 1, and Monty reveals a goat behind door 2. What is the probability the car is behind door 3?
+
+    (d) Suppose all of the contestants in the $n$ games decide to use the strategy where they will always switch. What is the expected number of cars that will be won by these contestants in total?
+
+    ::: {.callout-caution collapse="true"}
+    ## Solution
+    
+    (a) Let $C$ be the number of cars behind the three doors. By the Hypergeometric Story, we have $C \sim \HGeom(c, g, 3).$
+
+    (b) Note that if there are two cars or three cars, the contestant will always win the car with this strategy (why?). If there are zero cars, then the contestant will clearly lose. If there is one car, then we know the contestant has a $2/3$ probability of winning the car. Hence, letting $W$ be the event that the contestant wins the car, we have
+    \begin{align*}
+    P(W) &= P(W|C=1)P(C=1)+P(W|C=2)P(C=2)+P(W|C=3)P(C=3)\\
+    &= \frac{{c \choose 1}{g \choose 2}}{{c+g \choose 3}} \cdot \frac{2}{3} + \frac{{c \choose 2}{g \choose 1}}{{c+g \choose 3}} + \frac{{c \choose 3}}{{c+g \choose 3}}\\
+    &= \frac{2c{g\choose 2}+3{c\choose2}g+3{c\choose3}}{3{c+g\choose3}}.
+    \end{align*}
+
+    (c) Let $C_i$ be the event that there is a car behind door $i,$ and $M_i$ be the event that Monty reveals a goat behind door $i.$ We have by Bayes' Rule and LOTP that
+    $$
+    P(C_3|M_2) = \frac{P(M_2|C_3)P(C_3)}{P(M_2|C_3)P(C_3)+P(M_2|C_3^c)P(C_3^c)}
+    $$
+    Consider $P(M_2|C_3).$ If there is a car behind door 3, then all that is required is for there to be a goat behind door 2 for Monty to reveal a goat behind it. Thus, since one car was used for the 3rd door, this probability is $\frac{g}{c+g-1}.$
+
+    Now consider $P(M_2|C_3^c).$ If there is a goat behind door 3, then for Monty to reveal a goat behind door 2, we need there to be a goat behind door 2 and for Monty to choose it with $1/2$ probability. Since one goat was used for the 3rd door, this probability is $\frac{g-1}{2(c+g-1)}$. Therefore,
+    $$
+    P(C_3|M_2) = \frac{\frac{g}{c+g-1} \cdot \frac{c}{c+g}}{\frac{g}{c+g-1} \cdot \frac{c}{c+g} + \frac{g-1}{2(c+g-1)} \cdot \frac{g}{c+g}} = \frac{2c}{2c +g-1}.
+    $$
+
+    (d) Let $I_i$ be the indicator r.v. for the $i$th contestant winning a car. We know the probability that $I_i = 1$ from part (b). Hence, by linearity of expectation and the Fundamental Bridge, we have that
+    $$
+    E(I_1 + \dots + I_n) = \frac{2c{g\choose 2}+3{c\choose2}g+3{c\choose3}}{3{c+g\choose3}}n.
+    $$
+    :::
+
+1.  (Increasing Doors) Monty will host $N \sim \Geom(p)$ Monty Hall games. The $i$th game will have $i$ doors, with one of them being chosen with equal probabilities to hold a car and the other doors holding goats.
+
+    In games 1 and 2, the contestant will pick a door, and they will get whatever prize is behind that door. In game $g$ with $g \geq 3,$ the contestant will first pick a door, then Monty, who knows where the goat is, will open $g-2$ doors that hold goats. If the contestant had initially picked the door with the car behind it, then Monty will randomly open $g-2$ of the $g-1$ doors with goats, with all openings equally likely.
+
+    (a) Let $D$ be the total number of doors that appear throughout the $N$ games. As an example, if $N = 2,$ then one door appears for the first game and two doors appear for the second game, so $D$ would be $3.$ What is $E(D)$?
+
+    (b) The contestant for each of the games will first pick a door, then switch. What is the probability that throughout the $N$ games, at least two cars will be won?
+
+    (c) After solving the previous part, give a short proof for why $xe^{1-x}$ is between 0 and 1 for all $x \in (0, 1).$
+
+    ::: {.callout-caution collapse="true"}
+    ## Solution
+
+    (a) We know that $D = 1+\dots+N = \frac{N(N+1)}{2}$ by the sums of integers identity. Therefore,
+    $$
+    E(D) = \frac{1}{2}(E(N^2)+E(N)).
+    $$
+    As $N \sim \Geom(p),$ know that $E(N) = \frac{1-p}{p}$ and $E(N^2) = \var(N)+E(N)^2 = \frac{1-p}{p^2}+\frac{(1-p)^2}{p^2} = \frac{2-3p+p^2}{p^2}.$ Therefore,
+    $$
+    E(D) = \frac{2-3p+p^2}{2p^2} + \frac{1-p}{2p} = \frac{1-p}{p^2}.
+    $$
+
+    (b) Using the same logic as in Monty Hall, the probability that if game $i$ is played, the probability that the contestant wins the car is $\frac{i-1}{i}.$ Hence, the probability that the contestant loses the car is $\frac{1}{i}.$
+    
+        We will condition on the number of games. Let $C$ be the event that at least two cars are won. We will find $P(C^c),$ then find $P(C)$ by using $P(C) = 1 - P(C^c).$ By LOTP,
+        $$
+        P(C^c) = \sum_{n=0}^\infty P(C^c|N=n)P(N=n).
+        $$
+        We know that we need at least $2$ games for there to be a chance at least two cars are won. Suppose there are $n \geq 2$ games. We know Game 1 would have resulted in the contestant winning the car (of course). So the only way the contestants do not win at least $2$ cars is if games 2 and onward all resulted in losses. Since the probability of losing game $i$ is $1/i$ for $i \geq 2,$ we know that this is
+        $$
+        P(C^c|N=n) = \prod_{i=2}^n \frac{1}{i} = \prod_{i=1}^n \frac{1}{i} = \frac{1}{n!}.
+        $$
+        Note that when $n = 0$ or $n = 1,$ in which the probability less than two cars are won is $1,$ we indeed get $1/n! = 1,$ so the equation above is true for all nonnegative integers $n.$ Now,
+        $$
+        P(C^c) = \sum_{i=0}^\infty \frac{1}{i!}P(N=i) = p\sum_{i=0}^\infty \frac{(1-p)^i}{i!} = pe^{1-p}.
+        $$
+        We could've also found the sum by pattern-matching with the Poisson PDF:
+        $$
+        P(C^c) = p\sum_{i=0}^\infty \frac{(1-p)^i}{i!} = pe^{1-p}\sum_{i=0}^\infty \frac{e^{-(1-p)}(1-p)^i}{i!} = pe^{1-p},
+        $$
+        where the sum becomes the sum of the $\Pois(1-p)$ PMF, which must be 1. Therefore, the probability that at least two cars will be won is
+        $$
+        P(C) = 1 - pe^{1-p}.
+        $$
+        $$
+        P(C^c) = pe^{1-p}
+        $$
+
+    (c) We see that $P(C^c) = pe^{1-p},$ which is a probability and hence must be between 0 and 1. This shows that $xe^{1-x}$ is between 0 and 1 for all $x \in (0, 1).$
+    :::
+
+1.  (Maximum Monty) Monty Hall has $n$ doors. Exactly $c$ cars will be hidden, where $c$ is an integer between 1 and $n,$ inclusive, with each integer being equally likely to be picked. After $c$ is chosen, the cars will be randomly hidden behind $c$ different doors, with each door equally likely to be picked, and the remaining doors will hold goats. A contestant on this show will, on each turn, either ask Monty to open a door or ask to end the game. If the contestant asks Monty to open a door, Monty will open a door with a goat if one remains; otherwise, Monty will use his wizard powers to turn one random car into a goat (without the contestant noticing) and open the door containing the new goat. The contestant cannot tell the difference between a goat and a goat that used to be a car. Afterwards, the contestant must choose between asking Monty to open another door and ending the game.
+
+    If the contestant asks for the game to end, Monty will reveal the prizes behind all of the remaining doors. If even $one$ of the unopened doors contains a goat, the contestant walks away with nothing. Otherwise, the contestant will win all of the cars that remain. A contestant wants to maximize the expected number of cars they will win. What strategy should they use, and what is the expected number of cars they will win by using it?
+
+    ::: {.callout-caution collapse="true"}
+    ## Solution
+
+    Let $G$ be the number of goats originally in the game. Let $X_k$ be the number of cars the contestant will win if they ask for the game to end after $k$ turns. We have $X_k = 0$ if $k < G$ and $X_k = n - k$ if $k \geq G.$ Therefore, we have
+    $$
+    E(X_k) = (n-k)P(G \leq k) = \frac{(n-k)(k+1)}{n},
+    $$
+    where we assume $k < n$ (as there is at least one car, there is no reason the contestant should ask Monty to open another door when all but one door have been opened). We can rewrite this as
+    $$
+    E(X_k) = -\frac{1}{n}k^2+\frac{n-1}{n}k+1,
+    $$
+    which is a downward sloping parabola, meaning it achieves its maximum value at its vertex. The coordinate of the vertex is $-((n-1)/n)/(-2/n) = (n-1)/2.$ Therefore, if $n$ is odd, we should set $k = (n-1)/2$ to maximize the expected number of cars won. Otherwise, by symmetry of the parabola, we can either have $k = n/2$ or $(n-2)/2$ to maximize the expected value.
+    
+    If $n$ is odd, we have
+    $$
+    E(X_{(n-1)/2}) = \frac{(n+1)^2}{4n}.
+    $$
+    If $n$ is even, we have
+    $$
+    E(X_{n/2}) = \frac{n+2}{4} = E(X_{(n-2)/2}).
+    $$
+    :::

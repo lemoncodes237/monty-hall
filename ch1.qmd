@@ -25,3 +25,87 @@ This is a very short section as Monty Hall really is not complete without condit
         $$
     (c) This is because not all possibilities in (a) are equally likely. For example, the probability that all doors hold cars is $1/4^d$ since each door holds a car with $1/4$ probability, but this is clearly not $1/{d+3 \choose 3}.$ The same applies to all other possibilities.
     :::
+
+1.  (Prize Arrangement) Monty has $n$ doors and $k$ unique prizes, with $k \geq n.$ Suppose that each prize will be hidden behind one of the $n$ doors, and all possible arrangement of prizes behind the $n$ doors are equally likely.
+
+    (a) What is the probability that at least one door will not have any prizes? Write your answer as the sum of $n-1$ different terms.
+
+    (b) Suppose that the contestant will pick one of the $n$ doors and will receive all of the prizes inside. What is the probability that the contestant will win at least 3 prizes? Your answer should not involve a sum where the number of terms grows as $n$ grows.
+
+    ::: {.callout-caution collapse="true"}
+    ## Solution
+
+    (a) We use PIE. Let $A_i$ be the event that door $i$ will not have any prizes. Consider $P(\bigcap_{i=1}^j A_i).$ We have that if the first $j$ doors are empty, then each prize must be behind one of the $n-j$ other doors, giving us the probability
+    $$
+    P\left(\bigcap_{i=1}^j A_i\right) = \left(\frac{n-j}{n}\right)^k.
+    $$
+    Therefore, using PIE and noting that $P(\bigcap_{i=1}^n A_i) = 0$ since at least one of the doors must have a prize and using symmetry, we get that
+    $$
+    P\left(\bigcup_{i=1}^n A_i\right) = \sum_{i=1}^{n-1} {n \choose i}\left(\frac{n-i}{n}\right)^k.
+    $$
+
+    (b) We find this probability through the complement. Let $T$ be the event that the contestant wins at least three prizes. Suppose the contestant will always pick door 1. The probability that the door has no prizes is something we found in part (a), being $((n-1)/n)^k.$ Now consider the probability that the door has exactly one prize. For this, we pick one of the $k$ prizes to be behind door 1 and then hide all of the other prizes behind and other doors, giving us the probability $(k(n-1)^{k-1})/n^k.$ Finally, we find the probability that the door has exactly two prizes. We pick two of the prizes then hide the remaining $k-2$ prizes behind the $n-1$ other doors, giving us the probability
+    $$
+    \frac{{k \choose 2}(n-1)^{k-2}}{n^k}.
+    $$
+    Therefore, the probability we want is
+    $$
+    P(T) = 1 - P(T^c) = 1 - \frac{(n-1)^k+k(n-1)^{k-1}+{k \choose 2}(n-1)^{k-2}}{n^k}.
+    $$
+    :::
+
+1.  (Hiding Errors) Monty has once again tasked his intern to set up the show for him. In the show, there will be $n$ doors and $n$ prizes, with one prize behind each door. However, the intern is still prone to making mistakes and decides to randomly put the prizes behind the doors. The intern labels each door from 1 to $n,$ and for each prize, rolls an $n$-sided die and hides it behind the door with the number that comes up.
+
+    (a) Find the probability that the intern fails to put exactly one prize behind each door.
+
+    (b) Find the probability that exactly one door has no prizes.
+
+    (c) The show can rectify some of the intern's mistakes. Before the show starts, they can move at most two prizes to other doors. So as long as the intern arrives an at arrangement that can be transformed into a valid arrangement with one prize behind each door, no problems will occur. Find the probability that this can be done.
+
+    ::: {.callout-caution collapse="true"}
+    ## Solution
+
+    (a) There are $n!$ arrangements of the prizes that leave one prize behind each door. There are $n^n$ total possible arrangements by the multiplication rule. Therefore, taking the complement, the probability is $1 - \frac{n!}{n^n}.$
+
+    (b) For there to be exactly one door to have no prizes, we need exactly one door to have two prizes as well and we need all of the other doors to have no prizes. So choose a door to have two prizes and choose a door to have no prizes. This gives $n(n-1)$ choices.
+
+        Now, from there, pick two of the $n$ prizes to hide behind the door with two prizes. There are ${n \choose 2}$ ways to do this. Then, arrange the other $n-2$ doors behind the $n-2$ doors with one prize, of which there are $(n-2)$! ways to do. Therefore, we get the probability of
+        $$
+        \frac{n(n-1){n \choose 2}(n-2)!}{n^n}.
+        $$
+
+    (c) For a valid arrangement to be possible with two moves, we can start with a correct arrangement as in (a), and we can also start with only one door missing a prize as in (b). There are two more ways for this to be possible. First, two doors can be missing a prize and one door can have three prizes. Second, two doors can be missing a prize and two doors can have two prizes each. So we just need to find the probabilities of both of these cases then add them up with our previous answers.
+
+        If two doors are missing a prize and one door has three prizes, we first choose two doors, of which there are ${n \choose 2}$ ways to do, then choose the single door, of which there are $n-2$ ways to do afterwards.
+
+        Then, we put three prizes behind the single door. There are ${n \choose 3}$ ways to do this. We then arrange the remaining $n-3$ prizes in the $n-3$ doors to get $(n-3)!$ ways.
+
+        For the second case where two doors are missing a prize and two doors have two prizes, we first choose two doors to have no prize, of which there are ${n \choose 2}$ ways, then we choose two more doors to have two prizes each, of which there are ${n-2 \choose 2}$ ways. We then put two prizes behind each of those two doors, which once again gives us ${n \choose 2}{n-2 \choose 2}.$ We then hide the remaining $n-4$ prizes in the $n-4$ doors with $(n-4)!$ ways.
+
+        Therefore, our answer is
+        $$
+        \frac{n!+n(n-1){n \choose 2}(n-2)!+{n \choose 2}(n-2){n \choose 3}(n-3)!+{n \choose 2}^2{n-2 \choose 2}^2(n-4)!}{n^n}.
+        $$
+    :::
+
+1.  (Intern's Bag) Monty has once again tasked his intern to set up the show. (Ya I don't understand why he's still trusting the intern either.) There are $n$ doors, and Monty gives the intern $c$ cars and $g$ goats, with $c > 1$ and $g \geq n.$ The intern decides to put all of the prizes into a bag (it is a very big bag) and arrange prizes behind the $n$ doors by pulling prizes out of the bag.
+
+    For each door, the intern will grab one of the prizes in the bag with equal probabilities and hide it behind the door. The prizes are chosen without replacement from the bag.
+
+    (a) Find the probability that no door holds a car.
+
+    (b) Find the probability that exactly one door holds a car.
+
+    ::: {.callout-caution collapse="true"}
+    ## Solution
+
+    (a) There are ${g \choose n}$ ways to choose $n$ goats to hide behind the doors. There are ${c+g \choose n}$ total ways to choose $n$ prizes. Therefore, the probability is
+    $$
+    \frac{{g \choose n}}{{c+g \choose n}}.
+    $$
+
+    (b) Using the same sample space, there are ${g \choose n-1}$ ways to choose $n-1$ goats and $c$ ways to choose one car. So the probability is
+    $$
+    \frac{c{g \choose n-1}}{{c+g \choose n}}.
+    $$
+    :::
